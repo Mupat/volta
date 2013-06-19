@@ -22,13 +22,13 @@ So easiest way to do it, is using node and installing the required node_modules.
 So for coffe-script:
 
 ```
-coffee -o ../js/ -j main.js -c ../coffee/
+coffee -o js/ -j main.js -c coffee/
 ```
 
 So for handlebars:
 
 ```
-handlebars ../template/*.handlebars -f ../js/template.js
+handlebars template/*.handlebars -f js/template.js
 ```
 
 So for less:
