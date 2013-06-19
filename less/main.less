@@ -5,22 +5,30 @@ body {
   padding: 0;
   height: 100%;
   text-align: center;
-  background: url("../images/grey_wash_wall.png");
+  background: url(@standardBackground);
   -webkit-font-smoothing: antialiased;
-  /*background-color: rgba(0,0,0,0.4);*/
   transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 62.5%;
   font: @font;
   font-weight: @fontWeight;
   text-shadow: @textShadow;
-  color: @fontColor;
-
-  #mails { text-align: left; }
+ 
   > div,
   #apps > div {
     width: 1024px;
     margin: 0 auto;
   }
+
+  a {
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  &.light,
+  &.light a { color: @lightFontColor; }
+
+  &.dark,
+  &.dark a { color: @darkFontColor; }
 }
 
 @import 'clock';

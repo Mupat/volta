@@ -30,27 +30,24 @@
     padding: 0;
     height: 30%;
     overflow: scroll;
-    // box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem @appShadow;
+    // box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem @shadowColor;
 
     > li {
       list-style: none;
       margin: 0.25rem;
-      background: @appShadow;
+      background: @shadowColor;
       transition: background 0.5s ease;
       border-radius: @borderRadius;
 
       &:hover { background: rgba(0, 0, 0, 0.6); }
 
       a {
-        text-decoration: none;
-        color: @fontColor;
-        font-size: 1rem;
         position: relative;
         display: block;
         height: 6rem;
         padding: 0.5rem;
 
-        strong { font-weight: 200; }
+        strong { font-weight: @fontWeight * 2; }
         > strong { 
           display: block; 
           font-weight: 400;
@@ -73,13 +70,13 @@
             margin: 0;
             text-align: right;
 
-            &:last-child strong { font-weight: 100; }
+            &:last-child strong { font-weight: @fontWeight; }
           }
         }
 
         p {
-          // box-shadow: inset 3.2rem 4.5rem 0.8rem -4rem @appShadow;
-          font-weight: 200;
+          // box-shadow: inset 3.2rem 4.5rem 0.8rem -4rem @shadowColor;
+          font-weight: @fontWeight * 2;
           font-size: 1.15rem;
           max-height: 3.5rem;
           overflow: scroll;

@@ -5,22 +5,28 @@ body {
   text-align: center;
   background: url("../images/grey_wash_wall.png");
   -webkit-font-smoothing: antialiased;
-  /*background-color: rgba(0,0,0,0.4);*/
-
   transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 62.5%;
   font: normal 11px "HelveticaNeueUltraLight", "Helvetica Neue UltraLight", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 100;
-  text-shadow: 0 0 5px #000000;
-  color: #cccccc;
-}
-body #mails {
-  text-align: left;
+  text-shadow: 0 0 0.5rem #333333;
 }
 body > div,
 body #apps > div {
   width: 1024px;
   margin: 0 auto;
+}
+body a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+body.light,
+body.light a {
+  color: #cccccc;
+}
+body.dark,
+body.dark a {
+  color: #444444;
 }
 #clock {
   display: inline-block;
@@ -107,14 +113,11 @@ body #apps > div {
   display: inline-block;
   overflow: hidden;
   margin: 0.5rem 1rem;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
   transition: color 1s ease;
   padding: 0.25rem;
 }
 #apps a:hover {
-  color: white;
+  color: #fff;
 }
 #apps a:hover img {
   -webkit-filter: grayscale(0%);
@@ -130,7 +133,7 @@ body #apps > div {
   margin-top: 0.25rem;
   margin-bottom: 0;
   font: normal 11px "HelveticaNeueUltraLight", "Helvetica Neue UltraLight", "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 100;
+  font-weight: 200;
   font-size: 1rem;
 }
 #mails .read img {
@@ -173,9 +176,6 @@ body #apps > div {
   background: rgba(0, 0, 0, 0.6);
 }
 #mails .unread + ul > li a {
-  text-decoration: none;
-  color: #cccccc;
-  font-size: 1rem;
   position: relative;
   display: block;
   height: 6rem;
