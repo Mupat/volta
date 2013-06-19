@@ -1,5 +1,5 @@
-#Volta
-Yet another new tab replacement extension for chrome browser
+# Yantre
+**Y**et **a**nother **n**ew **t**ab **r**eplacement **e**xtension for chrome browser
 
 ## Usage
 1. download

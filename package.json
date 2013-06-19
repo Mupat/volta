@@ -1,9 +1,9 @@
 {
-  "name": "volta",
+  "name": "yantre",
   "version": "0.0.1",
   "description": "",
   "repository": "",
-  "author": "Mupat",
+  "author": "Mupat(dev@mupat.net)",
   "license": "BSD",
   "dependencies": {
     "handlebars": "~1.0.12",
