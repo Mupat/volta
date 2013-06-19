@@ -12,28 +12,22 @@ Had some dependencies:
 * coffee-script
 * less
 * handlebars
+* grunt
 
 **All of them need to be compiled, before new changes take effect!**
 
-So easiest way to do it, is using node and installing the required node_modules. You can just do ```npm install``` or install them globally. The following commands using globally installed modules.
-
-**Implementation of grunt follows, so then its just ```grunt build``` and ```grunt watch```**
-
-So for coffe-script:
+So the easiest way to compile them is to use ```grunt```. Just run 
 
 ```
-coffee -o js/ -j main.js -c coffee/
+grunt build
 ```
 
-So for handlebars:
+to compile coffeescript files, less files and handlebar files. How to use ```grunt```, is explained on there [site](http://gruntjs.com/getting-started).
+
+During the development you can use
 
 ```
-handlebars template/*.handlebars -f js/template.js
+grunt watch
 ```
 
-So for less:
-
-```
-cd less && lessc main.less > ../css/main.css && cd ..
-```
-
+to compile each file type after saving.
