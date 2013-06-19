@@ -1,0 +1,13 @@
+{
+  "name": "volta",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "author": "Mupat",
+  "license": "BSD",
+  "dependencies": {
+    "handlebars": "~1.0.12",
+    "less": "~1.4.0",
+    "coffee-script": "~1.6.3"
+  }
+}

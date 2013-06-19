@@ -1,0 +1,91 @@
+#mails {
+  .read {
+    img {
+      position: relative;
+      top: 2rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin: 0;
+      padding-right: 3.5rem;
+    }
+  }
+
+  .read,
+  .unread {
+    text-align: center;
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: @fontWeight;
+    }
+  }
+
+  .unread h1 { font-size: 2.5rem; }
+
+  .unread + ul {
+    width: 858px;
+    margin: 0 auto;
+    padding: 0;
+    height: 30%;
+    overflow: scroll;
+    // box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem @appShadow;
+
+    > li {
+      list-style: none;
+      margin: 0.25rem;
+      background: @appShadow;
+      transition: background 0.5s ease;
+      border-radius: @borderRadius;
+
+      &:hover { background: rgba(0, 0, 0, 0.6); }
+
+      a {
+        text-decoration: none;
+        color: @fontColor;
+        font-size: 1rem;
+        position: relative;
+        display: block;
+        height: 6rem;
+        padding: 0.5rem;
+
+        strong { font-weight: 200; }
+        > strong { 
+          display: block; 
+          font-weight: 400;
+          width: 50%;
+          font-size: 1.25rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .info {
+          position: absolute;
+          right: 0.25rem;
+          top: 0.25rem;
+          padding: 0;
+          font-size: 0.85rem;
+
+          li { 
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+
+            &:last-child strong { font-weight: 100; }
+          }
+        }
+
+        p {
+          // box-shadow: inset 3.2rem 4.5rem 0.8rem -4rem @appShadow;
+          font-weight: 200;
+          font-size: 1.15rem;
+          max-height: 3.5rem;
+          overflow: scroll;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
