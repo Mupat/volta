@@ -1,13 +1,19 @@
 {
   "name": "yantre",
   "version": "0.0.1",
-  "description": "",
-  "repository": "",
+  "description": "Yet another new tab replacement extension for chrome",
+  "repository": "https://github.com/Mupat/yantre",
   "author": "Mupat(dev@mupat.net)",
   "license": "BSD",
   "dependencies": {
     "handlebars": "~1.0.12",
     "less": "~1.4.0",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-handlebars": "~0.5.9",
+    "grunt-contrib-less": "~0.6.1"
   }
 }

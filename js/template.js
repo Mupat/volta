@@ -1,6 +1,7 @@
-(function() {
-  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['app'] = template(function (Handlebars,depth0,helpers,partials,data) {
+this["YANTRE"] = this["YANTRE"] || {};
+this["YANTRE"]["templates"] = this["YANTRE"]["templates"] || {};
+
+this["YANTRE"]["templates"]["app"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
@@ -29,7 +30,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + "</h4>\n</a>";
   return buffer;
   });
-templates['mail'] = template(function (Handlebars,depth0,helpers,partials,data) {
+
+this["YANTRE"]["templates"]["mail"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
@@ -58,7 +60,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + "</p>\n  </a>\n</li>";
   return buffer;
   });
-templates['read'] = template(function (Handlebars,depth0,helpers,partials,data) {
+
+this["YANTRE"]["templates"]["read"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
@@ -66,7 +69,8 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
   return "<div class=\"read\">\n  <h1>Well done<img src=\"images/thumpsUp.png\" alt=\"well done\"/></h1>\n  <p>No unread mails</p>\n</div>";
   });
-templates['unread'] = template(function (Handlebars,depth0,helpers,partials,data) {
+
+this["YANTRE"]["templates"]["unread"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
@@ -83,4 +87,3 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + "</h1>\n</div>\n<ul></ul>";
   return buffer;
   });
-})();

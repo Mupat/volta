@@ -1,7 +1,7 @@
 class Mail
-  mail_template: Handlebars.templates.mail
-  read_template: Handlebars.templates.read
-  unread_template: Handlebars.templates.unread
+  mail_template: YANTRE.templates.mail
+  read_template: YANTRE.templates.read
+  unread_template: YANTRE.templates.unread
   url: 'https://mail.google.com/mail/feed/atom/'
   $el: $('#mails')
 
@@ -31,10 +31,8 @@ class Mail
       count: Number($res.find('fullcount').text())
       account: $res.find('title').first().text().split('for ')[1]
 
-    console.log unread_html
     test = $(unread_html)
 
-    console.log test
     @$el.append unread_html
     @$el.find('ul').append mails_html
 

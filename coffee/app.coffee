@@ -1,5 +1,5 @@
 class App
-  template: Handlebars.templates.app
+  template: YANTRE.templates.app
   $el: $('#apps')
   max_elements: 6
 
