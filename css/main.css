@@ -209,43 +209,46 @@ body.dark a {
   font-weight: 200;
   font-size: 1rem;
 }
-/* line 3, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 1, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+#mails {
+  margin: 0 auto;
+  height: calc(100% - 461px);
+  overflow: auto;
+  width: 858px;
+}
+/* line 8, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .read i {
   margin-left: 0.5rem;
 }
-/* line 4, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 9, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .read p {
   font-size: 1.5rem;
   margin: 0;
   padding-right: 3.5rem;
 }
-/* line 11, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 16, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .read,
 #mails .unread {
   text-align: center;
 }
-/* line 15, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 20, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .read h1,
 #mails .unread h1 {
   font-size: 3rem;
   margin: 0;
   font-weight: 100;
 }
-/* line 22, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 27, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread h1 {
   font-size: 2.5rem;
 }
-/* line 24, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 29, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul {
   position: relative;
-  width: 858px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-  height: calc(100% - 510px);
-  min-height: 6rem;
-  overflow: auto;
 }
-/* line 34, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 35, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li {
   list-style: none;
   margin: 0.25rem;
@@ -253,11 +256,11 @@ body.dark a {
   transition: background 0.5s ease;
   border-radius: 6px;
 }
-/* line 41, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 42, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li:hover {
   background: rgba(0, 0, 0, 0.6);
 }
-/* line 43, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 44, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a {
   position: relative;
   display: block;
@@ -265,11 +268,11 @@ body.dark a {
   padding: 0.5rem;
   text-align: left;
 }
-/* line 50, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 51, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a strong {
   font-weight: 200;
 }
-/* line 51, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 52, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a > strong {
   display: block;
   font-weight: 400;
@@ -279,7 +282,7 @@ body.dark a {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 60, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 61, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a .info {
   position: absolute;
   right: 0.25rem;
@@ -287,18 +290,18 @@ body.dark a {
   padding: 0;
   font-size: 0.85rem;
 }
-/* line 67, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 68, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a .info li {
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: right;
 }
-/* line 73, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 74, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a .info li:last-child strong {
   font-weight: 100;
 }
-/* line 77, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 78, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a p {
   font-weight: 200;
   font-size: 1.15rem;
