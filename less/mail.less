@@ -25,11 +25,13 @@
   .unread h1 { font-size: 2.5rem; }
 
   .unread + ul {
+    position: relative;
     width: 858px;
     margin: 0 auto;
     padding: 0;
-    height: 30%;
-    overflow: scroll;
+    height: calc(~"100% - 510px");
+    min-height: 6rem;
+    overflow: auto;
     // box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem @shadowColor;
 
     > li {
@@ -46,6 +48,7 @@
         display: block;
         height: 6rem;
         padding: 0.5rem;
+        text-align: left;
 
         strong { font-weight: @fontWeight * 2; }
         > strong { 
@@ -79,7 +82,7 @@
           font-weight: @fontWeight * 2;
           font-size: 1.15rem;
           max-height: 3.5rem;
-          overflow: scroll;
+          overflow: auto;
           margin-bottom: 0;
         }
       }
