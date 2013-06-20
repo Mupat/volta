@@ -6,3 +6,7 @@ $ ->
   app.render()
   mail.render()
   clock.render()
+
+  $('#options_button').click ->
+    console.log 'clicj'
+    $('#options').toggleClass 'show'

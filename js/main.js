@@ -160,7 +160,11 @@
     clock = new Clock();
     app.render();
     mail.render();
-    return clock.render();
+    clock.render();
+    return $('#options_button').click(function() {
+      console.log('clicj');
+      return $('#options').toggleClass('show');
+    });
   });
 
 }).call(this);
