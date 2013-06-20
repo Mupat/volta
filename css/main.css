@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  min-height: 600px;
   text-align: center;
   background: url("../images/grey_wash_wall.png");
   -webkit-font-smoothing: antialiased;
@@ -12,23 +13,23 @@ body {
   font-weight: 100;
   text-shadow: 0 0 0.5rem #333333;
 }
-/* line 16, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 17, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
 body > div,
 body #apps > div {
   width: 1024px;
   margin: 0 auto;
 }
-/* line 22, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 23, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
 body a {
   text-decoration: none;
   font-size: 1rem;
 }
-/* line 27, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 28, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
 body.light,
 body.light a {
   color: #cccccc;
 }
-/* line 30, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 31, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
 body.dark,
 body.dark a {
   color: #444444;
@@ -92,14 +93,14 @@ body.dark a {
 }
 /* line 1, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
 #apps {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   text-align: center;
   background: rgba(0, 0, 0, 0.4);
   box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem rgba(0, 0, 0, 0.4);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.7rem;
+  margin: 20px 0 0 0;
+  bottom: -12px;
 }
 /* line 12, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
 #apps .bx-wrapper .bx-viewport {
@@ -134,9 +135,9 @@ body.dark a {
 #apps a {
   display: inline-block;
   overflow: hidden;
-  margin: 0.5rem 1rem;
+  margin: 0 1rem 0.5rem 1rem;
   transition: color 1s ease;
-  padding: 0.25rem;
+  padding: 0 0.25rem 0.25rem 0.25rem;
 }
 /* line 38, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
 #apps a:hover {
@@ -191,13 +192,15 @@ body.dark a {
 }
 /* line 27, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul {
+  position: relative;
   width: 858px;
   margin: 0 auto;
   padding: 0;
-  height: 30%;
-  overflow: scroll;
+  height: calc(100% - 510px);
+  min-height: 6rem;
+  overflow: auto;
 }
-/* line 35, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 37, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li {
   list-style: none;
   margin: 0.25rem;
@@ -205,22 +208,23 @@ body.dark a {
   transition: background 0.5s ease;
   border-radius: 6px;
 }
-/* line 42, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 44, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li:hover {
   background: rgba(0, 0, 0, 0.6);
 }
-/* line 44, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 46, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a {
   position: relative;
   display: block;
   height: 6rem;
   padding: 0.5rem;
+  text-align: left;
 }
-/* line 50, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 53, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a strong {
   font-weight: 200;
 }
-/* line 51, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 54, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a > strong {
   display: block;
   font-weight: 400;
@@ -230,7 +234,7 @@ body.dark a {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 60, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 63, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a .info {
   position: absolute;
   right: 0.25rem;
@@ -238,22 +242,22 @@ body.dark a {
   padding: 0;
   font-size: 0.85rem;
 }
-/* line 67, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 70, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a .info li {
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: right;
 }
-/* line 73, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 76, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a .info li:last-child strong {
   font-weight: 100;
 }
-/* line 77, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 80, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
 #mails .unread + ul > li a p {
   font-weight: 200;
   font-size: 1.15rem;
   max-height: 3.5rem;
-  overflow: scroll;
+  overflow: auto;
   margin-bottom: 0;
 }
