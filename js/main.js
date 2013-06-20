@@ -44,7 +44,9 @@
       return this.$el.children('ul').bxSlider({
         pager: false,
         infiniteLoop: false,
-        hideControlOnEnd: true
+        hideControlOnEnd: true,
+        nextText: '<i class="icon-right"></>',
+        prevText: '<i class="icon-left"></>'
       });
     };
 

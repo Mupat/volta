@@ -1,0 +1,29 @@
+@path: '../fonts/yantre';
+@font-face {
+  font-family: "yantre";
+  src:url("@{path}.eot");
+  src:url("@{path}.eot?#iefix") format("embedded-opentype"),
+    url("@{path}.ttf") format("truetype"),
+    url("@{path}.svg#yantre") format("svg"),
+    url("@{path}.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "yantre";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-thumbs-up:before { content: "\e000"; }
+.icon-loader:before { content: "\e001"; }
+.icon-cog:before { content: "\e002"; }
+.icon-right:before { content: "\e003"; }
+.icon-left:before { content: "\e004"; }
+
+

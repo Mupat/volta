@@ -15,20 +15,31 @@
       box-shadow: none;
     }
 
-    .bx-loading { background-color: transparent; }
-    .bx-prev:hover { background-position: 0 -32px; }
+    .bx-prev {
+      left: 2rem;
+      &:hover { background-position: inherit; }
+    }
 
     .bx-prev,
     .bx-next {
-      background-image: url(../images/controls.png);
-      top: 2.5rem;
-      &.disabled { display: none; }
+      top: 3.5rem;
+      font-size: 2rem;
+      text-indent: 0;
+      transform: scale(1);
+      transition: transform 0.25s ease;
+      &.disabled { 
+        display: block;
+        transform: scale(0); 
+      }
     }
 
-    .bx-next:hover { background-position: -43px -32px; }
+    .bx-next {
+      right: 2rem;
+      &:hover { background-position: inherit; }
+    }
   }
 
-  a {
+  ul a {
     display: inline-block;
     overflow: hidden;
     margin: 0 1rem 0.5rem 1rem;

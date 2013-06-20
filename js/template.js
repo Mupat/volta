@@ -67,7 +67,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"read\">\n  <h1>Well done<img src=\"images/thumpsUp.png\" alt=\"well done\"/></h1>\n  <p>No unread mails</p>\n</div>";
+  return "<div class=\"read\">\n  <h1>Well done<i class=\"icon-thumbs-up\"></i></h1>\n  <p>No unread mails</p>\n</div>";
   });
 
 this["YANTRE"]["templates"]["unread"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
