@@ -5,7 +5,15 @@
   width: 858px;
 
   .read {
-    i { margin-left: 0.5rem; }
+    i { 
+      margin-left: 0.5rem; 
+      display: inline-block;
+      -webkit-animation: moveThumps 1s linear infinite alternate;
+      @-webkit-keyframes moveThumps { 
+        from { transform: rotate(-30deg); } 
+        to { transform: rotate(30deg); } 
+      }
+    }
     p {
       font-size: 1.5rem;
       margin: 0;
