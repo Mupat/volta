@@ -29,3 +29,10 @@ class App
       hideControlOnEnd: true
       nextText: '<i class="icon-right"></>'
       prevText: '<i class="icon-left"></>'
+
+    $defaultHome = '<a class="home" title="Default" href="#"><i class="icon-default-home"></i></a>'
+    @$el.append $defaultHome
+
+    $(".home").click ->
+      chrome.tabs.update url: "chrome-internal://newtab/"
+      false
