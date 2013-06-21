@@ -22,8 +22,8 @@ module.exports = (grunt) ->
 
     less:
       dev:
-        options:
-          dumpLineNumbers: 'comments'
+        # options:
+          # dumpLineNumbers: 'comments'
         files:
           "css/main.css": "less/main.less"
       prod:
