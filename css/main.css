@@ -6,7 +6,7 @@
   font-weight: normal;
   font-style: normal;
 }
-/* line 13, /Users/patrick/Entwicklung/mupat/yantre/less/font.less */
+/* line 13, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "yantre";
@@ -16,34 +16,38 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
-/* line 23, /Users/patrick/Entwicklung/mupat/yantre/less/font.less */
+/* line 23, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
 .icon-thumbs-up:before {
   content: "\e000";
 }
-/* line 24, /Users/patrick/Entwicklung/mupat/yantre/less/font.less */
+/* line 24, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
 .icon-loader:before {
   content: "\e001";
 }
-/* line 25, /Users/patrick/Entwicklung/mupat/yantre/less/font.less */
+/* line 25, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
 .icon-cog:before {
   content: "\e002";
 }
-/* line 26, /Users/patrick/Entwicklung/mupat/yantre/less/font.less */
+/* line 26, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
 .icon-right:before {
   content: "\e003";
 }
-/* line 27, /Users/patrick/Entwicklung/mupat/yantre/less/font.less */
+/* line 27, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
 .icon-left:before {
   content: "\e004";
 }
-/* line 5, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 28, /Users/Burkhard/TradeMOB/GitHub/yantre/less/font.less */
+.icon-default-home:before {
+  content: "\e005";
+}
+/* line 5, /Users/Burkhard/TradeMOB/GitHub/yantre/less/main.less */
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   min-height: 600px;
   text-align: center;
-  background: url("../images/grey_wash_wall.png");
+  background: url("../images/navy_blue.png");
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 62.5%;
@@ -51,44 +55,45 @@ body {
   font-weight: 100;
   text-shadow: 0 0 0.5rem #333333;
 }
-/* line 19, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 19, /Users/Burkhard/TradeMOB/GitHub/yantre/less/main.less */
 body > div,
 body #apps > div {
   width: 1024px;
   margin: 0 auto;
 }
-/* line 25, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 25, /Users/Burkhard/TradeMOB/GitHub/yantre/less/main.less */
 body a {
   text-decoration: none;
   font-size: 1rem;
 }
-/* line 30, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 30, /Users/Burkhard/TradeMOB/GitHub/yantre/less/main.less */
 body.light,
 body.light a {
   color: #cccccc;
 }
-/* line 33, /Users/patrick/Entwicklung/mupat/yantre/less/main.less */
+/* line 33, /Users/Burkhard/TradeMOB/GitHub/yantre/less/main.less */
 body.dark,
 body.dark a {
   color: #444444;
 }
-/* line 1, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 1, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock {
   display: inline-block;
   border-radius: 6px;
-  margin: 3rem auto 2rem;
+  margin: 4rem auto 1rem;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
 }
-/* line 8, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 8, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock h1 {
   position: absolute;
-  top: -4rem;
+  top: -4.8rem;
+  bottom: 2rem;
   left: 30%;
   font-size: 2rem;
   font-weight: 100;
 }
-/* line 16, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 17, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper {
   clear: both;
   width: auto;
@@ -98,15 +103,15 @@ body.dark a {
   padding: 2rem;
   border-radius: 6px;
 }
-/* line 25, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 26, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper .flip-clock-divider {
   top: 1.75rem;
 }
-/* line 27, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 28, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper .flip-clock-divider .flip-clock-dot {
   background-color: #cccccc;
 }
-/* line 30, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 31, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper ul {
   font: normal 11px "HelveticaNeueUltraLight", "Helvetica Neue UltraLight", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 100;
@@ -116,20 +121,20 @@ body.dark a {
   line-height: 8.7rem;
   color: #cccccc;
 }
-/* line 39, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 40, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper ul li a {
   cursor: default;
 }
-/* line 43, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 44, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper ul li a div.up:after {
   top: 4.2225rem;
   height: 0.1rem;
 }
-/* line 48, /Users/patrick/Entwicklung/mupat/yantre/less/clock.less */
+/* line 49, /Users/Burkhard/TradeMOB/GitHub/yantre/less/clock.less */
 #clock .flip-clock-wrapper ul li a div div.inn {
   font-size: 9rem;
 }
-/* line 1, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 1, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps {
   position: relative;
   width: 100%;
@@ -140,21 +145,21 @@ body.dark a {
   margin: 20px 0 0 0;
   bottom: -12px;
 }
-/* line 12, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 12, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-viewport {
   background: none;
   border: none;
   box-shadow: none;
 }
-/* line 18, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 18, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-prev {
   left: 2rem;
 }
-/* line 20, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 20, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-prev:hover {
   background-position: inherit;
 }
-/* line 23, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 23, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-prev,
 #apps .bx-wrapper .bx-next {
   top: 3.5rem;
@@ -163,21 +168,21 @@ body.dark a {
   transform: scale(1);
   transition: transform 0.25s ease;
 }
-/* line 30, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 30, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-prev.disabled,
 #apps .bx-wrapper .bx-next.disabled {
   display: block;
   transform: scale(0);
 }
-/* line 36, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 36, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-next {
   right: 2rem;
 }
-/* line 38, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 38, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps .bx-wrapper .bx-next:hover {
   background-position: inherit;
 }
-/* line 42, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 42, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps ul a {
   display: inline-block;
   overflow: hidden;
@@ -185,23 +190,18 @@ body.dark a {
   transition: color 1s ease;
   padding: 0 0.25rem 0.25rem 0.25rem;
 }
-/* line 49, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 49, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps ul a:hover {
   color: #fff;
 }
-/* line 51, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
-#apps ul a:hover img {
-  -webkit-filter: grayscale(0%);
-}
-/* line 54, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 54, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps ul a img {
   width: 64px;
   height: 64px;
   display: inline-block;
   transition: -webkit-filter 1s ease;
-  -webkit-filter: grayscale(100%);
 }
-/* line 62, /Users/patrick/Entwicklung/mupat/yantre/less/apps.less */
+/* line 62, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
 #apps ul a h4 {
   margin-top: 0.25rem;
   margin-bottom: 0;
@@ -209,46 +209,52 @@ body.dark a {
   font-weight: 200;
   font-size: 1rem;
 }
-/* line 1, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 70, /Users/Burkhard/TradeMOB/GitHub/yantre/less/apps.less */
+#apps .home {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+/* line 1, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails {
   margin: 0 auto;
   height: calc(100% - 461px);
   overflow: auto;
   width: 858px;
 }
-/* line 8, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 8, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .read i {
   margin-left: 0.5rem;
 }
-/* line 9, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 9, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .read p {
   font-size: 1.5rem;
   margin: 0;
   padding-right: 3.5rem;
 }
-/* line 16, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 16, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .read,
 #mails .unread {
   text-align: center;
 }
-/* line 20, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 20, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .read h1,
 #mails .unread h1 {
   font-size: 3rem;
   margin: 0;
   font-weight: 100;
 }
-/* line 27, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 27, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread h1 {
   font-size: 2.5rem;
 }
-/* line 29, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 29, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul {
   position: relative;
   margin: 0;
   padding: 0;
 }
-/* line 35, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 35, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li {
   list-style: none;
   margin: 0.25rem;
@@ -256,11 +262,11 @@ body.dark a {
   transition: background 0.5s ease;
   border-radius: 6px;
 }
-/* line 42, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 42, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li:hover {
   background: rgba(0, 0, 0, 0.6);
 }
-/* line 44, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 44, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a {
   position: relative;
   display: block;
@@ -268,11 +274,11 @@ body.dark a {
   padding: 0.5rem;
   text-align: left;
 }
-/* line 51, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 51, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a strong {
   font-weight: 200;
 }
-/* line 52, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 52, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a > strong {
   display: block;
   font-weight: 400;
@@ -282,7 +288,7 @@ body.dark a {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 61, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 61, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a .info {
   position: absolute;
   right: 0.25rem;
@@ -290,18 +296,18 @@ body.dark a {
   padding: 0;
   font-size: 0.85rem;
 }
-/* line 68, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 68, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a .info li {
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: right;
 }
-/* line 74, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 74, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a .info li:last-child strong {
   font-weight: 100;
 }
-/* line 78, /Users/patrick/Entwicklung/mupat/yantre/less/mail.less */
+/* line 78, /Users/Burkhard/TradeMOB/GitHub/yantre/less/mail.less */
 #mails .unread + ul > li a p {
   font-weight: 200;
   font-size: 1.15rem;
