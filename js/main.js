@@ -18,7 +18,7 @@
     };
 
     App.prototype._generate_html = function(all_apps) {
-      var $append, counter,
+      var $append, $defaultHome, counter,
         _this = this;
       $append = $('<ul></ul>');
       counter = 0;
@@ -41,12 +41,20 @@
         }
       });
       this.$el.append($append);
-      return this.$el.children('ul').bxSlider({
+      this.$el.children('ul').bxSlider({
         pager: false,
         infiniteLoop: false,
         hideControlOnEnd: true,
         nextText: '<i class="icon-right"></>',
         prevText: '<i class="icon-left"></>'
+      });
+      $defaultHome = '<a class="home" title="Default" href="#"><i class="icon-default-home"></i></a>';
+      this.$el.append($defaultHome);
+      return $(".home").click(function() {
+        chrome.tabs.update({
+          url: "chrome-internal://newtab/"
+        });
+        return false;
       });
     };
 
