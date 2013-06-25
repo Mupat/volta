@@ -12,7 +12,7 @@
 
 [class^="icon-"],
 [class*=" icon-"] {
-  &:hover { color: darken(@lightFontColor, 10%); }
+  &:hover:before { color: darken(@lightFontColor, 25%); }
   &:before {
     font-family: "yantre";
     font-style: normal;
@@ -25,8 +25,10 @@
   }
 }
 
-.dark [class^="icon-"]:hover,
-.dark [class*=" icon-"]:hover { color: lighten(@darkFontColor, 10%); }
+.dark [class^="icon-"] {
+  &:before { color: @darkFontColor; }
+  &:hover:before { color: lighten(@darkFontColor, 25%); }
+}
 
 .icon-thumbs-up:before { content: "\e000"; }
 .icon-load:before { content: "\e001"; }

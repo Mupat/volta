@@ -4,13 +4,11 @@ $ ->
     app = new App()
     mail = new Mail()
     clock = new Clock()
+    body = new Body()
 
     app.render()
     mail.render()
     clock.render()
-
-    if window.options.get window.options.DARK_FONT
-      $('body').addClass 'dark'
 
   $("#default_home").click ->
     chrome.tabs.update url: "chrome-internal://newtab/"

@@ -6,9 +6,9 @@
   font-weight: normal;
   font-style: normal;
 }
-[class^="icon-"]:hover,
-[class*=" icon-"]:hover {
-  color: #b3b3b3;
+[class^="icon-"]:hover:before,
+[class*=" icon-"]:hover:before {
+  color: #8c8c8c;
 }
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -21,9 +21,11 @@
   transition: color 0.5s ease;
   color: #cccccc;
 }
-.dark [class^="icon-"]:hover,
-.dark [class*=" icon-"]:hover {
-  color: #5e5e5e;
+.dark [class^="icon-"]:before {
+  color: #444444;
+}
+.dark [class^="icon-"]:hover:before {
+  color: #848484;
 }
 .icon-thumbs-up:before {
   content: "\e000";
@@ -63,6 +65,7 @@ body {
   font-weight: 100;
   text-shadow: 0 0 0.5rem #333333;
   color: #cccccc;
+  transition: color 0.5s ease;
 }
 body > div,
 body #apps > div {

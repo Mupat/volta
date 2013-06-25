@@ -2,11 +2,14 @@ class App
   template: YANTRE.templates.app
   $el: $('#apps')
   max_elements: 6
+  toggle_class: 'grayscale'
 
-  constructor: (@options = window.options)->
+  constructor: (@options = window.options) ->
     @gray_scale = @options.get @options.APP_GRAYSCALE
-    if @gray_scale
-      @$el.addClass 'grayscale'
+    if @gray_scale then @$el.addClass @toggle_class
+
+    @options.registerOnChange @options.APP_GRAYSCALE, (new_value, old_value) =>
+      @$el.toggleClass @toggle_class, new_value
 
   render: ->
     chrome.management.getAll @_generate_html

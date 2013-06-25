@@ -1,5 +1,5 @@
 (function() {
-  var App, Clock, Mail, Options,
+  var App, Body, Clock, Mail, Options,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -9,13 +9,19 @@
 
     App.prototype.max_elements = 6;
 
+    App.prototype.toggle_class = 'grayscale';
+
     function App(options) {
+      var _this = this;
       this.options = options != null ? options : window.options;
       this._generate_html = __bind(this._generate_html, this);
       this.gray_scale = this.options.get(this.options.APP_GRAYSCALE);
       if (this.gray_scale) {
-        this.$el.addClass('grayscale');
+        this.$el.addClass(this.toggle_class);
       }
+      this.options.registerOnChange(this.options.APP_GRAYSCALE, function(new_value, old_value) {
+        return _this.$el.toggleClass(_this.toggle_class, new_value);
+      });
     }
 
     App.prototype.render = function() {
@@ -69,6 +75,27 @@
     };
 
     return App;
+
+  })();
+
+  Body = (function() {
+    Body.prototype.$el = $('body');
+
+    Body.prototype.toggle_class = 'dark';
+
+    function Body(options) {
+      var _this = this;
+      this.options = options != null ? options : window.options;
+      this.dark = this.options.get(this.options.DARK_FONT);
+      if (this.dark) {
+        this.$el.addClass(this.toggle_class);
+      }
+      this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
+        return _this.$el.toggleClass(_this.toggle_class, new_value);
+      });
+    }
+
+    return Body;
 
   })();
 
@@ -174,17 +201,15 @@
   $(function() {
     var options;
     options = new Options(function() {
-      var app, clock, mail;
+      var app, body, clock, mail;
       window.options = options;
       app = new App();
       mail = new Mail();
       clock = new Clock();
+      body = new Body();
       app.render();
       mail.render();
-      clock.render();
-      if (window.options.get(window.options.DARK_FONT)) {
-        return $('body').addClass('dark');
-      }
+      return clock.render();
     });
     return $("#default_home").click(function() {
       chrome.tabs.update({
@@ -205,11 +230,14 @@
 
     Options.prototype.$el = $('#options');
 
+    Options.prototype.listener = {};
+
     Options.prototype.DARK_FONT = 'darkFontColor';
 
     Options.prototype.APP_GRAYSCALE = 'appGrayscale';
 
     function Options(done) {
+      this._triggerListener = __bind(this._triggerListener, this);
       var _this = this;
       this.storage.get(null, function(options) {
         var key, value;
@@ -219,19 +247,15 @@
             _this.options[key] = value;
           }
         }
-        console.log('options', _this.options);
-        _this._registerCogClick();
+        _this._registerBtnClick();
         _this._registerInputChange();
-        chrome.storage.onChanged.addListener(function(changes, namespace) {
-          console.log('changes', changes);
-          return console.log('namespace', namespace);
-        });
+        chrome.storage.onChanged.addListener(_this._triggerListener);
         return done();
       });
     }
 
     Options.prototype.get = function(key) {
-      return this.options["" + this.namespace + "." + key];
+      return this.options[this._getFullKey(key)];
     };
 
     Options.prototype.set = function(key, value, done) {
@@ -240,8 +264,16 @@
         done = function() {};
       }
       data = {};
-      data["" + this.namespace + "." + key] = value;
+      data[this._getFullKey(key)] = value;
       return this.storage.set(data, done);
+    };
+
+    Options.prototype.registerOnChange = function(key, cb) {
+      key = this._getFullKey(key);
+      if (this.listener[key] === void 0) {
+        this.listener[key] = [];
+      }
+      return this.listener[key].push(cb);
     };
 
     Options.prototype.render = function() {
@@ -257,11 +289,23 @@
       }));
     };
 
-    Options.prototype._registerCogClick = function() {
-      var _this = this;
-      return $('#options_btn').click(function() {
+    Options.prototype._registerBtnClick = function() {
+      var css_class,
+        _this = this;
+      css_class = 'show';
+      this.$el.on('mousedown', function(e) {
+        return e.stopPropagation();
+      });
+      return $('#options_btn').on('click', function() {
         _this.render();
-        return _this.$el.toggleClass('show');
+        $(document).one('mousedown', function(e) {
+          var id;
+          id = $(e.target).attr('id');
+          if (id !== 'options_btn') {
+            return _this.$el.removeClass(css_class);
+          }
+        });
+        return _this.$el.toggleClass(css_class);
       });
     };
 
@@ -269,9 +313,41 @@
       var _this = this;
       return this.$el.on('change', 'input', function(e) {
         return _this.set(e.target.name, e.target.checked, function() {
-          return console.log('saved');
+          var $target;
+          $target = $(e.target).parent();
+          $target.addClass('saved');
+          return setTimeout((function() {
+            return $target.removeClass('saved');
+          }), 5000);
         });
       });
+    };
+
+    Options.prototype._getFullKey = function(key) {
+      return "" + this.namespace + "." + key;
+    };
+
+    Options.prototype._triggerListener = function(changes, namespace) {
+      var key, listener, value, _results;
+      _results = [];
+      for (key in changes) {
+        value = changes[key];
+        if (this.listener[key]) {
+          _results.push((function() {
+            var _i, _len, _ref, _results1;
+            _ref = this.listener[key];
+            _results1 = [];
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+              listener = _ref[_i];
+              _results1.push(listener(value.newValue, value.oldValue));
+            }
+            return _results1;
+          }).call(this));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     };
 
     return Options;

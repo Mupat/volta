@@ -4,6 +4,7 @@ class Options
   storage: chrome.storage.sync
   options: {}
   $el: $('#options')
+  listener: {}
 
   # constants for option names
   DARK_FONT: 'darkFontColor'
@@ -15,50 +16,52 @@ class Options
         if key[0..@namespace.length-1] is @namespace
           @options[key] = value
 
-      console.log 'options', @options
-      @_registerCogClick()
+      @_registerBtnClick()
       @_registerInputChange()
-
-      chrome.storage.onChanged.addListener (changes, namespace) ->
-        console.log 'changes', changes
-        console.log 'namespace', namespace
-        # for key, value in changes
-        # for key in changes
-        #   storageChange = changes[key]
-        #   console.log('Storage key "%s" in namespace "%s" changed. ' +
-        #               'Old value was "%s", new value is "%s".',
-        #               key,
-        #               namespace,
-        #               storageChange.oldValue,
-        #               storageChange.newValue)
-        
+      chrome.storage.onChanged.addListener @_triggerListener
       done()
 
-  # get: (key, done) ->
-  #   @storage.get "#{@namespace}.#{key}", done
-
   get: (key) ->
-    @options["#{@namespace}.#{key}"]
+    @options[@_getFullKey(key)]
 
   set: (key, value, done = ->) ->
     data = {}
-    data["#{@namespace}.#{key}"] = value
+    data[@_getFullKey(key)] = value
     @storage.set data, done
 
-  # registerOnChange: (key, change) ->
-
+  registerOnChange: (key, cb) ->
+    key = @_getFullKey(key)
+    if @listener[key] is undefined then @listener[key] = []
+    @listener[key].push cb
 
   render: ->
     @$el.html @template
       darkFont: { name: @DARK_FONT, value: Boolean(@get(@DARK_FONT)) }
       grayApps: { name: @APP_GRAYSCALE, value: Boolean(@get(@APP_GRAYSCALE)) }
 
-  _registerCogClick: ->
-    $('#options_btn').click =>
+  _registerBtnClick: ->
+    css_class = 'show'
+    @$el.on 'mousedown', (e) -> e.stopPropagation()
+    $('#options_btn').on 'click', =>
       @render()
-      @$el.toggleClass 'show'
+      $(document).one 'mousedown', (e) =>
+        id = $(e.target).attr 'id'
+        if id != 'options_btn' then @$el.removeClass css_class
+    
+      @$el.toggleClass css_class
 
   _registerInputChange: ->
     @$el.on 'change', 'input', (e) =>
       @set e.target.name, e.target.checked, ->
-        console.log 'saved'
+        $target = $(e.target).parent()
+        $target.addClass 'saved'
+        setTimeout ( -> $target.removeClass 'saved'), 5000
+
+  _getFullKey: (key) ->
+    "#{@namespace}.#{key}"
+
+  _triggerListener: (changes, namespace) =>
+    for key, value of changes
+      if @listener[key]
+        for listener in @listener[key] 
+          listener(value.newValue, value.oldValue) 
