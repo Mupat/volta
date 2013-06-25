@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "permissions": [
     "management",
+    "storage",
     "https://mail.google.com/mail/feed/atom/"
   ],
   "chrome_url_overrides": {

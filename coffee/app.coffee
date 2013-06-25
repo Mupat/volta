@@ -9,7 +9,7 @@ class App
   _generate_html: (all_apps) =>
     $append = $('<ul></ul>')
     counter = 0
-    $.each all_apps, (index, app) =>
+    $.each all_apps.sort(@_compareByName), (index, app) =>
       if app.isApp
         if counter is 0 then $append.append '<li></li>'
 
@@ -30,9 +30,7 @@ class App
       nextText: '<i class="icon-right"></>'
       prevText: '<i class="icon-left"></>'
 
-    $defaultHome = '<a class="home" title="Default" href="#"><i class="icon-default-home"></i></a>'
-    @$el.append $defaultHome
-
-    $(".home").click ->
-      chrome.tabs.update url: "chrome-internal://newtab/"
-      false
+  _compareByName: (app1, app2) ->
+    a = app1.name.toLowerCase()
+    b = app2.name.toLowerCase()
+    if a > b then 1 else if a == b then 0 else -1

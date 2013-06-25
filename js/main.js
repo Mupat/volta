@@ -1,5 +1,5 @@
 (function() {
-  var App, Clock, Mail,
+  var App, Clock, Mail, Options,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -18,11 +18,11 @@
     };
 
     App.prototype._generate_html = function(all_apps) {
-      var $append, $defaultHome, counter,
+      var $append, counter,
         _this = this;
       $append = $('<ul></ul>');
       counter = 0;
-      $.each(all_apps, function(index, app) {
+      $.each(all_apps.sort(this._compareByName), function(index, app) {
         if (app.isApp) {
           if (counter === 0) {
             $append.append('<li></li>');
@@ -41,21 +41,26 @@
         }
       });
       this.$el.append($append);
-      this.$el.children('ul').bxSlider({
+      return this.$el.children('ul').bxSlider({
         pager: false,
         infiniteLoop: false,
         hideControlOnEnd: true,
         nextText: '<i class="icon-right"></>',
         prevText: '<i class="icon-left"></>'
       });
-      $defaultHome = '<a class="home" title="Default" href="#"><i class="icon-default-home"></i></a>';
-      this.$el.append($defaultHome);
-      return $(".home").click(function() {
-        chrome.tabs.update({
-          url: "chrome-internal://newtab/"
-        });
-        return false;
-      });
+    };
+
+    App.prototype._compareByName = function(app1, app2) {
+      var a, b;
+      a = app1.name.toLowerCase();
+      b = app2.name.toLowerCase();
+      if (a > b) {
+        return 1;
+      } else if (a === b) {
+        return 0;
+      } else {
+        return -1;
+      }
     };
 
     return App;
@@ -162,17 +167,59 @@
   })();
 
   $(function() {
-    var app, clock, mail;
+    var app, clock, mail, options;
     app = new App();
     mail = new Mail();
     clock = new Clock();
     app.render();
     mail.render();
     clock.render();
-    return $('#options_button').click(function() {
+    $('#options_btn').click(function() {
       console.log('clicj');
       return $('#options').toggleClass('show');
     });
+    $("#default_home").click(function() {
+      chrome.tabs.update({
+        url: "chrome-internal://newtab/"
+      });
+      return false;
+    });
+    console.log(chrome.storage);
+    chrome.storage.sync.get(null, function(options) {
+      console.log(console.log('all', options));
+      return chrome.storage.sync.get('YANTRE.storage.*', function(options) {
+        return console.log('all ynatre', options);
+      });
+    });
+    return options = new Options(function() {});
   });
+
+  Options = (function() {
+    Options.prototype.namespace = 'YANTRE.storage';
+
+    Options.prototype.storage = chrome.storage.sync;
+
+    function Options(done) {
+      this.storage.get(null, function(options) {
+        console.log(options);
+        return done();
+      });
+    }
+
+    Options.prototype.get = function(key, done) {
+      return this.storage.get("" + this.namespace + "." + key, done);
+    };
+
+    Options.prototype.set = function(key, value, done) {
+      var data;
+      data = {};
+      data["" + this.namespace + "." + key] = value;
+      console.log('value', data, key);
+      return this.storage.set(data, done);
+    };
+
+    return Options;
+
+  })();
 
 }).call(this);
