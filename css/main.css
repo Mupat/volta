@@ -6,6 +6,10 @@
   font-weight: normal;
   font-style: normal;
 }
+[class^="icon-"]:hover,
+[class*=" icon-"]:hover {
+  color: #b3b3b3;
+}
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   font-family: "yantre";
@@ -15,18 +19,7 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   transition: color 0.5s ease;
-}
-.light [class^="icon-"],
-.light [class*=" icon-"] {
   color: #cccccc;
-}
-.light [class^="icon-"]:hover,
-.light [class*=" icon-"]:hover {
-  color: #b3b3b3;
-}
-.dark [class^="icon-"],
-.dark [class*=" icon-"] {
-  color: #444444;
 }
 .dark [class^="icon-"]:hover,
 .dark [class*=" icon-"]:hover {
@@ -69,6 +62,7 @@ body {
   font: normal 11px "HelveticaNeueUltraLight", "Helvetica Neue UltraLight", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 100;
   text-shadow: 0 0 0.5rem #333333;
+  color: #cccccc;
 }
 body > div,
 body #apps > div {
@@ -76,12 +70,9 @@ body #apps > div {
   margin: 0 auto;
 }
 body a {
+  color: #cccccc;
   text-decoration: none;
   font-size: 1rem;
-}
-body.light,
-body.light a {
-  color: #cccccc;
 }
 body.dark,
 body.dark a {
@@ -191,7 +182,8 @@ body.dark a {
 #apps .bx-wrapper .bx-prev.disabled,
 #apps .bx-wrapper .bx-next.disabled {
   display: block;
-  transform: scale(0);
+  transform: scale(0) !important;
+  cursor: default !important;
 }
 #apps .bx-wrapper .bx-prev:hover,
 #apps .bx-wrapper .bx-next:hover {
@@ -217,7 +209,6 @@ body.dark a {
   width: 64px;
   height: 64px;
   display: inline-block;
-  transition: -webkit-filter 1s ease;
 }
 #apps ul a h4 {
   margin-top: 0.25rem;
@@ -225,6 +216,13 @@ body.dark a {
   font: normal 11px "HelveticaNeueUltraLight", "Helvetica Neue UltraLight", "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 200;
   font-size: 1rem;
+}
+#apps.grayscale ul a img {
+  transition: -webkit-filter 1s ease;
+  -webkit-filter: grayscale(100%);
+}
+#apps.grayscale ul a:hover img {
+  -webkit-filter: grayscale(0%);
 }
 #mails {
   margin: 0 auto;

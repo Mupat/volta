@@ -29,7 +29,8 @@
       transition: transform 0.25s ease;
       &.disabled { 
         display: block;
-        transform: scale(0); 
+        transform: scale(0) !important; 
+        cursor: default !important;
       }
       &:hover { -webkit-transform: scale(1.25); }
     }
@@ -46,18 +47,12 @@
     margin: 0 1rem 0.5rem 1rem;
     transition: color 1s ease;
     padding: 0 0.25rem 0.25rem 0.25rem;
-
-    &:hover { 
-      color: #fff; 
-      // img { -webkit-filter: grayscale(0%); }
-    }
+    &:hover { color: #fff; }
 
     img {
       width: 64px;
       height: 64px;
       display: inline-block;
-      transition: -webkit-filter 1s ease;
-      // -webkit-filter: grayscale(100%);
     }
 
     h4 {
@@ -67,5 +62,13 @@
       font-weight: @fontWeight * 2;
       font-size: 1rem;
     }
+  }
+
+  &.grayscale {
+    ul a img { 
+      transition: -webkit-filter 1s ease;
+      -webkit-filter: grayscale(100%); 
+    }
+    ul a:hover img { -webkit-filter: grayscale(0%); }
   }
 }

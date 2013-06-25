@@ -3,6 +3,11 @@ class App
   $el: $('#apps')
   max_elements: 6
 
+  constructor: (@options = window.options)->
+    @gray_scale = @options.get @options.APP_GRAYSCALE
+    if @gray_scale
+      @$el.addClass 'grayscale'
+
   render: ->
     chrome.management.getAll @_generate_html
 
