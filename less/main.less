@@ -13,8 +13,8 @@ body {
   transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 62.5%;
   font: @font;
-  font-weight: @fontWeight;
-  text-shadow: @textShadow;
+  font-weight: @fontWeightNormal;
+  text-shadow: @textShadowLight;
   color: @lightFontColor;
   transition: color 0.5s ease;
  
@@ -29,9 +29,8 @@ body {
     text-decoration: none;
     font-size: 1rem;
   }
-
-  &.dark,
-  &.dark a { color: @darkFontColor; }
+  &.dark #clock h1,
+  &.dark #mails h1 { color: @darkFontColor; }
 }
 
 @import 'actions';
