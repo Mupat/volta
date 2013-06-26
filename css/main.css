@@ -60,7 +60,6 @@ body {
   font-weight: 300;
   text-shadow: 0 0.1rem 0.2rem #333333;
   color: #cccccc;
-  transition: color 0.5s ease;
 }
 body > div,
 body #apps > div {
@@ -71,6 +70,9 @@ body a {
   color: #cccccc;
   text-decoration: none;
   font-size: 1rem;
+}
+body h1 {
+  transition: color 0.5s ease;
 }
 body.dark #clock h1,
 body.dark #mails h1 {
@@ -262,7 +264,6 @@ body.dark #mails h1 {
   font-size: 3rem;
   margin: 0;
   font-weight: 100;
-  text-shadow: 0 0.1rem 0.2rem #333333;
 }
 #mails .unread h1 {
   font-size: 2.5rem;
