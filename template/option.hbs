@@ -1,13 +1,9 @@
-<div id="setFontColor">
-  <label for="{{darkFont.name}}">
-    <input id="{{darkFont.name}}" type="checkbox" name="{{darkFont.name}}" {{#if darkFont.value}} checked="checked" {{/if}} />
-    Use dark font color
-  </label>
+<div>
+  <input id="{{darkFont.name}}" type="checkbox" name="{{darkFont.name}}" {{#if darkFont.value}} checked="checked" {{/if}} />
+  <label for="{{darkFont.name}}" class="icon-check">Use dark font color</label>
 </div>
 
-<div id="{{grayApps.name}}">
-  <label>
-    <input id="{{grayApps.name}}" type="checkbox" name="{{grayApps.name}}" {{#if grayApps.value}} checked="checked" {{/if}} />
-    Use grayscale for app icons
-  </label> 
+<div>
+  <input id="{{grayApps.name}}" type="checkbox" name="{{grayApps.name}}" {{#if grayApps.value}} checked="checked" {{/if}} />
+  <label for="{{grayApps.name}}" class="icon-check">Use grayscale for app icons</label> 
 </div>

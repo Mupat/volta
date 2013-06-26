@@ -330,26 +330,65 @@ body.dark a {
 }
 #options {
   width: 350px;
-  height: 0;
   position: absolute;
   left: calc(50% - 175px);
-  top: 0;
+  top: -110%;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e6e6e6));
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
   border-radius: 0 0 6px 6px;
   transform: translateY(-110%);
   transition: transform 0.5s ease-out;
   z-index: 9999;
+  text-align: left;
+  padding: 1rem 2rem;
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
 }
 @-webkit-keyframes hideOnStart {
   from {
-    height: 0;
+    top: -110%;
   }
   to {
-    height: 150;
+    top: 0;
   }
 }
 #options.show {
   transform: translateY(0%);
+}
+#options label {
+  cursor: pointer;
+  font-size: 1.75rem;
+  position: relative;
+  padding-left: 2rem;
+  color: #444444;
+}
+#options label:after,
+#options label:before {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+}
+#options label:after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  border-radius: 6px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
+  display: inline-block;
+  z-index: 10;
+}
+#options label:before {
+  opacity: 0;
+  color: #cccccc;
+  z-index: 20;
+  font-size: 1.25rem;
+  transition: opacity 0.5s ease;
+  top: 0.4rem;
+  left: 0.15rem;
+}
+#options input {
+  display: none;
+}
+#options input:checked + label:before {
+  opacity: 1;
 }

@@ -332,6 +332,10 @@
       _results = [];
       for (key in changes) {
         value = changes[key];
+        if (this.$el.hasClass("show")) {
+          this.$el.find("input#" + (key.split('.')[2])).prop('checked', value.newValue);
+        }
+        this.options[key] = value.newValue;
         if (this.listener[key]) {
           _results.push((function() {
             var _i, _len, _ref, _results1;

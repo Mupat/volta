@@ -62,6 +62,9 @@ class Options
 
   _triggerListener: (changes, namespace) =>
     for key, value of changes
+      if @$el.hasClass "show"
+        @$el.find("input##{key.split('.')[2]}").prop 'checked', value.newValue
+      @options[key] = value.newValue
       if @listener[key]
         for listener in @listener[key] 
           listener(value.newValue, value.oldValue) 
