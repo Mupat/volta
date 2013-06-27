@@ -1,45 +1,22 @@
-// Default themes
-
-@theBeach: "../images/beach.jpg";
-@bluePrint: "../images/blueprint.png";
-@bookeh: "../images/bookeh.jpg";
-@linenDark: "../images/dark-linen.png";
-@linenLight: "../images/light-linen.png";
-@filthyTile: "../images/filthy-tile.jpg";
-@greyWash: "../images/grey_wash_wall.png";
-@navyBlue: "../images/navy_blue.png";
-@redWine: "../images/red-blur.jpg";
-@redMesh: "../images/red-mesh.jpg";
-
-@font: normal 11px "Lato", sans-serif;
-@fontWeightLight: 100;
-@fontWeightNormal: 300;
-@fontWeightBold: 400;
-
-@lightFontColor: #ddd;
-@darkFontColor: #333;
-
-@textShadowLight: 0 0.1rem 0.2rem #111;
-@textShadowDark: 0 0 0.4rem #000;
-
-
 body {
-// just light font theme
-  &.light #clock h1,
-  &.light #mails h1 { color: @lightFontColor !important; }
-}
+  &.dark {
+    #clock h1,
+    #mails h1 { color: @darkFontColor !important; }
+  }
 
-body {
-// just dark font theme
-  &.dark #clock h1,
-  &.dark #mails h1 { color: @darkFontColor !important; }
+  &.light {
+    #clock h1,
+    #mails h1 { color: @lightFontColor !important; }
+  }
 }
 
 // bof themes with BG
 #wrapper {
+  transition: background 0.8s ease;
+  background-position: top center;
   // The Beach Theme
   &.theBeach { 
-    background: url(@theBeach) top center;
+    background: url(@theBeach);
     #clock h1,
     #mails h1 {
       color: @darkFontColor;
@@ -49,7 +26,7 @@ body {
 
   // Blueprint Theme
   &.blueprint { 
-    background: url(@bluePrint) top center;
+    background: url(@bluePrint);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -59,7 +36,7 @@ body {
 
   // Bookeh Theme
   &.bookeh { 
-    background: url(@bookeh) top center;
+    background: url(@bookeh);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -69,7 +46,7 @@ body {
 
   // Dark Linen Theme
   &.linenDark { 
-    background: url(@linenDark) top center;
+    background: url(@linenDark);
     font-weight: 100;
     #clock h1,
     #mails h1 {
@@ -80,7 +57,7 @@ body {
 
   // Light Linen Theme
   &.linenLight { 
-    background: url(@linenLight) top center;
+    background: url(@linenLight);
     #clock h1,
     #mails h1 {
       color: @darkFontColor;
@@ -90,7 +67,7 @@ body {
 
   // Light Linen Theme
   &.linenLight { 
-    background: url(@linenLight) top center;
+    background: url(@linenLight);
     #clock h1,
     #mails h1 {
       color: @darkFontColor;
@@ -100,7 +77,7 @@ body {
 
   // Filthy Tile Theme
   &.filthyTile { 
-    background: url(@filthyTile) top center;
+    background: url(@filthyTile);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -110,7 +87,7 @@ body {
 
   // Grey Wash Theme
   &.greyWash { 
-    background: url(@greyWash) top center;
+    background: url(@greyWash);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -120,7 +97,7 @@ body {
 
   // Navy Blue Theme
   &.navyBlue { 
-    background: url(@navyBlue) top center;
+    background: url(@navyBlue);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -130,7 +107,7 @@ body {
 
   // Red Wine Theme
   &.redWine { 
-    background: url(@redWine) top center;
+    background: url(@redWine);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -140,13 +117,12 @@ body {
 
   // Red Mesh Theme
   &.redMesh { 
-    background: url(@redMesh) top center;
+    background: url(@redMesh);
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
       text-shadow: @textShadowDark;
     }
   }
-  transition: background 0.8s ease;
 // eof themes with BG
 }

@@ -1,6 +1,7 @@
 @charset "UTF-8";
 @import 'variables';
 @import 'font';
+@import 'theme';
 
 body {
   margin: 0;
@@ -14,7 +15,7 @@ body {
   font-size: 62.5%;
   font: @font;
   font-weight: @fontWeightNormal;
-  text-shadow: @textShadow;
+  text-shadow: @textShadowLight;
   color: @lightFontColor;
  
   > #wrapper {
@@ -41,7 +42,6 @@ body {
 }
 
 @import 'actions';
-@import 'theme';
 @import 'clock';
 @import 'apps';
 @import 'mail';

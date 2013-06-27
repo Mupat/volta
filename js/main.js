@@ -1,5 +1,5 @@
 (function() {
-  var App, Body, Clock, Mail, Options, Wrapper,
+  var App, Basic, Clock, Mail, Options,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -78,23 +78,51 @@
 
   })();
 
-  Body = (function() {
-    Body.prototype.$el = $('body');
+  Basic = (function() {
+    Basic.prototype.$body = $('body');
 
-    function Body(options) {
-      var _this = this;
+    Basic.prototype.$wrapper = $('#wrapper');
+
+    Basic.prototype.light_class = 'light';
+
+    Basic.prototype.dark_class = 'dark';
+
+    function Basic(options) {
       this.options = options != null ? options : window.options;
-      this.dark = this.options.get(this.options.DARK_FONT);
-      if (this.dark) {
-        this.$el.addClass('dark');
-        this.$el.removeClass('light');
-      }
-      this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
-        return _this.$el.toggleClass('dark light');
+      this._handle_dark_font();
+      this._handle_theme();
+      $("#default_home").click(function() {
+        chrome.tabs.update({
+          url: "chrome-internal://newtab/"
+        });
+        return false;
       });
     }
 
-    return Body;
+    Basic.prototype._handle_dark_font = function() {
+      var _this = this;
+      this.dark = this.options.get(this.options.DARK_FONT);
+      if (this.dark) {
+        this.$body.toggleClass("" + this.dark_class + " " + this.light_class);
+      }
+      return this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
+        return _this.$body.toggleClass("" + _this.dark_class + " " + light_class);
+      });
+    };
+
+    Basic.prototype._handle_theme = function() {
+      var _this = this;
+      this.theme = this.options.get(this.options.THEME_KEY);
+      if (this.theme) {
+        this.$wrapper.addClass(this.theme);
+      }
+      return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
+        _this.$wrapper.removeClass();
+        return _this.$wrapper.addClass(new_value);
+      });
+    };
+
+    return Basic;
 
   })();
 
@@ -164,13 +192,12 @@
     };
 
     Mail.prototype._showUnread = function($res) {
-      var mails_html, test, unread_html;
+      var mails_html, unread_html;
       mails_html = this._generate_html($res);
       unread_html = this.unread_template({
         count: Number($res.find('fullcount').text()),
         account: $res.find('title').first().text().split('for ')[1]
       });
-      test = $(unread_html);
       this.$el.append(unread_html);
       return this.$el.find('ul').append(mails_html);
     };
@@ -197,28 +224,6 @@
 
   })();
 
-  $(function() {
-    var options;
-    options = new Options(function() {
-      var app, body, clock, mail, wrapper;
-      window.options = options;
-      app = new App();
-      mail = new Mail();
-      clock = new Clock();
-      body = new Body();
-      wrapper = new Wrapper();
-      app.render();
-      mail.render();
-      return clock.render();
-    });
-    return $("#default_home").click(function() {
-      chrome.tabs.update({
-        url: "chrome-internal://newtab/"
-      });
-      return false;
-    });
-  });
-
   Options = (function() {
     Options.prototype.template = YANTRE.templates.option;
 
@@ -236,42 +241,33 @@
 
     Options.prototype.APP_GRAYSCALE = 'appGrayscale';
 
-    Options.prototype.THEME = 'theme';
+    Options.prototype.THEME_KEY = 'theme';
 
-    Options.prototype.THEMES = {
-      THEBEACH: {
+    Options.prototype.THEMES = [
+      {
         name: 'theBeach',
         dark: true
-      },
-      BLUEPRINT: {
+      }, {
         name: 'bluePrint'
-      },
-      BOOKEH: {
+      }, {
         name: 'bookeh'
-      },
-      LINENDARK: {
+      }, {
         name: 'linenDark'
-      },
-      LINENLIGHT: {
+      }, {
         name: 'linenLight',
         dark: true
-      },
-      FILTHYTILE: {
+      }, {
         name: 'filthyTile'
-      },
-      GREYWASH: {
+      }, {
         name: 'greyWash'
-      },
-      NAVYBLUE: {
+      }, {
         name: 'navyBlue'
-      },
-      REDWINE: {
+      }, {
         name: 'redWine'
-      },
-      REDMESH: {
+      }, {
         name: 'redMesh'
       }
-    };
+    ];
 
     function Options(done) {
       this._triggerListener = __bind(this._triggerListener, this);
@@ -314,7 +310,8 @@
     };
 
     Options.prototype.render = function() {
-      return this.$el.html(this.template({
+      var data, theme, _i, _len, _ref;
+      data = {
         darkFont: {
           name: this.DARK_FONT,
           value: Boolean(this.get(this.DARK_FONT))
@@ -323,48 +320,18 @@
           name: this.APP_GRAYSCALE,
           value: Boolean(this.get(this.APP_GRAYSCALE))
         },
-        theBeach: {
-          name: this.THEMES.THEBEACH.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.THEBEACH.name)
-        },
-        bluePrint: {
-          name: this.THEMES.BLUEPRINT.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.BLUEPRINT.name)
-        },
-        bookeh: {
-          name: this.THEMES.BOOKEH.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.BOOKEH.name)
-        },
-        linenDark: {
-          name: this.THEMES.LINENDARK.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.LINENDARK.name)
-        },
-        linenLight: {
-          name: this.THEMES.LINENLIGHT.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.LINENLIGHT.name)
-        },
-        filthyTile: {
-          name: this.THEMES.FILTHYTILE.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.FILTHYTILE.name)
-        },
-        greyWash: {
-          name: this.THEMES.GREYWASH.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.GREYWASH.name)
-        },
-        navyBlue: {
-          name: this.THEMES.NAVYBLUE.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.NAVYBLUE.name)
-        },
-        redWine: {
-          name: this.THEMES.REDWINE.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.REDWINE.name)
-        },
-        redMesh: {
-          name: this.THEMES.REDMESH.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.REDMESH.name)
-        },
-        theme: this.THEME
-      }));
+        theme: this.THEME_KEY,
+        themes: {}
+      };
+      _ref = this.THEMES;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        theme = _ref[_i];
+        data.themes[theme.name] = {
+          name: this._prettify(theme.name),
+          value: Boolean(this.get(this.THEME_KEY) === theme.name)
+        };
+      }
+      return this.$el.html(this.template(data));
     };
 
     Options.prototype._registerBtnClick = function() {
@@ -391,7 +358,7 @@
       var _this = this;
       return this.$el.on('change', 'input', function(e) {
         var value;
-        if (e.target.name === _this.THEME) {
+        if (e.target.name === _this.THEME_KEY) {
           value = e.target.value;
         } else {
           value = e.target.checked;
@@ -399,20 +366,30 @@
         return _this.set(e.target.name, value, function() {
           var $target;
           $target = $(e.target).parent();
-          if (e.target.name === _this.THEME) {
-            return _this.set(_this.DARK_FONT, Boolean(_this.THEMES[e.target.value.toUpperCase()].dark), function() {
-              $target.addClass('saved');
-              return setTimeout((function() {
-                return $target.removeClass('saved');
-              }), 5000);
-            });
-          } else {
-            $target.addClass('saved');
-            return setTimeout((function() {
-              return $target.removeClass('saved');
-            }), 5000);
+          if (e.target.name === _this.THEME_KEY) {
+            _this._set_theme_options(e.target.value);
           }
+          $target.addClass('saved');
+          return setTimeout((function() {
+            return $target.removeClass('saved');
+          }), 5000);
         });
+      });
+    };
+
+    Options.prototype._set_theme_options = function(input_value) {
+      var theme, value, _i, _len, _ref,
+        _this = this;
+      _ref = this.THEMES;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        theme = _ref[_i];
+        if (this.THEMES.name === input_value) {
+          value = Boolean(theme.dark);
+          break;
+        }
+      }
+      return this.set(this.DARK_FONT, value, function() {
+        return _this._setSaved($target);
       });
     };
 
@@ -447,28 +424,29 @@
       return _results;
     };
 
+    Options.prototype._prettify = function(value) {
+      return value.replace(/([a-z])([A-Z])/g, function(match, l1, l2) {
+        return "" + l1 + " " + l2;
+      }).toLowerCase();
+    };
+
     return Options;
 
   })();
 
-  Wrapper = (function() {
-    Wrapper.prototype.$el = $('#wrapper');
-
-    function Wrapper(options) {
-      var _this = this;
-      this.options = options != null ? options : window.options;
-      this.theme = this.options.get(this.options.THEME);
-      if (this.theme) {
-        this.$el.addClass(this.theme);
-      }
-      this.options.registerOnChange(this.options.THEME, function(new_value, old_value) {
-        _this.$el.removeClass();
-        return _this.$el.addClass(new_value);
-      });
-    }
-
-    return Wrapper;
-
-  })();
+  $(function() {
+    var options;
+    return options = new Options(function() {
+      var app, basic, clock, mail;
+      window.options = options;
+      basic = new Basic();
+      app = new App();
+      mail = new Mail();
+      clock = new Clock();
+      app.render();
+      mail.render();
+      return clock.render();
+    });
+  });
 
 }).call(this);

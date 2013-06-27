@@ -1,8 +1,26 @@
 @charset "UTF-8";
 @font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url("../fonts/lato/Lato-Hairline.woff") format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url("../fonts/lato/Lato-Light.woff") format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url("../fonts/lato/Lato-Regular.woff") format('woff');
+}
+@font-face {
   font-family: "yantre";
   src: url("../fonts/yantre.eot");
-  src: url("../fonts/yantre.eot?#iefix") format("embedded-opentype"), url("../fonts/yantre.woff") format("truetype"), url("../fonts/yantre.svg#yantre") format("svg"), url("../fonts/yantre.woff") format("woff");
+  src: url("../fonts/yantre.eot?#iefix") format("embedded-opentype"), url("../fonts/yantre.woff") format("truetype"), url("../fonts/yantre.fonts_path_yantresvg#yantre") format("svg"), url("../fonts/yantre.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -45,23 +63,106 @@
 .icon-default:before {
   content: "\e004";
 }
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
+body.dark #clock h1,
+body.dark #mails h1 {
+  color: #333333 !important;
+}
+body.light #clock h1,
+body.light #mails h1 {
+  color: #dddddd !important;
+}
+#wrapper {
+  transition: background 0.8s ease;
+  background-position: top center;
+}
+#wrapper.theBeach {
+  background: url("../images/beach.jpg");
+}
+#wrapper.theBeach #clock h1,
+#wrapper.theBeach #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.blueprint {
+  background: url("../images/blueprint.png");
+}
+#wrapper.blueprint #clock h1,
+#wrapper.blueprint #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.bookeh {
+  background: url("../images/bookeh.jpg");
+}
+#wrapper.bookeh #clock h1,
+#wrapper.bookeh #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.linenDark {
+  background: url("../images/dark-linen.png");
   font-weight: 100;
-  src: local('Lato Hairline'), local('Lato-Hairline'), url("../fonts/lato/Lato-Hairline.woff") format('woff');
 }
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url("../fonts/lato/Lato-Light.woff") format('woff');
+#wrapper.linenDark #clock h1,
+#wrapper.linenDark #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
 }
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url("../fonts/lato/Lato-Regular.woff") format('woff');
+#wrapper.linenLight {
+  background: url("../images/light-linen.png");
+}
+#wrapper.linenLight #clock h1,
+#wrapper.linenLight #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.linenLight {
+  background: url("../images/light-linen.png");
+}
+#wrapper.linenLight #clock h1,
+#wrapper.linenLight #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.filthyTile {
+  background: url("../images/filthy-tile.jpg");
+}
+#wrapper.filthyTile #clock h1,
+#wrapper.filthyTile #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.greyWash {
+  background: url("../images/grey_wash_wall.png");
+}
+#wrapper.greyWash #clock h1,
+#wrapper.greyWash #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.navyBlue {
+  background: url("../images/navy_blue.png");
+}
+#wrapper.navyBlue #clock h1,
+#wrapper.navyBlue #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.redWine {
+  background: url("../images/red-blur.jpg");
+}
+#wrapper.redWine #clock h1,
+#wrapper.redWine #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.redMesh {
+  background: url("../images/red-mesh.jpg");
+}
+#wrapper.redMesh #clock h1,
+#wrapper.redMesh #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
 }
 body {
   margin: 0;
@@ -69,13 +170,13 @@ body {
   height: 100%;
   min-height: 600px;
   text-align: center;
-  background: url("../images/red-blur.jpg") top center;
+  background: url("../images/light-linen.png") top center;
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 62.5%;
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
-  text-shadow: 0 0.1rem 0.2rem #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
   color: #dddddd;
 }
 body > #wrapper {
@@ -121,106 +222,6 @@ body h1 {
   100% {
     transform: rotate(359deg);
   }
-}
-body.light #clock h1,
-body.light #mails h1 {
-  color: #dddddd !important;
-}
-body.dark #clock h1,
-body.dark #mails h1 {
-  color: #333333 !important;
-}
-#wrapper {
-  transition: background 0.8s ease;
-}
-#wrapper.theBeach {
-  background: url("../images/beach.jpg") top center;
-}
-#wrapper.theBeach #clock h1,
-#wrapper.theBeach #mails h1 {
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.blueprint {
-  background: url("../images/blueprint.png") top center;
-}
-#wrapper.blueprint #clock h1,
-#wrapper.blueprint #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.bookeh {
-  background: url("../images/bookeh.jpg") top center;
-}
-#wrapper.bookeh #clock h1,
-#wrapper.bookeh #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.linenDark {
-  background: url("../images/dark-linen.png") top center;
-  font-weight: 100;
-}
-#wrapper.linenDark #clock h1,
-#wrapper.linenDark #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.linenLight {
-  background: url("../images/light-linen.png") top center;
-}
-#wrapper.linenLight #clock h1,
-#wrapper.linenLight #mails h1 {
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.linenLight {
-  background: url("../images/light-linen.png") top center;
-}
-#wrapper.linenLight #clock h1,
-#wrapper.linenLight #mails h1 {
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.filthyTile {
-  background: url("../images/filthy-tile.jpg") top center;
-}
-#wrapper.filthyTile #clock h1,
-#wrapper.filthyTile #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.greyWash {
-  background: url("../images/grey_wash_wall.png") top center;
-}
-#wrapper.greyWash #clock h1,
-#wrapper.greyWash #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.navyBlue {
-  background: url("../images/navy_blue.png") top center;
-}
-#wrapper.navyBlue #clock h1,
-#wrapper.navyBlue #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.redWine {
-  background: url("../images/red-blur.jpg") top center;
-}
-#wrapper.redWine #clock h1,
-#wrapper.redWine #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.redMesh {
-  background: url("../images/red-mesh.jpg") top center;
-}
-#wrapper.redMesh #clock h1,
-#wrapper.redMesh #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
 }
 #clock {
   display: inline-block;

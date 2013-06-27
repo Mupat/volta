@@ -10,52 +10,10 @@
 
 <hr>
 <h3>Themes</h3>
-<div>
-  <input id="{{theBeach.name}}" type="radio" name="{{theme}}" value="{{theBeach.name}}" {{#if theBeach.value}} checked="checked" {{/if}} />
-  <label for="{{theBeach.name}}" class="icon-check">The Beach</label> 
-</div>
+{{#each themes}}
+  <div>
+    <input id="{{@key}}" type="radio" name="{{../theme}}" value="{{@key}}" {{#if this.value}} checked="checked" {{/if}} />
+    <label for="{{@key}}" class="icon-check">{{this.name}}</label> 
+  </div>
+{{/each}}
 
-<div>
-  <input id="{{bluePrint.name}}" type="radio" name="{{theme}}" value="{{bluePrint.name}}" {{#if bluePrint.value}} checked="checked" {{/if}} />
-  <label for="{{bluePrint.name}}" class="icon-check">Blueprint</label> 
-</div>
-
-<div>
-  <input id="{{bookeh.name}}" type="radio" name="{{theme}}" value="{{bookeh.name}}" {{#if bookeh.value}} checked="checked" {{/if}} />
-  <label for="{{bookeh.name}}" class="icon-check">Bookeh</label> 
-</div>
-
-<div>
-  <input id="{{linenDark.name}}" type="radio" name="{{theme}}" value="{{linenDark.name}}" {{#if linenDark.value}} checked="checked" {{/if}} />
-  <label for="{{linenDark.name}}" class="icon-check">Dark Linen</label> 
-</div>
-
-<div>
-  <input id="{{linenLight.name}}" type="radio" name="{{theme}}" value="{{linenLight.name}}" {{#if linenLight.value}} checked="checked" {{/if}} />
-  <label for="{{linenLight.name}}" class="icon-check">Light Linen</label> 
-</div>
-
-<div>
-  <input id="{{filthyTile.name}}" type="radio" name="{{theme}}" value="{{filthyTile.name}}" {{#if filthyTile.value}} checked="checked" {{/if}} />
-  <label for="{{filthyTile.name}}" class="icon-check">Filthy Tiles</label> 
-</div>
-
-<div>
-  <input id="{{greyWash.name}}" type="radio" name="{{theme}}" value="{{greyWash.name}}" {{#if greyWash.value}} checked="checked" {{/if}} />
-  <label for="{{greyWash.name}}" class="icon-check">Grey Washed Wall</label> 
-</div>
-
-<div>
-  <input id="{{navyBlue.name}}" type="radio" name="{{theme}}" value="{{navyBlue.name}}" {{#if navyBlue.value}} checked="checked" {{/if}} />
-  <label for="{{navyBlue.name}}" class="icon-check">Navy Blue</label> 
-</div>
-
-<div>
-  <input id="{{redWine.name}}" type="radio" name="{{theme}}" value="{{redWine.name}}" {{#if redWine.value}} checked="checked" {{/if}} />
-  <label for="{{redWine.name}}" class="icon-check">Red Wine</label> 
-</div>
-
-<div>
-  <input id="{{redMesh.name}}" type="radio" name="{{theme}}" value="{{redMesh.name}}" {{#if redMesh.value}} checked="checked" {{/if}} />
-  <label for="{{redMesh.name}}" class="icon-check">Red Mesh</label> 
-</div>

@@ -1,11 +1,35 @@
-@path: '../fonts/yantre';
+@fonts_path: '../fonts/';
+@fonts_path_yantre: "@{fonts_path}yantre";
+@fonts_path_lato: "@{fonts_path}lato/";
+
+// google web font Lato
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url("@{fonts_path_lato}Lato-Hairline.woff") format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url("@{fonts_path_lato}Lato-Light.woff") format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url("@{fonts_path_lato}Lato-Regular.woff") format('woff');
+}
+
+// icon font YANTRE -> build with http://fontastic.me/
 @font-face {
   font-family: "yantre";
-  src:url("@{path}.eot");
-  src:url("@{path}.eot?#iefix") format("embedded-opentype"),
-    url("@{path}.woff") format("truetype"),
-    url("@{path}.svg#yantre") format("svg"),
-    url("@{path}.woff") format("woff");
+  src:url("@{fonts_path_yantre}.eot");
+  src:url("@{fonts_path_yantre}.eot?#iefix") format("embedded-opentype"),
+    url("@{fonts_path_yantre}.woff") format("truetype"),
+    url("@{fonts_path_yantre}.fonts_path_yantresvg#yantre") format("svg"),
+    url("@{fonts_path_yantre}.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -33,23 +57,3 @@
 .icon-check:before { content: "\e003"; }
 .icon-store:before { content: "\e005"; }
 .icon-default:before { content: "\e004"; }
-
-
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Lato Hairline'), local('Lato-Hairline'), url("../fonts/lato/Lato-Hairline.woff") format('woff');
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url("../fonts/lato/Lato-Light.woff") format('woff');
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url("../fonts/lato/Lato-Regular.woff") format('woff');
-}
