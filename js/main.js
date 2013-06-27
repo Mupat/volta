@@ -1,5 +1,5 @@
 (function() {
-  var App, Body, Clock, Mail, Options,
+  var App, Body, Clock, File, Mail, Options,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -124,6 +124,48 @@
 
   })();
 
+  File = (function() {
+    function File() {}
+
+    File.prototype.filesystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+    File.prototype.contructor = function(options) {
+      if (options == null) {
+        options = window.options;
+      }
+      return window.requestFileSystem(window.PERSISTENT, 5 * 1024 * 1024, this._init_file_system, this._error_handler);
+    };
+
+    File.prototype._init_file_system = function(fs) {
+      return this.fs = fs;
+    };
+
+    File.prototype._error_handler = function(error) {
+      var message;
+      message = 'An error occured:';
+      switch (error.code) {
+        case FileError.NOT_FOUND_ERR:
+          message = "" + message + " File or directory not found";
+          break;
+        case FileError.NOT_READABLE_ERR:
+          message = "" + message + " File or directory not readable";
+          break;
+        case FileError.PATH_EXISTS_ERR:
+          message = "" + message + " File or directory already exists";
+          break;
+        case FileError.TYPE_MISMATCH_ERR:
+          message = "" + message + " Invalid filetype";
+          break;
+        default:
+          message = "" + message + " Unknown Error";
+      }
+      return console.log(message);
+    };
+
+    return File;
+
+  })();
+
   Mail = (function() {
     function Mail() {
       this._error = __bind(this._error, this);
@@ -199,7 +241,7 @@
   })();
 
   $(function() {
-    var options;
+    var errorHandler, initFS, options;
     options = new Options(function() {
       var app, body, clock, mail;
       window.options = options;
@@ -211,12 +253,43 @@
       mail.render();
       return clock.render();
     });
-    return $("#default_home").click(function() {
+    $("#default_home").click(function() {
       chrome.tabs.update({
         url: "chrome-internal://newtab/"
       });
       return false;
     });
+    $("#file-input").on("change", function(e) {
+      var thefiles;
+      thefiles = e.target.files;
+      console.log('files', thefiles);
+      return $.each(thefiles, function(i, item) {
+        var reader, thefile;
+        thefile = item;
+        console.log(thefile.webkitRelativePath);
+        reader = new FileReader();
+        reader.onload = function() {
+          return console.log("FILES: ", thefile.name);
+        };
+        return reader.readAsArrayBuffer(thefile);
+      });
+    });
+    initFS = function(fs) {
+      console.log('file system init', fs);
+      return fs.root.getDirectory('/', {}, function(dirEntry) {
+        var dirReader;
+        console.log('dirEntry', dirEntry);
+        dirReader = dirEntry.createReader();
+        return dirReader.readEntries(function(entries) {
+          return console.log('entries', entries);
+        }, errorHandler);
+      }, errorHandler);
+    };
+    errorHandler = function(error) {
+      return console.log('An error occured', error);
+    };
+    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+    return window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, initFS, errorHandler);
   });
 
   Options = (function() {
