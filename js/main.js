@@ -250,7 +250,8 @@
         name: 'bookeh'
       },
       LINENDARK: {
-        name: 'linenDark'
+        name: 'linenDark',
+        grayApps: true
       },
       LINENLIGHT: {
         name: 'linenLight',
@@ -259,11 +260,9 @@
       FILTHYTILE: {
         name: 'filthyTile'
       },
-      GREYWASH: {
-        name: 'greyWash'
-      },
       NAVYBLUE: {
-        name: 'navyBlue'
+        name: 'navyBlue',
+        grayApps: true
       },
       REDWINE: {
         name: 'redWine'
@@ -347,10 +346,6 @@
           name: this.THEMES.FILTHYTILE.name,
           value: Boolean(this.get(this.THEME) === this.THEMES.FILTHYTILE.name)
         },
-        greyWash: {
-          name: this.THEMES.GREYWASH.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.GREYWASH.name)
-        },
         navyBlue: {
           name: this.THEMES.NAVYBLUE.name,
           value: Boolean(this.get(this.THEME) === this.THEMES.NAVYBLUE.name)
@@ -400,7 +395,20 @@
           var $target;
           $target = $(e.target).parent();
           if (e.target.name === _this.THEME) {
-            return _this.set(_this.DARK_FONT, Boolean(_this.THEMES[e.target.value.toUpperCase()].dark), function() {
+            _this.set(_this.DARK_FONT, Boolean(_this.THEMES[e.target.value.toUpperCase()].dark), function() {
+              $target.addClass('saved');
+              return setTimeout((function() {
+                return $target.removeClass('saved');
+              }), 5000);
+            });
+          } else {
+            $target.addClass('saved');
+            setTimeout((function() {
+              return $target.removeClass('saved');
+            }), 5000);
+          }
+          if (e.target.name === _this.THEME) {
+            return _this.set(_this.APP_GRAYSCALE, Boolean(_this.THEMES[e.target.value.toUpperCase()].grayApps), function() {
               $target.addClass('saved');
               return setTimeout((function() {
                 return $target.removeClass('saved');
@@ -454,6 +462,8 @@
   Wrapper = (function() {
     Wrapper.prototype.$el = $('#wrapper');
 
+    Wrapper.prototype.$apps = $('#apps');
+
     function Wrapper(options) {
       var _this = this;
       this.options = options != null ? options : window.options;
@@ -461,9 +471,14 @@
       if (this.theme) {
         this.$el.addClass(this.theme);
       }
+      if (this.theme) {
+        this.$apps.addClass(this.theme);
+      }
       this.options.registerOnChange(this.options.THEME, function(new_value, old_value) {
         _this.$el.removeClass();
-        return _this.$el.addClass(new_value);
+        _this.$el.addClass(new_value);
+        _this.$apps.removeClass();
+        return _this.$apps.addClass(new_value);
       });
     }
 

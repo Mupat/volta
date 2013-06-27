@@ -15,11 +15,10 @@ class Options
     THEBEACH: {name: 'theBeach', dark: true}
     BLUEPRINT: {name: 'bluePrint'}
     BOOKEH: {name: 'bookeh'}
-    LINENDARK: {name: 'linenDark'}
+    LINENDARK: {name: 'linenDark', grayApps: true}
     LINENLIGHT: {name: 'linenLight', dark: true}
     FILTHYTILE: {name: 'filthyTile'}
-    GREYWASH: {name: 'greyWash'}
-    NAVYBLUE: {name: 'navyBlue'}
+    NAVYBLUE: {name: 'navyBlue', grayApps: true}
     REDWINE: {name: 'redWine'}
     REDMESH: {name: 'redMesh'}
 
@@ -57,7 +56,6 @@ class Options
       linenDark: { name: @THEMES.LINENDARK.name, value: Boolean(@get(@THEME) is @THEMES.LINENDARK.name) }
       linenLight: { name: @THEMES.LINENLIGHT.name, value: Boolean(@get(@THEME) is @THEMES.LINENLIGHT.name) }
       filthyTile: { name: @THEMES.FILTHYTILE.name, value: Boolean(@get(@THEME) is @THEMES.FILTHYTILE.name) }
-      greyWash: { name: @THEMES.GREYWASH.name, value: Boolean(@get(@THEME) is @THEMES.GREYWASH.name) }
       navyBlue: { name: @THEMES.NAVYBLUE.name, value: Boolean(@get(@THEME) is @THEMES.NAVYBLUE.name) }
       redWine: { name: @THEMES.REDWINE.name, value: Boolean(@get(@THEME) is @THEMES.REDWINE.name) }
       redMesh: { name: @THEMES.REDMESH.name, value: Boolean(@get(@THEME) is @THEMES.REDMESH.name) }
@@ -83,6 +81,14 @@ class Options
         
         if e.target.name is @THEME
           @set @DARK_FONT, Boolean(@THEMES[e.target.value.toUpperCase()].dark), ->
+            $target.addClass 'saved'    
+            setTimeout ( -> $target.removeClass 'saved'), 5000
+        else
+          $target.addClass 'saved'    
+          setTimeout ( -> $target.removeClass 'saved'), 5000
+
+        if e.target.name is @THEME
+          @set @APP_GRAYSCALE, Boolean(@THEMES[e.target.value.toUpperCase()].grayApps), ->
             $target.addClass 'saved'    
             setTimeout ( -> $target.removeClass 'saved'), 5000
         else

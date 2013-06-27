@@ -6,7 +6,6 @@
 @linenDark: "../images/dark-linen.png";
 @linenLight: "../images/light-linen.png";
 @filthyTile: "../images/filthy-tile.jpg";
-@greyWash: "../images/grey_wash_wall.png";
 @navyBlue: "../images/navy_blue.png";
 @redWine: "../images/red-blur.jpg";
 @redMesh: "../images/red-mesh.jpg";
@@ -37,11 +36,20 @@ body {
 
 // bof themes with BG
 #wrapper {
+  &.reset {
+    background: url(@standardBackground) top center;
+    transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);  
+    font: @font;
+    font-weight: @fontWeightNormal;
+    text-shadow: @textShadowLight;
+    color: @lightFontColor;
+  }
   // The Beach Theme
   &.theBeach { 
     background: url(@theBeach) top center;
     #clock h1,
     #mails h1 {
+      font-weight: @fontWeightNormal;
       color: @darkFontColor;
       text-shadow: @textShadowLight;
     }
@@ -62,6 +70,7 @@ body {
     background: url(@bookeh) top center;
     #clock h1,
     #mails h1 {
+      font-weight: @fontWeightNormal;
       color: @lightFontColor;
       text-shadow: @textShadowDark;
     }
@@ -103,16 +112,7 @@ body {
     background: url(@filthyTile) top center;
     #clock h1,
     #mails h1 {
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
-  }
-
-  // Grey Wash Theme
-  &.greyWash { 
-    background: url(@greyWash) top center;
-    #clock h1,
-    #mails h1 {
+      font-weight: @fontWeightNormal;
       color: @lightFontColor;
       text-shadow: @textShadowDark;
     }
@@ -121,6 +121,13 @@ body {
   // Navy Blue Theme
   &.navyBlue { 
     background: url(@navyBlue) top center;
+    #clock .flip-clock-wrapper ul li a div div.inn {
+      background-color: red !important;
+    }
+
+    #clock .flip-clock-wrapper ul li a div div.inn {
+      font-size: 19rem;
+    }
     #clock h1,
     #mails h1 {
       color: @lightFontColor;
@@ -143,10 +150,12 @@ body {
     background: url(@redMesh) top center;
     #clock h1,
     #mails h1 {
+      font-weight: @fontWeightNormal;
       color: @lightFontColor;
       text-shadow: @textShadowDark;
     }
   }
   transition: background 0.8s ease;
+  //transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 // eof themes with BG
 }

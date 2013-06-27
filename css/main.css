@@ -69,15 +69,9 @@ body {
   height: 100%;
   min-height: 600px;
   text-align: center;
-  background: url("../images/red-blur.jpg") top center;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font-size: 62.5%;
-  font: normal 11px "Lato", sans-serif;
-  font-weight: 300;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-  color: #dddddd;
-  transition: color 0.5s ease;
+  transition: color 0.8s ease;
 }
 body > #wrapper {
   position: absolute;
@@ -86,6 +80,12 @@ body > #wrapper {
   padding: 0;
   top: 0;
   bottom: 0;
+  background: url("../images/dark-linen.png") top center;
+  transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font: normal 11px "Lato", sans-serif;
+  font-weight: 300;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+  color: #dddddd;
 }
 body > div,
 body #apps > div {
@@ -131,11 +131,20 @@ body.dark #mails h1 {
 #wrapper {
   transition: background 0.8s ease;
 }
+#wrapper.reset {
+  background: url("../images/dark-linen.png") top center;
+  transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font: normal 11px "Lato", sans-serif;
+  font-weight: 300;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+  color: #dddddd;
+}
 #wrapper.theBeach {
   background: url("../images/beach.jpg") top center;
 }
 #wrapper.theBeach #clock h1,
 #wrapper.theBeach #mails h1 {
+  font-weight: 300;
   color: #333333;
   text-shadow: 0 0.1rem 0.2rem #111111;
 }
@@ -152,6 +161,7 @@ body.dark #mails h1 {
 }
 #wrapper.bookeh #clock h1,
 #wrapper.bookeh #mails h1 {
+  font-weight: 300;
   color: #dddddd;
   text-shadow: 0 0 0.4rem #000000;
 }
@@ -185,14 +195,7 @@ body.dark #mails h1 {
 }
 #wrapper.filthyTile #clock h1,
 #wrapper.filthyTile #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.greyWash {
-  background: url("../images/grey_wash_wall.png") top center;
-}
-#wrapper.greyWash #clock h1,
-#wrapper.greyWash #mails h1 {
+  font-weight: 300;
   color: #dddddd;
   text-shadow: 0 0 0.4rem #000000;
 }
@@ -217,6 +220,7 @@ body.dark #mails h1 {
 }
 #wrapper.redMesh #clock h1,
 #wrapper.redMesh #mails h1 {
+  font-weight: 300;
   color: #dddddd;
   text-shadow: 0 0 0.4rem #000000;
 }
@@ -277,7 +281,7 @@ body.dark #mails h1 {
   box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem rgba(0, 0, 0, 0.4);
   padding-bottom: 0.7rem;
   margin: 20px 0 0 0;
-  bottom: -12px;
+  bottom: -11px;
 }
 #apps .bx-wrapper .bx-viewport {
   background: none;
@@ -328,6 +332,7 @@ body.dark #mails h1 {
   width: 64px;
   height: 64px;
   display: inline-block;
+  transition: -webkit-filter 1s ease;
 }
 #apps ul a h4 {
   margin-top: 0.25rem;

@@ -6,7 +6,7 @@
   box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem @shadowColor;
   padding-bottom: 0.7rem;
   margin: 20px 0 0 0;
-  bottom: -12px;
+  bottom: -11px;
 
   .bx-wrapper {
     .bx-viewport {
@@ -53,6 +53,7 @@
       width: 64px;
       height: 64px;
       display: inline-block;
+      transition: -webkit-filter 1s ease;
     }
 
     h4 {
@@ -67,7 +68,7 @@
   &.grayscale {
     ul a img { 
       transition: -webkit-filter 1s ease;
-      -webkit-filter: grayscale(100%); 
+      -webkit-filter: grayscale(100%);
     }
     ul a:hover img { -webkit-filter: grayscale(0%); }
   }
