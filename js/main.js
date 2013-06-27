@@ -106,7 +106,7 @@
         this.$body.toggleClass("" + this.dark_class + " " + this.light_class);
       }
       return this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
-        return _this.$body.toggleClass("" + _this.dark_class + " " + light_class);
+        return _this.$body.toggleClass("" + _this.dark_class + " " + _this.light_class);
       });
     };
 

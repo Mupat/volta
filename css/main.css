@@ -63,12 +63,12 @@
 .icon-default:before {
   content: "\e004";
 }
-body.dark #clock h1,
-body.dark #mails h1 {
+body.dark h1,
+body.dark h1 + p {
   color: #333333 !important;
 }
-body.light #clock h1,
-body.light #mails h1 {
+body.light h1,
+body.light h1 + p {
   color: #dddddd !important;
 }
 #wrapper {

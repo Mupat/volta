@@ -17,7 +17,7 @@ class Basic
     if @dark then @$body.toggleClass "#{@dark_class} #{@light_class}"
 
     @options.registerOnChange @options.DARK_FONT, (new_value, old_value) =>
-      @$body.toggleClass "#{@dark_class} #{light_class}"
+      @$body.toggleClass "#{@dark_class} #{@light_class}"
 
   _handle_theme: ->
     @theme = @options.get @options.THEME_KEY
