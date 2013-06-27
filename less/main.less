@@ -14,9 +14,8 @@ body {
   font-size: 62.5%;
   font: @font;
   font-weight: @fontWeightNormal;
-  text-shadow: @textShadowLight;
+  text-shadow: @textShadow;
   color: @lightFontColor;
-  transition: color 0.5s ease;
  
   > #wrapper {
     position: absolute;
@@ -37,6 +36,8 @@ body {
     text-decoration: none;
     font-size: 1rem;
   }
+
+  h1 { transition: color 0.5s ease; }
 }
 
 @import 'actions';

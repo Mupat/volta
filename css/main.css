@@ -75,9 +75,8 @@ body {
   font-size: 62.5%;
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
-  text-shadow: 0 0.1rem 0.2rem #111111;
+  text-shadow: 0 0.1rem 0.2rem #333333;
   color: #dddddd;
-  transition: color 0.5s ease;
 }
 body > #wrapper {
   position: absolute;
@@ -96,6 +95,9 @@ body a {
   color: #dddddd;
   text-decoration: none;
   font-size: 1rem;
+}
+body h1 {
+  transition: color 0.5s ease;
 }
 #actions {
   position: absolute;
@@ -383,7 +385,6 @@ body.dark #mails h1 {
   font-size: 3rem;
   margin: 0;
   font-weight: 100;
-  text-shadow: 0 0.1rem 0.2rem #111111;
 }
 #mails .unread h1 {
   font-size: 2.5rem;
