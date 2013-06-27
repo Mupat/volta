@@ -5,6 +5,7 @@ $ ->
     mail = new Mail()
     clock = new Clock()
     body = new Body()
+    wrapper = new Wrapper()
 
     app.render()
     mail.render()

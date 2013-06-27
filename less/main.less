@@ -18,6 +18,14 @@ body {
   color: @lightFontColor;
   transition: color 0.5s ease;
  
+  > #wrapper {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+  }
   > div,
   #apps > div {
     width: 1024px;
@@ -29,11 +37,10 @@ body {
     text-decoration: none;
     font-size: 1rem;
   }
-  &.dark #clock h1,
-  &.dark #mails h1 { color: @darkFontColor; }
 }
 
 @import 'actions';
+@import 'theme';
 @import 'clock';
 @import 'apps';
 @import 'mail';

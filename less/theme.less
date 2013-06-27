@@ -1,0 +1,152 @@
+// Default themes
+
+@theBeach: "../images/beach.jpg";
+@bluePrint: "../images/blueprint.png";
+@bookeh: "../images/bookeh.jpg";
+@linenDark: "../images/dark-linen.png";
+@linenLight: "../images/light-linen.png";
+@filthyTile: "../images/filthy-tile.jpg";
+@greyWash: "../images/grey_wash_wall.png";
+@navyBlue: "../images/navy_blue.png";
+@redWine: "../images/red-blur.jpg";
+@redMesh: "../images/red-mesh.jpg";
+
+@font: normal 11px "Lato", sans-serif;
+@fontWeightLight: 100;
+@fontWeightNormal: 300;
+@fontWeightBold: 400;
+
+@lightFontColor: #ddd;
+@darkFontColor: #333;
+
+@textShadowLight: 0 0.1rem 0.2rem #111;
+@textShadowDark: 0 0 0.4rem #000;
+
+
+body {
+// just light font theme
+  &.light #clock h1,
+  &.light #mails h1 { color: @lightFontColor !important; }
+}
+
+body {
+// just dark font theme
+  &.dark #clock h1,
+  &.dark #mails h1 { color: @darkFontColor !important; }
+}
+
+// bof themes with BG
+#wrapper {
+  // The Beach Theme
+  &.theBeach { 
+    background: url(@theBeach) top center;
+    #clock h1,
+    #mails h1 {
+      color: @darkFontColor;
+      text-shadow: @textShadowLight;
+    }
+  }
+
+  // Blueprint Theme
+  &.blueprint { 
+    background: url(@bluePrint) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowLight;
+    }
+  }
+
+  // Bookeh Theme
+  &.bookeh { 
+    background: url(@bookeh) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+
+  // Dark Linen Theme
+  &.linenDark { 
+    background: url(@linenDark) top center;
+    font-weight: 100;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+
+  // Light Linen Theme
+  &.linenLight { 
+    background: url(@linenLight) top center;
+    #clock h1,
+    #mails h1 {
+      color: @darkFontColor;
+      text-shadow: @textShadowLight;
+    }
+  }
+
+  // Light Linen Theme
+  &.linenLight { 
+    background: url(@linenLight) top center;
+    #clock h1,
+    #mails h1 {
+      color: @darkFontColor;
+      text-shadow: @textShadowLight;
+    }
+  }
+
+  // Filthy Tile Theme
+  &.filthyTile { 
+    background: url(@filthyTile) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+
+  // Grey Wash Theme
+  &.greyWash { 
+    background: url(@greyWash) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+
+  // Navy Blue Theme
+  &.navyBlue { 
+    background: url(@navyBlue) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+
+  // Red Wine Theme
+  &.redWine { 
+    background: url(@redWine) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+
+  // Red Mesh Theme
+  &.redMesh { 
+    background: url(@redMesh) top center;
+    #clock h1,
+    #mails h1 {
+      color: @lightFontColor;
+      text-shadow: @textShadowDark;
+    }
+  }
+  transition: background 0.8s ease;
+// eof themes with BG
+}

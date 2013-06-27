@@ -76,6 +76,8 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" ";
   stack2 = helpers['if'].call(depth0, ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
@@ -85,12 +87,144 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" ";
   stack2 = helpers['if'].call(depth0, ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += " />\n  <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">Use grayscale for app icons</label> \n</div>";
+    + "\" class=\"icon-check\">Use grayscaled app icons</label> \n</div>\n\n<hr>\n<h3>Themes</h3>\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.theBeach),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.theBeach),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.theBeach),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.theBeach),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">The Beach</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.bluePrint),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.bluePrint),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.bluePrint),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.bluePrint),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Blueprint</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.bookeh),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.bookeh),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.bookeh),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.bookeh),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Bookeh</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.linenDark),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.linenDark),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.linenDark),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.linenDark),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Dark Linen</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.linenLight),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.linenLight),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.linenLight),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.linenLight),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Light Linen</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.filthyTile),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.filthyTile),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.filthyTile),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.filthyTile),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Filthy Tiles</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.greyWash),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.greyWash),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.greyWash),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.greyWash),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Grey Washed Wall</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.navyBlue),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.navyBlue),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.navyBlue),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.navyBlue),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Navy Blue</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.redWine),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.redWine),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.redWine),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.redWine),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Red Wine</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.redMesh),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"radio\" name=\"";
+  if (stack2 = helpers.theme) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
+  else { stack2 = depth0.theme; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
+  buffer += escapeExpression(stack2)
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.redMesh),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.redMesh),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.redMesh),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Red Mesh</label> \n</div>";
   return buffer;
   });
 

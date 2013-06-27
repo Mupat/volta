@@ -9,6 +9,19 @@ class Options
   # constants for option names
   DARK_FONT: 'darkFontColor'
   APP_GRAYSCALE: 'appGrayscale'
+  THEME: 'theme'
+
+  THEMES:
+    THEBEACH: {name: 'theBeach', dark: true}
+    BLUEPRINT: {name: 'bluePrint'}
+    BOOKEH: {name: 'bookeh'}
+    LINENDARK: {name: 'linenDark'}
+    LINENLIGHT: {name: 'linenLight', dark: true}
+    FILTHYTILE: {name: 'filthyTile'}
+    GREYWASH: {name: 'greyWash'}
+    NAVYBLUE: {name: 'navyBlue'}
+    REDWINE: {name: 'redWine'}
+    REDMESH: {name: 'redMesh'}
 
   constructor: (done) ->
     @storage.get null, (options) =>
@@ -38,6 +51,17 @@ class Options
     @$el.html @template
       darkFont: { name: @DARK_FONT, value: Boolean(@get(@DARK_FONT)) }
       grayApps: { name: @APP_GRAYSCALE, value: Boolean(@get(@APP_GRAYSCALE)) }
+      theBeach: { name: @THEMES.THEBEACH.name, value: Boolean(@get(@THEME) is @THEMES.THEBEACH.name) }
+      bluePrint: { name: @THEMES.BLUEPRINT.name, value: Boolean(@get(@THEME) is @THEMES.BLUEPRINT.name) }
+      bookeh: { name: @THEMES.BOOKEH.name, value: Boolean(@get(@THEME) is @THEMES.BOOKEH.name) }
+      linenDark: { name: @THEMES.LINENDARK.name, value: Boolean(@get(@THEME) is @THEMES.LINENDARK.name) }
+      linenLight: { name: @THEMES.LINENLIGHT.name, value: Boolean(@get(@THEME) is @THEMES.LINENLIGHT.name) }
+      filthyTile: { name: @THEMES.FILTHYTILE.name, value: Boolean(@get(@THEME) is @THEMES.FILTHYTILE.name) }
+      greyWash: { name: @THEMES.GREYWASH.name, value: Boolean(@get(@THEME) is @THEMES.GREYWASH.name) }
+      navyBlue: { name: @THEMES.NAVYBLUE.name, value: Boolean(@get(@THEME) is @THEMES.NAVYBLUE.name) }
+      redWine: { name: @THEMES.REDWINE.name, value: Boolean(@get(@THEME) is @THEMES.REDWINE.name) }
+      redMesh: { name: @THEMES.REDMESH.name, value: Boolean(@get(@THEME) is @THEMES.REDMESH.name) }
+      theme: @THEME
 
   _registerBtnClick: ->
     css_class = 'show'
@@ -52,10 +76,18 @@ class Options
 
   _registerInputChange: ->
     @$el.on 'change', 'input', (e) =>
-      @set e.target.name, e.target.checked, ->
+      #console.log 'name', e.target.name
+      if e.target.name is @THEME then value = e.target.value else value = e.target.checked
+      @set e.target.name, value, =>
         $target = $(e.target).parent()
-        $target.addClass 'saved'
-        setTimeout ( -> $target.removeClass 'saved'), 5000
+        
+        if e.target.name is @THEME
+          @set @DARK_FONT, Boolean(@THEMES[e.target.value.toUpperCase()].dark), ->
+            $target.addClass 'saved'    
+            setTimeout ( -> $target.removeClass 'saved'), 5000
+        else
+          $target.addClass 'saved'    
+          setTimeout ( -> $target.removeClass 'saved'), 5000
 
   _getFullKey: (key) ->
     "#{@namespace}.#{key}"

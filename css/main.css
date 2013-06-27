@@ -1,15 +1,14 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 @charset "UTF-8";
 @font-face {
   font-family: "yantre";
   src: url("../fonts/yantre.eot");
-  src: url("../fonts/yantre.eot?#iefix") format("embedded-opentype"), url("../fonts/yantre.ttf") format("truetype"), url("../fonts/yantre.svg#yantre") format("svg"), url("../fonts/yantre.woff") format("woff");
+  src: url("../fonts/yantre.eot?#iefix") format("embedded-opentype"), url("../fonts/yantre.woff") format("truetype"), url("../fonts/yantre.svg#yantre") format("svg"), url("../fonts/yantre.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 [class^="icon-"]:hover:before,
 [class*=" icon-"]:hover:before {
-  color: #8c8c8c;
+  color: #9d9d9d;
 }
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -20,7 +19,7 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   transition: color 0.5s ease;
-  color: #cccccc;
+  color: #dddddd;
 }
 .icon-thumbs-up:before {
   content: "\e000";
@@ -50,19 +49,19 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 100;
-  src: local('Lato Light'), local('Lato-Hairline'), url("../font/lato/Lato-Hairline.ttf") format('tff');
+  src: local('Lato Hairline'), local('Lato-Hairline'), url("../fonts/lato/Lato-Hairline.woff") format('woff');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
-  src: local('Lato Book'), local('Lato-Light'), url("../../client/assets/embed/opensans400.woff") format('woff');
+  src: local('Lato Light'), local('Lato-Light'), url("../fonts/lato/Lato-Light.woff") format('woff');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url("../../client/assets/embed/opensans600.woff") format('woff');
+  src: local('Lato Regular'), local('Lato-Regular'), url("../fonts/lato/Lato-Regular.woff") format('woff');
 }
 body {
   margin: 0;
@@ -76,9 +75,17 @@ body {
   font-size: 62.5%;
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
-  text-shadow: 0 0.1rem 0.2rem #333333;
-  color: #cccccc;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+  color: #dddddd;
   transition: color 0.5s ease;
+}
+body > #wrapper {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 0;
 }
 body > div,
 body #apps > div {
@@ -86,13 +93,9 @@ body #apps > div {
   margin: 0 auto;
 }
 body a {
-  color: #cccccc;
+  color: #dddddd;
   text-decoration: none;
   font-size: 1rem;
-}
-body.dark #clock h1,
-body.dark #mails h1 {
-  color: #444444;
 }
 #actions {
   position: absolute;
@@ -116,6 +119,106 @@ body.dark #mails h1 {
   100% {
     transform: rotate(359deg);
   }
+}
+body.light #clock h1,
+body.light #mails h1 {
+  color: #dddddd !important;
+}
+body.dark #clock h1,
+body.dark #mails h1 {
+  color: #333333 !important;
+}
+#wrapper {
+  transition: background 0.8s ease;
+}
+#wrapper.theBeach {
+  background: url("../images/beach.jpg") top center;
+}
+#wrapper.theBeach #clock h1,
+#wrapper.theBeach #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.blueprint {
+  background: url("../images/blueprint.png") top center;
+}
+#wrapper.blueprint #clock h1,
+#wrapper.blueprint #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.bookeh {
+  background: url("../images/bookeh.jpg") top center;
+}
+#wrapper.bookeh #clock h1,
+#wrapper.bookeh #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.linenDark {
+  background: url("../images/dark-linen.png") top center;
+  font-weight: 100;
+}
+#wrapper.linenDark #clock h1,
+#wrapper.linenDark #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.linenLight {
+  background: url("../images/light-linen.png") top center;
+}
+#wrapper.linenLight #clock h1,
+#wrapper.linenLight #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.linenLight {
+  background: url("../images/light-linen.png") top center;
+}
+#wrapper.linenLight #clock h1,
+#wrapper.linenLight #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.filthyTile {
+  background: url("../images/filthy-tile.jpg") top center;
+}
+#wrapper.filthyTile #clock h1,
+#wrapper.filthyTile #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.greyWash {
+  background: url("../images/grey_wash_wall.png") top center;
+}
+#wrapper.greyWash #clock h1,
+#wrapper.greyWash #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.navyBlue {
+  background: url("../images/navy_blue.png") top center;
+}
+#wrapper.navyBlue #clock h1,
+#wrapper.navyBlue #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.redWine {
+  background: url("../images/red-blur.jpg") top center;
+}
+#wrapper.redWine #clock h1,
+#wrapper.redWine #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.redMesh {
+  background: url("../images/red-mesh.jpg") top center;
+}
+#wrapper.redMesh #clock h1,
+#wrapper.redMesh #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
 }
 #clock {
   display: inline-block;
@@ -145,7 +248,7 @@ body.dark #mails h1 {
   top: 1.75rem;
 }
 #clock .flip-clock-wrapper .flip-clock-divider .flip-clock-dot {
-  background-color: #cccccc;
+  background-color: #dddddd;
 }
 #clock .flip-clock-wrapper ul {
   font: normal 11px "Lato", sans-serif;
@@ -154,7 +257,7 @@ body.dark #mails h1 {
   height: 9rem;
   font-size: 10rem;
   line-height: 8.7rem;
-  color: #cccccc;
+  color: #dddddd;
 }
 #clock .flip-clock-wrapper ul li a {
   cursor: default;
@@ -174,7 +277,7 @@ body.dark #mails h1 {
   box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem rgba(0, 0, 0, 0.4);
   padding-bottom: 0.7rem;
   margin: 20px 0 0 0;
-  bottom: -11px;
+  bottom: -12px;
 }
 #apps .bx-wrapper .bx-viewport {
   background: none;
@@ -280,7 +383,7 @@ body.dark #mails h1 {
   font-size: 3rem;
   margin: 0;
   font-weight: 100;
-  text-shadow: 0 0.1rem 0.2rem #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
 }
 #mails .unread h1 {
   font-size: 2.5rem;
@@ -375,7 +478,7 @@ body.dark #mails h1 {
   font-size: 1.75rem;
   position: relative;
   padding-left: 2rem;
-  color: #444444;
+  color: #333333;
 }
 #options label:after,
 #options label:before {
@@ -395,7 +498,7 @@ body.dark #mails h1 {
 }
 #options label:before {
   opacity: 0;
-  color: #cccccc;
+  color: #dddddd;
   z-index: 20;
   font-size: 1.25rem;
   transition: opacity 0.5s ease;

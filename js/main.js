@@ -1,5 +1,5 @@
 (function() {
-  var App, Body, Clock, Mail, Options,
+  var App, Body, Clock, Mail, Options, Wrapper,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -81,17 +81,16 @@
   Body = (function() {
     Body.prototype.$el = $('body');
 
-    Body.prototype.toggle_class = 'dark';
-
     function Body(options) {
       var _this = this;
       this.options = options != null ? options : window.options;
       this.dark = this.options.get(this.options.DARK_FONT);
       if (this.dark) {
-        this.$el.addClass(this.toggle_class);
+        this.$el.addClass('dark');
+        this.$el.removeClass('light');
       }
       this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
-        return _this.$el.toggleClass(_this.toggle_class, new_value);
+        return _this.$el.toggleClass('dark light');
       });
     }
 
@@ -201,12 +200,13 @@
   $(function() {
     var options;
     options = new Options(function() {
-      var app, body, clock, mail;
+      var app, body, clock, mail, wrapper;
       window.options = options;
       app = new App();
       mail = new Mail();
       clock = new Clock();
       body = new Body();
+      wrapper = new Wrapper();
       app.render();
       mail.render();
       return clock.render();
@@ -235,6 +235,43 @@
     Options.prototype.DARK_FONT = 'darkFontColor';
 
     Options.prototype.APP_GRAYSCALE = 'appGrayscale';
+
+    Options.prototype.THEME = 'theme';
+
+    Options.prototype.THEMES = {
+      THEBEACH: {
+        name: 'theBeach',
+        dark: true
+      },
+      BLUEPRINT: {
+        name: 'bluePrint'
+      },
+      BOOKEH: {
+        name: 'bookeh'
+      },
+      LINENDARK: {
+        name: 'linenDark'
+      },
+      LINENLIGHT: {
+        name: 'linenLight',
+        dark: true
+      },
+      FILTHYTILE: {
+        name: 'filthyTile'
+      },
+      GREYWASH: {
+        name: 'greyWash'
+      },
+      NAVYBLUE: {
+        name: 'navyBlue'
+      },
+      REDWINE: {
+        name: 'redWine'
+      },
+      REDMESH: {
+        name: 'redMesh'
+      }
+    };
 
     function Options(done) {
       this._triggerListener = __bind(this._triggerListener, this);
@@ -285,7 +322,48 @@
         grayApps: {
           name: this.APP_GRAYSCALE,
           value: Boolean(this.get(this.APP_GRAYSCALE))
-        }
+        },
+        theBeach: {
+          name: this.THEMES.THEBEACH.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.THEBEACH.name)
+        },
+        bluePrint: {
+          name: this.THEMES.BLUEPRINT.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.BLUEPRINT.name)
+        },
+        bookeh: {
+          name: this.THEMES.BOOKEH.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.BOOKEH.name)
+        },
+        linenDark: {
+          name: this.THEMES.LINENDARK.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.LINENDARK.name)
+        },
+        linenLight: {
+          name: this.THEMES.LINENLIGHT.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.LINENLIGHT.name)
+        },
+        filthyTile: {
+          name: this.THEMES.FILTHYTILE.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.FILTHYTILE.name)
+        },
+        greyWash: {
+          name: this.THEMES.GREYWASH.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.GREYWASH.name)
+        },
+        navyBlue: {
+          name: this.THEMES.NAVYBLUE.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.NAVYBLUE.name)
+        },
+        redWine: {
+          name: this.THEMES.REDWINE.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.REDWINE.name)
+        },
+        redMesh: {
+          name: this.THEMES.REDMESH.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.REDMESH.name)
+        },
+        theme: this.THEME
       }));
     };
 
@@ -312,13 +390,28 @@
     Options.prototype._registerInputChange = function() {
       var _this = this;
       return this.$el.on('change', 'input', function(e) {
-        return _this.set(e.target.name, e.target.checked, function() {
+        var value;
+        if (e.target.name === _this.THEME) {
+          value = e.target.value;
+        } else {
+          value = e.target.checked;
+        }
+        return _this.set(e.target.name, value, function() {
           var $target;
           $target = $(e.target).parent();
-          $target.addClass('saved');
-          return setTimeout((function() {
-            return $target.removeClass('saved');
-          }), 5000);
+          if (e.target.name === _this.THEME) {
+            return _this.set(_this.DARK_FONT, Boolean(_this.THEMES[e.target.value.toUpperCase()].dark), function() {
+              $target.addClass('saved');
+              return setTimeout((function() {
+                return $target.removeClass('saved');
+              }), 5000);
+            });
+          } else {
+            $target.addClass('saved');
+            return setTimeout((function() {
+              return $target.removeClass('saved');
+            }), 5000);
+          }
         });
       });
     };
@@ -355,6 +448,26 @@
     };
 
     return Options;
+
+  })();
+
+  Wrapper = (function() {
+    Wrapper.prototype.$el = $('#wrapper');
+
+    function Wrapper(options) {
+      var _this = this;
+      this.options = options != null ? options : window.options;
+      this.theme = this.options.get(this.options.THEME);
+      if (this.theme) {
+        this.$el.addClass(this.theme);
+      }
+      this.options.registerOnChange(this.options.THEME, function(new_value, old_value) {
+        _this.$el.removeClass();
+        return _this.$el.addClass(new_value);
+      });
+    }
+
+    return Wrapper;
 
   })();
 
