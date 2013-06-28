@@ -1,4 +1,39 @@
 @charset "UTF-8";
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spinReverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-359deg);
+  }
+}
+@-webkit-keyframes moveThumps {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes hideOnStart {
+  from {
+    right: -110%;
+  }
+  to {
+    right: 0;
+  }
+}
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -63,6 +98,9 @@
 .icon-default:before {
   content: "\e004";
 }
+html {
+  overflow: hidden;
+}
 body {
   margin: 0;
   padding: 0;
@@ -102,14 +140,6 @@ body h1 {
 }
 #options_btn:hover {
   -webkit-animation: spin 3s linear infinite;
-}
-@-webkit-keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(359deg);
-  }
 }
 #clock {
   display: inline-block;
@@ -174,7 +204,7 @@ body h1 {
   box-shadow: inset -3.2rem 4.5rem 0.8rem -4rem rgba(0, 0, 0, 0.4);
   padding-bottom: 0.7rem;
   margin: 20px 0 0 0;
-  bottom: -11px;
+  bottom: 0px;
   height: 110px;
 }
 #apps .bx-wrapper .bx-viewport {
@@ -248,6 +278,11 @@ body h1 {
   overflow: auto;
   width: 858px;
 }
+#mails > i {
+  font-size: 5rem;
+  margin-top: 3rem;
+  display: inline-block;
+}
 #mails .read h1 {
   padding-right: 3.5rem;
 }
@@ -256,17 +291,6 @@ body h1 {
   display: inline-block;
   position: absolute;
   -webkit-animation: moveThumps 1s ease 1 alternate;
-}
-@-webkit-keyframes moveThumps {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 #mails .read p {
   font-size: 1.5rem;
@@ -363,14 +387,6 @@ body h1 {
   overflow: auto;
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
 }
-@-webkit-keyframes hideOnStart {
-  from {
-    right: -110%;
-  }
-  to {
-    right: 0;
-  }
-}
 #options.show {
   transform: translateX(0%);
 }
@@ -433,6 +449,9 @@ body {
 }
 body.transition {
   transition: background 0.8s ease;
+}
+body.transition i.loader {
+  -webkit-animation: spinReverse 2s linear infinite;
 }
 body h1,
 body h1 + p {

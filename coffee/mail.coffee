@@ -31,11 +31,11 @@ class Mail
       count: Number($res.find('fullcount').text())
       account: $res.find('title').first().text().split('for ')[1]
 
-    @$el.append unread_html
-    @$el.find('ul').append mails_html
+    @$el.html unread_html
+    @$el.find('ul').html mails_html
 
   _showRead: ->
-    @$el.append @read_template()
+    @$el.html @read_template()
 
   _success: (data) =>
     $res = $(data)

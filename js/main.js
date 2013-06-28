@@ -13,7 +13,7 @@
 
     function App(options) {
       var _this = this;
-      this.options = options != null ? options : window.options;
+      this.options = options != null ? options : YANTRE.options;
       this._generate_html = __bind(this._generate_html, this);
       this.gray_scale = this.options.get(this.options.APP_GRAYSCALE);
       if (this.gray_scale) {
@@ -85,7 +85,7 @@
 
     function Basic(options) {
       var _this = this;
-      this.options = options != null ? options : window.options;
+      this.options = options != null ? options : YANTRE.options;
       this._handle_dark_font();
       this._handle_theme();
       $("#default_home").click(function() {
@@ -96,7 +96,7 @@
       });
       setTimeout((function() {
         return _this.$el.addClass('transition');
-      }), 500);
+      }), 100);
     }
 
     Basic.prototype._handle_dark_font = function() {
@@ -197,12 +197,12 @@
         count: Number($res.find('fullcount').text()),
         account: $res.find('title').first().text().split('for ')[1]
       });
-      this.$el.append(unread_html);
-      return this.$el.find('ul').append(mails_html);
+      this.$el.html(unread_html);
+      return this.$el.find('ul').html(mails_html);
     };
 
     Mail.prototype._showRead = function() {
-      return this.$el.append(this.read_template());
+      return this.$el.html(this.read_template());
     };
 
     Mail.prototype._success = function(data) {
@@ -438,7 +438,7 @@
     var options;
     return options = new Options(function() {
       var app, basic, clock, mail;
-      window.options = options;
+      YANTRE.options = options;
       basic = new Basic();
       app = new App();
       mail = new Mail();

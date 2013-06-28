@@ -3,7 +3,7 @@
   position: absolute;
   top: 3rem;
   right: -110%;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgb(210,210,210)), to(rgb(240,240,240)));
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(210,210,210,1)), to(rgba(240,240,240,1)));
   box-shadow: 0px 3px 10px @shadowColor;
   border-radius: @borderRadius 0 0 @borderRadius;
   transform: translateX(110%);
@@ -14,13 +14,7 @@
   min-height: 370px;
   height: calc(~"100% - 230px");
   overflow: auto;
-
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
-  @-webkit-keyframes hideOnStart { 
-    from { right: -110%; } 
-    to { right: 0; } 
-  }
-
   &.show { transform: translateX(0%); }
 
   h1, h2 { 
