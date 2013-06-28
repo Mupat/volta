@@ -9,19 +9,20 @@ class Options
   # constants for option names
   DARK_FONT: 'darkFontColor'
   APP_GRAYSCALE: 'appGrayscale'
-  THEME: 'theme'
+  THEME_KEY: 'theme'
 
-  THEMES:
-    THEBEACH: {name: 'theBeach', dark: true}
-    BLUEPRINTG: {name: 'bluePrintG'}
-    BLUEPRINTC: {name: 'bluePrintC'}
-    BOOKEH: {name: 'bookeh'}
-    LINENDARK: {name: 'linenDark', grayApps: true}
-    LINENLIGHT: {name: 'linenLight', dark: true}
-    FILTHYTILE: {name: 'filthyTile'}
-    NAVYBLUE: {name: 'navyBlue', grayApps: true}
-    REDWINE: {name: 'redWine'}
-    REDMESH: {name: 'redMesh'}
+  THEMES: [
+    {name: 'theBeach', darkFont: true}
+    {name: 'bluePrintGrungy'}
+    {name: 'bluePrintClean'}
+    {name: 'bookeh'}
+    {name: 'linenDark', grayApps: true}
+    {name: 'linenLight', darkFont: true}
+    {name: 'filthyTile'}
+    {name: 'navyBlue', grayApps: true}
+    {name: 'redWine'}
+    {name: 'redMesh'}
+  ]
 
   constructor: (done) ->
     @storage.get null, (options) =>
@@ -48,20 +49,16 @@ class Options
     @listener[key].push cb
 
   render: ->
-    @$el.html @template
+    data = 
       darkFont: { name: @DARK_FONT, value: Boolean(@get(@DARK_FONT)) }
       grayApps: { name: @APP_GRAYSCALE, value: Boolean(@get(@APP_GRAYSCALE)) }
-      theBeach: { name: @THEMES.THEBEACH.name, value: Boolean(@get(@THEME) is @THEMES.THEBEACH.name) }
-      bluePrintG: { name: @THEMES.BLUEPRINTG.name, value: Boolean(@get(@THEME) is @THEMES.BLUEPRINTG.name) }
-      bluePrintC: { name: @THEMES.BLUEPRINTC.name, value: Boolean(@get(@THEME) is @THEMES.BLUEPRINTC.name) }
-      bookeh: { name: @THEMES.BOOKEH.name, value: Boolean(@get(@THEME) is @THEMES.BOOKEH.name) }
-      linenDark: { name: @THEMES.LINENDARK.name, value: Boolean(@get(@THEME) is @THEMES.LINENDARK.name) }
-      linenLight: { name: @THEMES.LINENLIGHT.name, value: Boolean(@get(@THEME) is @THEMES.LINENLIGHT.name) }
-      filthyTile: { name: @THEMES.FILTHYTILE.name, value: Boolean(@get(@THEME) is @THEMES.FILTHYTILE.name) }
-      navyBlue: { name: @THEMES.NAVYBLUE.name, value: Boolean(@get(@THEME) is @THEMES.NAVYBLUE.name) }
-      redWine: { name: @THEMES.REDWINE.name, value: Boolean(@get(@THEME) is @THEMES.REDWINE.name) }
-      redMesh: { name: @THEMES.REDMESH.name, value: Boolean(@get(@THEME) is @THEMES.REDMESH.name) }
-      theme: @THEME
+      theme: @THEME_KEY
+      themes: {}
+
+    for theme in @THEMES
+      data.themes[theme.name] = name: @_prettify(theme.name), value: Boolean(@get(@THEME_KEY) is theme.name)
+
+    @$el.html @template data
 
   _registerBtnClick: ->
     css_class = 'show'
@@ -76,26 +73,26 @@ class Options
 
   _registerInputChange: ->
     @$el.on 'change', 'input', (e) =>
-      #console.log 'name', e.target.name
-      if e.target.name is @THEME then value = e.target.value else value = e.target.checked
+      if e.target.name is @THEME_KEY then value = e.target.value else value = e.target.checked
       @set e.target.name, value, =>
         $target = $(e.target).parent()
         
-        if e.target.name is @THEME
-          @set @DARK_FONT, Boolean(@THEMES[e.target.value.toUpperCase()].dark), ->
-            $target.addClass 'saved'    
-            setTimeout ( -> $target.removeClass 'saved'), 5000
-        else
-          $target.addClass 'saved'    
-          setTimeout ( -> $target.removeClass 'saved'), 5000
+        if e.target.name is @THEME_KEY
+          @_set_theme_options e.target.value
+        
+        # TODO: check if needed to show success?
+        $target.addClass 'saved'    
+        setTimeout ( -> $target.removeClass 'saved'), 5000
 
-        if e.target.name is @THEME
-          @set @APP_GRAYSCALE, Boolean(@THEMES[e.target.value.toUpperCase()].grayApps), ->
-            $target.addClass 'saved'    
-            setTimeout ( -> $target.removeClass 'saved'), 5000
-        else
-          $target.addClass 'saved'    
-          setTimeout ( -> $target.removeClass 'saved'), 5000
+  _set_theme_options: (input_value) ->
+    for theme in @THEMES
+      if @THEMES.name is input_value
+        darkFont = Boolean(theme.darkFont)
+        grayApps = Boolean(theme.grayApps)
+        break;
+        
+    @set @DARK_FONT, darkFont
+    @set @APP_GRAYSCALE, grayApps
 
   _getFullKey: (key) ->
     "#{@namespace}.#{key}"
@@ -108,3 +105,9 @@ class Options
       if @listener[key]
         for listener in @listener[key] 
           listener(value.newValue, value.oldValue) 
+
+  _prettify: (value) ->
+    value.replace(
+      /([a-z])([A-Z])/g, 
+      (match, l1, l2) -> "#{l1} #{l2}"
+    ).toLowerCase()

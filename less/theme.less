@@ -22,17 +22,16 @@
 @textShadowLight: 0 0.1rem 0.2rem #111;
 @textShadowDark: 0 0 0.4rem #000;
 
-
 body {
-// just light font theme
-  &.light #clock h1,
-  &.light #mails h1 { color: @lightFontColor !important; }
-}
+  &.dark {
+    h1,
+    h1 + p { color: @darkFontColor !important; }
+  }
 
-body {
-// just dark font theme
-  &.dark #clock h1,
-  &.dark #mails h1 { color: @darkFontColor !important; }
+  &.light {
+    h1,
+    h1 + p { color: @lightFontColor !important; }
+  }
 }
 
 // bof themes with BG
@@ -52,13 +51,21 @@ body {
       background-color: #54462d;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      font-weight: @fontWeightNormal;
-      color: @darkFontColor;
-      text-shadow: @textShadowLight;
-    }
   }
+
+  transition: background 0.8s ease;
+  background-position: top center;
+
+  // // The Beach Theme
+  // &.theBeach { 
+  //   background: url(@theBeach);
+  //   #clock h1,
+  //   #mails h1 {
+  //     font-weight: @fontWeightNormal;
+  //     color: @darkFontColor;
+  //     text-shadow: @textShadowLight;
+  //   }
+  // }
 
   // Blueprint Grungy Theme
   &.blueprintG { 
@@ -81,11 +88,6 @@ body {
       background-color: #063457;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      color: @lightFontColor;
-      text-shadow: @textShadowLight;
-    }
   }
 
   // Bookeh Theme
@@ -95,12 +97,14 @@ body {
       background-color: #0e2524;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      font-weight: @fontWeightNormal;
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
+
+    // background: url(@bookeh);
+    // #clock h1,
+    // #mails h1 {
+    //   font-weight: @fontWeightNormal;
+    //   color: @lightFontColor;
+    //   text-shadow: @textShadowDark;
+    // }
   }
 
   // Dark Linen Theme
@@ -110,12 +114,15 @@ body {
       background-color: #1a1a1a;
       transition: background-color 0.8s ease;
     }
-    font-weight: 100;
-    #clock h1,
-    #mails h1 {
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
+
+    // background: url(@linenDark);
+
+    // font-weight: 100;
+    // #clock h1,
+    // #mails h1 {
+    //   color: @lightFontColor;
+    //   text-shadow: @textShadowDark;
+    // }
   }
 
   // Light Linen Theme
@@ -125,15 +132,29 @@ body {
       background-color: #333;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      color: @darkFontColor;
-      text-shadow: @textShadowLight;
-    }
+
+    // background: url(@linenLight);
+    // #clock h1,
+    // #mails h1 {
+    //   color: @darkFontColor;
+    //   text-shadow: @textShadowLight;
+    // }
   }
+
+  // // Light Linen Theme
+  // &.linenLight { 
+  //   background: url(@linenLight);
+
+  //   #clock h1,
+  //   #mails h1 {
+  //     color: @darkFontColor;
+  //     text-shadow: @textShadowLight;
+  //   }
+  // }
 
   // Filthy Tile Theme
   &.filthyTile { 
+
     background: url(@filthyTile) top center;
     .inn { 
       background-color: #0d0e09;
@@ -145,13 +166,25 @@ body {
         transition: background-color 0.8s ease;
       }
     }
-    #clock h1,
-    #mails h1 {
-      font-weight: @fontWeightNormal;
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
+
+    // background: url(@filthyTile);
+    // #clock h1,
+    // #mails h1 {
+    //   color: @lightFontColor;
+    //   text-shadow: @textShadowDark;
+    // }
   }
+
+  // // Grey Wash Theme
+  // &.greyWash { 
+  //   background: url(@greyWash);
+  //   #clock h1,
+  //   #mails h1 {
+  //     font-weight: @fontWeightNormal;
+  //     color: @lightFontColor;
+  //     text-shadow: @textShadowDark;
+  //   }
+  // }
 
   // Navy Blue Theme
   &.navyBlue { 
@@ -160,11 +193,13 @@ body {
       background-color: #35383d;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
+
+    // background: url(@navyBlue);
+    // #clock h1,
+    // #mails h1 {
+    //   color: @lightFontColor;
+    //   text-shadow: @textShadowDark;
+    // }
   }
 
   // Red Wine Theme
@@ -174,11 +209,13 @@ body {
       background-color: #1f0d06;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
+
+    // background: url(@redWine);
+    // #clock h1,
+    // #mails h1 {
+    //   color: @lightFontColor;
+    //   text-shadow: @textShadowDark;
+    // }
   }
 
   // Red Mesh Theme
@@ -188,14 +225,17 @@ body {
       background-color: #191513;
       transition: background-color 0.8s ease;
     }
-    #clock h1,
-    #mails h1 {
-      font-weight: @fontWeightNormal;
-      color: @lightFontColor;
-      text-shadow: @textShadowDark;
-    }
+
+    // background: url(@redMesh);
+    // #clock h1,
+    // #mails h1 {
+    //   font-weight: @fontWeightNormal;
+    //   color: @lightFontColor;
+    //   text-shadow: @textShadowDark;
+    // }
   }
-  transition: background 0.8s ease;
+
+  // transition: background 0.8s ease;
   //transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 // eof themes with BG
 }

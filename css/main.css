@@ -1,8 +1,26 @@
 @charset "UTF-8";
 @font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url("../fonts/lato/Lato-Hairline.woff") format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url("../fonts/lato/Lato-Light.woff") format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url("../fonts/lato/Lato-Regular.woff") format('woff');
+}
+@font-face {
   font-family: "yantre";
   src: url("../fonts/yantre.eot");
-  src: url("../fonts/yantre.eot?#iefix") format("embedded-opentype"), url("../fonts/yantre.woff") format("truetype"), url("../fonts/yantre.svg#yantre") format("svg"), url("../fonts/yantre.woff") format("woff");
+  src: url("../fonts/yantre.eot?#iefix") format("embedded-opentype"), url("../fonts/yantre.woff") format("truetype"), url("../fonts/yantre.fonts_path_yantresvg#yantre") format("svg"), url("../fonts/yantre.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -45,24 +63,6 @@
 .icon-default:before {
   content: "\e004";
 }
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Lato Hairline'), local('Lato-Hairline'), url("../fonts/lato/Lato-Hairline.woff") format('woff');
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url("../fonts/lato/Lato-Light.woff") format('woff');
-}
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url("../fonts/lato/Lato-Regular.woff") format('woff');
-}
 body {
   margin: 0;
   padding: 0;
@@ -80,7 +80,7 @@ body > #wrapper {
   padding: 0;
   top: 0;
   bottom: 0;
-  background: url("../images/dark-linen.png") top center;
+  background: url("../images/light-linen.png") top center;
   transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
@@ -96,6 +96,9 @@ body a {
   color: #dddddd;
   text-decoration: none;
   font-size: 1rem;
+}
+body h1 {
+  transition: color 0.5s ease;
 }
 #actions {
   position: absolute;
@@ -284,7 +287,6 @@ body a {
   font-size: 3rem;
   margin: 0;
   font-weight: 100;
-  text-shadow: 0 0.1rem 0.2rem #111111;
 }
 #mails .unread h1 {
   font-size: 2.5rem;
@@ -423,19 +425,20 @@ body a {
 #options input:checked + label:before {
   opacity: 1;
 }
-body.light #clock h1,
-body.light #mails h1 {
-  color: #dddddd !important;
-}
-body.dark #clock h1,
-body.dark #mails h1 {
+body.dark h1,
+body.dark h1 + p {
   color: #333333 !important;
+}
+body.light h1,
+body.light h1 + p {
+  color: #dddddd !important;
 }
 #wrapper {
   transition: background 0.8s ease;
+  background-position: top center;
 }
 #wrapper.reset {
-  background: url("../images/dark-linen.png") top center;
+  background: url("../images/light-linen.png") top center;
   transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
@@ -448,12 +451,6 @@ body.dark #mails h1 {
 #wrapper.theBeach .inn {
   background-color: #54462d;
   transition: background-color 0.8s ease;
-}
-#wrapper.theBeach #clock h1,
-#wrapper.theBeach #mails h1 {
-  font-weight: 300;
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
 }
 #wrapper.blueprintG {
   background: url("../images/blueprint.jpg") top center;
@@ -474,11 +471,6 @@ body.dark #mails h1 {
   background-color: #063457;
   transition: background-color 0.8s ease;
 }
-#wrapper.blueprintC #clock h1,
-#wrapper.blueprintC #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
 #wrapper.bookeh {
   background: url("../images/bookeh.jpg") top center;
 }
@@ -486,24 +478,12 @@ body.dark #mails h1 {
   background-color: #0e2524;
   transition: background-color 0.8s ease;
 }
-#wrapper.bookeh #clock h1,
-#wrapper.bookeh #mails h1 {
-  font-weight: 300;
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
 #wrapper.linenDark {
   background: url("../images/dark-linen.png") top center;
-  font-weight: 100;
 }
 #wrapper.linenDark .inn {
   background-color: #1a1a1a;
   transition: background-color 0.8s ease;
-}
-#wrapper.linenDark #clock h1,
-#wrapper.linenDark #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
 }
 #wrapper.linenLight {
   background: url("../images/light-linen.png") top center;
@@ -511,11 +491,6 @@ body.dark #mails h1 {
 #wrapper.linenLight .inn {
   background-color: #333;
   transition: background-color 0.8s ease;
-}
-#wrapper.linenLight #clock h1,
-#wrapper.linenLight #mails h1 {
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
 }
 #wrapper.filthyTile {
   background: url("../images/filthy-tile.jpg") top center;
@@ -531,23 +506,12 @@ body.dark #mails h1 {
   background-color: rgba(54, 53, 47, 0.2);
   transition: background-color 0.8s ease;
 }
-#wrapper.filthyTile #clock h1,
-#wrapper.filthyTile #mails h1 {
-  font-weight: 300;
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
 #wrapper.navyBlue {
   background: url("../images/navy_blue.jpg") top center;
 }
 #wrapper.navyBlue .inn {
   background-color: #35383d;
   transition: background-color 0.8s ease;
-}
-#wrapper.navyBlue #clock h1,
-#wrapper.navyBlue #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
 }
 #wrapper.redWine {
   background: url("../images/red-blur.jpg") top center;
@@ -556,21 +520,10 @@ body.dark #mails h1 {
   background-color: #1f0d06;
   transition: background-color 0.8s ease;
 }
-#wrapper.redWine #clock h1,
-#wrapper.redWine #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
 #wrapper.redMesh {
   background: url("../images/red-mesh.jpg") top center;
 }
 #wrapper.redMesh .inn {
   background-color: #191513;
   transition: background-color 0.8s ease;
-}
-#wrapper.redMesh #clock h1,
-#wrapper.redMesh #mails h1 {
-  font-weight: 300;
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
 }
