@@ -1,6 +1,6 @@
 $ ->
   options = new Options ->
-    window.options = options
+    YANTRE.options = options
 
     basic = new Basic()
     app = new App()

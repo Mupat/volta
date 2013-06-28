@@ -2,7 +2,7 @@ class Basic
   $el: $('body')
   dark_class: 'dark'
 
-  constructor: (@options = window.options) ->
+  constructor: (@options = YANTRE.options) ->
     @_handle_dark_font()
     @_handle_theme()
 

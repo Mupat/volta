@@ -4,7 +4,7 @@ class App
   max_elements: 6
   toggle_class: 'grayscale'
 
-  constructor: (@options = window.options) ->
+  constructor: (@options = YANTRE.options) ->
     @gray_scale = @options.get @options.APP_GRAYSCALE
     if @gray_scale then @$el.addClass @toggle_class
 
