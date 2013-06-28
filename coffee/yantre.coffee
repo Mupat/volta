@@ -8,5 +8,5 @@ $ ->
     clock = new Clock()
 
     app.render()
-    mail.render()
+    setTimeout ( -> mail.render()), 500
     clock.render()

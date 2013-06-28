@@ -10,7 +10,7 @@ class Basic
       chrome.tabs.update url: "chrome-internal://newtab/"
       false
 
-    setTimeout ( => @$el.addClass 'transition'), 100
+    setTimeout ( => @$el.addClass 'transition'), 25
 
   _handle_dark_font: ->
     @dark = @options.get @options.DARK_FONT

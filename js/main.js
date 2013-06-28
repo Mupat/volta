@@ -96,7 +96,7 @@
       });
       setTimeout((function() {
         return _this.$el.addClass('transition');
-      }), 100);
+      }), 25);
     }
 
     Basic.prototype._handle_dark_font = function() {
@@ -191,18 +191,20 @@
     };
 
     Mail.prototype._showUnread = function($res) {
-      var mails_html, unread_html;
+      var mails_html, unread_html,
+        _this = this;
       mails_html = this._generate_html($res);
       unread_html = this.unread_template({
         count: Number($res.find('fullcount').text()),
         account: $res.find('title').first().text().split('for ')[1]
       });
-      this.$el.html(unread_html);
-      return this.$el.find('ul').html(mails_html);
+      return this._putInDom(unread_html, function() {
+        return _this.$el.find('ul').html(mails_html);
+      });
     };
 
     Mail.prototype._showRead = function() {
-      return this.$el.html(this.read_template());
+      return this._putInDom(this.read_template());
     };
 
     Mail.prototype._success = function(data) {
@@ -217,6 +219,18 @@
 
     Mail.prototype._error = function(data) {
       return console.error('failed', data);
+    };
+
+    Mail.prototype._putInDom = function(html, done) {
+      var _this = this;
+      if (done == null) {
+        done = function() {};
+      }
+      console.log('toput', html);
+      return this.$el.fadeOut(400, function() {
+        _this.$el.html(html);
+        return _this.$el.fadeIn(400, done);
+      });
     };
 
     return Mail;
@@ -444,7 +458,9 @@
       mail = new Mail();
       clock = new Clock();
       app.render();
-      mail.render();
+      setTimeout((function() {
+        return mail.render();
+      }), 500);
       return clock.render();
     });
   });

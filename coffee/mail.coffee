@@ -31,11 +31,11 @@ class Mail
       count: Number($res.find('fullcount').text())
       account: $res.find('title').first().text().split('for ')[1]
 
-    @$el.html unread_html
-    @$el.find('ul').html mails_html
+    @_putInDom unread_html, =>
+      @$el.find('ul').html mails_html
 
   _showRead: ->
-    @$el.html @read_template()
+    @_putInDom @read_template()
 
   _success: (data) =>
     $res = $(data)
@@ -46,3 +46,9 @@ class Mail
 
   _error:  (data) =>
     console.error 'failed', data
+
+  _putInDom: (html, done = ->)->
+    console.log 'toput', html
+    @$el.fadeOut 400, =>
+      @$el.html html
+      @$el.fadeIn 400, done
