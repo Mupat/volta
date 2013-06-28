@@ -20,10 +20,18 @@
 
   &.show { transform: translateY(0%); }
 
+  h1 { 
+    font-size: 1.75rem; 
+    color: #999; 
+    margin: 0.25rem;
+    text-shadow: none;
+  }
+
   label {
     cursor: pointer;
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     position: relative;
+    line-height: 2rem;
     padding-left: 2rem;
     color: @darkFontColor;
 
@@ -31,7 +39,7 @@
     &:before {
       position: absolute;
       left: 0;
-      top: 0.25rem;
+      top: 0.15rem;
     }
 
     &:after {
@@ -50,7 +58,7 @@
       z-index: 20;
       font-size: 1.25rem;
       transition: opacity 0.5s ease;
-      top: 0.4rem;
+      top: 0.2rem;
       left: 0.15rem;
     }
   }

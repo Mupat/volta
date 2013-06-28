@@ -120,110 +120,6 @@ body a {
     transform: rotate(359deg);
   }
 }
-body.light #clock h1,
-body.light #mails h1 {
-  color: #dddddd !important;
-}
-body.dark #clock h1,
-body.dark #mails h1 {
-  color: #333333 !important;
-}
-#wrapper {
-  transition: background 0.8s ease;
-}
-#wrapper.reset {
-  background: url("../images/dark-linen.png") top center;
-  transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font: normal 11px "Lato", sans-serif;
-  font-weight: 300;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-  color: #dddddd;
-}
-#wrapper.theBeach {
-  background: url("../images/beach.jpg") top center;
-}
-#wrapper.theBeach #clock h1,
-#wrapper.theBeach #mails h1 {
-  font-weight: 300;
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.blueprint {
-  background: url("../images/blueprint.png") top center;
-}
-#wrapper.blueprint #clock h1,
-#wrapper.blueprint #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.bookeh {
-  background: url("../images/bookeh.jpg") top center;
-}
-#wrapper.bookeh #clock h1,
-#wrapper.bookeh #mails h1 {
-  font-weight: 300;
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.linenDark {
-  background: url("../images/dark-linen.png") top center;
-  font-weight: 100;
-}
-#wrapper.linenDark #clock h1,
-#wrapper.linenDark #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.linenLight {
-  background: url("../images/light-linen.png") top center;
-}
-#wrapper.linenLight #clock h1,
-#wrapper.linenLight #mails h1 {
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.linenLight {
-  background: url("../images/light-linen.png") top center;
-}
-#wrapper.linenLight #clock h1,
-#wrapper.linenLight #mails h1 {
-  color: #333333;
-  text-shadow: 0 0.1rem 0.2rem #111111;
-}
-#wrapper.filthyTile {
-  background: url("../images/filthy-tile.jpg") top center;
-}
-#wrapper.filthyTile #clock h1,
-#wrapper.filthyTile #mails h1 {
-  font-weight: 300;
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.navyBlue {
-  background: url("../images/navy_blue.png") top center;
-}
-#wrapper.navyBlue #clock h1,
-#wrapper.navyBlue #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.redWine {
-  background: url("../images/red-blur.jpg") top center;
-}
-#wrapper.redWine #clock h1,
-#wrapper.redWine #mails h1 {
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
-#wrapper.redMesh {
-  background: url("../images/red-mesh.jpg") top center;
-}
-#wrapper.redMesh #clock h1,
-#wrapper.redMesh #mails h1 {
-  font-weight: 300;
-  color: #dddddd;
-  text-shadow: 0 0 0.4rem #000000;
-}
 #clock {
   display: inline-block;
   border-radius: 6px;
@@ -436,7 +332,7 @@ body.dark #mails h1 {
 #mails .unread + ul > li a .info li {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0.2rem 0.4rem 0 0;
   text-align: right;
 }
 #mails .unread + ul > li a .info li:first-child strong {
@@ -478,10 +374,17 @@ body.dark #mails h1 {
 #options.show {
   transform: translateY(0%);
 }
+#options h1 {
+  font-size: 1.75rem;
+  color: #999;
+  margin: 0.25rem;
+  text-shadow: none;
+}
 #options label {
   cursor: pointer;
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   position: relative;
+  line-height: 2rem;
   padding-left: 2rem;
   color: #333333;
 }
@@ -489,7 +392,7 @@ body.dark #mails h1 {
 #options label:before {
   position: absolute;
   left: 0;
-  top: 0.25rem;
+  top: 0.15rem;
 }
 #options label:after {
   content: '';
@@ -507,7 +410,7 @@ body.dark #mails h1 {
   z-index: 20;
   font-size: 1.25rem;
   transition: opacity 0.5s ease;
-  top: 0.4rem;
+  top: 0.2rem;
   left: 0.15rem;
 }
 #options input {
@@ -515,4 +418,155 @@ body.dark #mails h1 {
 }
 #options input:checked + label:before {
   opacity: 1;
+}
+body.light #clock h1,
+body.light #mails h1 {
+  color: #dddddd !important;
+}
+body.dark #clock h1,
+body.dark #mails h1 {
+  color: #333333 !important;
+}
+#wrapper {
+  transition: background 0.8s ease;
+}
+#wrapper.reset {
+  background: url("../images/dark-linen.png") top center;
+  transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font: normal 11px "Lato", sans-serif;
+  font-weight: 300;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+  color: #dddddd;
+}
+#wrapper.theBeach {
+  background: url("../images/beach.jpg") top center;
+}
+#wrapper.theBeach .inn {
+  background-color: #54462d;
+  transition: background-color 0.8s ease;
+}
+#wrapper.theBeach #clock h1,
+#wrapper.theBeach #mails h1 {
+  font-weight: 300;
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.blueprintG {
+  background: url("../images/blueprint.jpg") top center;
+}
+#wrapper.blueprintG .inn {
+  background-color: #063457;
+  transition: background-color 0.8s ease;
+}
+#wrapper.blueprintG #clock h1,
+#wrapper.blueprintG #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.blueprintC {
+  background: url("../images/blueprint.png") top center;
+}
+#wrapper.blueprintC .inn {
+  background-color: #063457;
+  transition: background-color 0.8s ease;
+}
+#wrapper.blueprintC #clock h1,
+#wrapper.blueprintC #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.bookeh {
+  background: url("../images/bookeh.jpg") top center;
+}
+#wrapper.bookeh .inn {
+  background-color: #0e2524;
+  transition: background-color 0.8s ease;
+}
+#wrapper.bookeh #clock h1,
+#wrapper.bookeh #mails h1 {
+  font-weight: 300;
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.linenDark {
+  background: url("../images/dark-linen.png") top center;
+  font-weight: 100;
+}
+#wrapper.linenDark .inn {
+  background-color: #1a1a1a;
+  transition: background-color 0.8s ease;
+}
+#wrapper.linenDark #clock h1,
+#wrapper.linenDark #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.linenLight {
+  background: url("../images/light-linen.png") top center;
+}
+#wrapper.linenLight .inn {
+  background-color: #333;
+  transition: background-color 0.8s ease;
+}
+#wrapper.linenLight #clock h1,
+#wrapper.linenLight #mails h1 {
+  color: #333333;
+  text-shadow: 0 0.1rem 0.2rem #111111;
+}
+#wrapper.filthyTile {
+  background: url("../images/filthy-tile.jpg") top center;
+}
+#wrapper.filthyTile .inn {
+  background-color: #0d0e09;
+  transition: background-color 0.8s ease;
+}
+#wrapper.filthyTile #clock {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#wrapper.filthyTile #clock .flip-clock-wrapper {
+  background-color: rgba(54, 53, 47, 0.2);
+  transition: background-color 0.8s ease;
+}
+#wrapper.filthyTile #clock h1,
+#wrapper.filthyTile #mails h1 {
+  font-weight: 300;
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.navyBlue {
+  background: url("../images/navy_blue.jpg") top center;
+}
+#wrapper.navyBlue .inn {
+  background-color: #35383d;
+  transition: background-color 0.8s ease;
+}
+#wrapper.navyBlue #clock h1,
+#wrapper.navyBlue #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.redWine {
+  background: url("../images/red-blur.jpg") top center;
+}
+#wrapper.redWine .inn {
+  background-color: #1f0d06;
+  transition: background-color 0.8s ease;
+}
+#wrapper.redWine #clock h1,
+#wrapper.redWine #mails h1 {
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
+}
+#wrapper.redMesh {
+  background: url("../images/red-mesh.jpg") top center;
+}
+#wrapper.redMesh .inn {
+  background-color: #191513;
+  transition: background-color 0.8s ease;
+}
+#wrapper.redMesh #clock h1,
+#wrapper.redMesh #mails h1 {
+  font-weight: 300;
+  color: #dddddd;
+  text-shadow: 0 0 0.4rem #000000;
 }

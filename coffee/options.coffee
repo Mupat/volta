@@ -13,7 +13,8 @@ class Options
 
   THEMES:
     THEBEACH: {name: 'theBeach', dark: true}
-    BLUEPRINT: {name: 'bluePrint'}
+    BLUEPRINTG: {name: 'bluePrintG'}
+    BLUEPRINTC: {name: 'bluePrintC'}
     BOOKEH: {name: 'bookeh'}
     LINENDARK: {name: 'linenDark', grayApps: true}
     LINENLIGHT: {name: 'linenLight', dark: true}
@@ -51,7 +52,8 @@ class Options
       darkFont: { name: @DARK_FONT, value: Boolean(@get(@DARK_FONT)) }
       grayApps: { name: @APP_GRAYSCALE, value: Boolean(@get(@APP_GRAYSCALE)) }
       theBeach: { name: @THEMES.THEBEACH.name, value: Boolean(@get(@THEME) is @THEMES.THEBEACH.name) }
-      bluePrint: { name: @THEMES.BLUEPRINT.name, value: Boolean(@get(@THEME) is @THEMES.BLUEPRINT.name) }
+      bluePrintG: { name: @THEMES.BLUEPRINTG.name, value: Boolean(@get(@THEME) is @THEMES.BLUEPRINTG.name) }
+      bluePrintC: { name: @THEMES.BLUEPRINTC.name, value: Boolean(@get(@THEME) is @THEMES.BLUEPRINTC.name) }
       bookeh: { name: @THEMES.BOOKEH.name, value: Boolean(@get(@THEME) is @THEMES.BOOKEH.name) }
       linenDark: { name: @THEMES.LINENDARK.name, value: Boolean(@get(@THEME) is @THEMES.LINENDARK.name) }
       linenLight: { name: @THEMES.LINENLIGHT.name, value: Boolean(@get(@THEME) is @THEMES.LINENLIGHT.name) }

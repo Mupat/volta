@@ -243,8 +243,11 @@
         name: 'theBeach',
         dark: true
       },
-      BLUEPRINT: {
-        name: 'bluePrint'
+      BLUEPRINTG: {
+        name: 'bluePrintG'
+      },
+      BLUEPRINTC: {
+        name: 'bluePrintC'
       },
       BOOKEH: {
         name: 'bookeh'
@@ -326,9 +329,13 @@
           name: this.THEMES.THEBEACH.name,
           value: Boolean(this.get(this.THEME) === this.THEMES.THEBEACH.name)
         },
-        bluePrint: {
-          name: this.THEMES.BLUEPRINT.name,
-          value: Boolean(this.get(this.THEME) === this.THEMES.BLUEPRINT.name)
+        bluePrintG: {
+          name: this.THEMES.BLUEPRINTG.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.BLUEPRINTG.name)
+        },
+        bluePrintC: {
+          name: this.THEMES.BLUEPRINTC.name,
+          value: Boolean(this.get(this.THEME) === this.THEMES.BLUEPRINTC.name)
         },
         bookeh: {
           name: this.THEMES.BOOKEH.name,
