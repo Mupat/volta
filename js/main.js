@@ -79,11 +79,12 @@
   })();
 
   Basic = (function() {
-    Basic.prototype.$body = $('body');
+    Basic.prototype.$el = $('body');
 
     Basic.prototype.dark_class = 'dark';
 
     function Basic(options) {
+      var _this = this;
       this.options = options != null ? options : window.options;
       this._handle_dark_font();
       this._handle_theme();
@@ -93,16 +94,19 @@
         });
         return false;
       });
+      setTimeout((function() {
+        return _this.$el.addClass('transition');
+      }), 500);
     }
 
     Basic.prototype._handle_dark_font = function() {
       var _this = this;
       this.dark = this.options.get(this.options.DARK_FONT);
       if (this.dark) {
-        this.$body.toggleClass(this.dark_class);
+        this.$el.toggleClass(this.dark_class);
       }
       return this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
-        return _this.$body.toggleClass(_this.dark_class);
+        return _this.$el.toggleClass(_this.dark_class);
       });
     };
 
@@ -110,10 +114,10 @@
       var _this = this;
       this.theme = this.options.get(this.options.THEME_KEY);
       if (this.theme) {
-        this.$body.addClass(this.theme);
+        this.$el.addClass(this.theme);
       }
       return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
-        return _this.$body.toggleClass("" + old_value + " " + new_value);
+        return _this.$el.toggleClass("" + old_value + " " + new_value);
       });
     };
 

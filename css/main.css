@@ -424,13 +424,15 @@ body h1 {
   opacity: 1;
 }
 body {
-  transition: background 0.8s ease;
   background-position: top center;
-  background: url("../images/light-linen.png");
+  background-color: #333;
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
   text-shadow: 0 0.1rem 0.2rem #333333;
   color: #cccccc;
+}
+body.transition {
+  transition: background 0.8s ease;
 }
 body h1,
 body h1 + p {
