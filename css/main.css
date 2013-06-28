@@ -91,6 +91,7 @@ body h1 {
   position: absolute;
   right: 0rem;
   top: 0.5rem;
+  z-index: 5;
 }
 #actions > i,
 #actions a {
@@ -347,28 +348,31 @@ body h1 {
 #options {
   width: 350px;
   position: absolute;
-  left: calc(50% - 175px);
-  top: -110%;
+  top: 3rem;
+  right: -110%;
   background: -webkit-gradient(linear, left top, left bottom, from(#d2d2d2), to(#f0f0f0));
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
-  border-radius: 0 0 6px 6px;
-  transform: translateY(-110%);
+  border-radius: 6px 0 0 6px;
+  transform: translateX(110%);
   transition: transform 0.5s ease-out;
   z-index: 9999;
   text-align: left;
   padding: 1rem 2rem;
+  min-height: 370px;
+  height: calc(100% - 230px);
+  overflow: auto;
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
 }
 @-webkit-keyframes hideOnStart {
   from {
-    top: -110%;
+    right: -110%;
   }
   to {
-    top: 0;
+    right: 0;
   }
 }
 #options.show {
-  transform: translateY(0%);
+  transform: translateX(0%);
 }
 #options h1,
 #options h2 {

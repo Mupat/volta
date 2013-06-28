@@ -1,24 +1,27 @@
 #options {
   width: 350px;
   position: absolute;
-  left: calc(~"50% - 175px");
-  top: -110%;
+  top: 3rem;
+  right: -110%;
   background: -webkit-gradient(linear, left top, left bottom, from(rgb(210,210,210)), to(rgb(240,240,240)));
   box-shadow: 0px 3px 10px @shadowColor;
-  border-radius: 0 0 @borderRadius @borderRadius;
-  transform: translateY(-110%);
+  border-radius: @borderRadius 0 0 @borderRadius;
+  transform: translateX(110%);
   transition: transform .5s ease-out;
   z-index: 9999;
   text-align: left;
   padding: 1rem 2rem;
+  min-height: 370px;
+  height: calc(~"100% - 230px");
+  overflow: auto;
 
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
   @-webkit-keyframes hideOnStart { 
-    from { top: -110%; } 
-    to { top: 0; } 
+    from { right: -110%; } 
+    to { right: 0; } 
   }
 
-  &.show { transform: translateY(0%); }
+  &.show { transform: translateX(0%); }
 
   h1, h2 { 
     font-size: 1.75rem; 
