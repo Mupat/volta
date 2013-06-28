@@ -1,5 +1,5 @@
 (function() {
-  var App, Basic, Clock, Mail, Options, Wrapper,
+  var App, Basic, Clock, Mail, Options,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -81,10 +81,6 @@
   Basic = (function() {
     Basic.prototype.$body = $('body');
 
-    Basic.prototype.$wrapper = $('#wrapper');
-
-    Basic.prototype.light_class = 'light';
-
     Basic.prototype.dark_class = 'dark';
 
     function Basic(options) {
@@ -103,10 +99,10 @@
       var _this = this;
       this.dark = this.options.get(this.options.DARK_FONT);
       if (this.dark) {
-        this.$body.toggleClass("" + this.dark_class + " " + this.light_class);
+        this.$body.toggleClass(this.dark_class);
       }
       return this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
-        return _this.$body.toggleClass("" + _this.dark_class + " " + _this.light_class);
+        return _this.$body.toggleClass(_this.dark_class);
       });
     };
 
@@ -114,11 +110,10 @@
       var _this = this;
       this.theme = this.options.get(this.options.THEME_KEY);
       if (this.theme) {
-        this.$wrapper.addClass(this.theme);
+        this.$body.addClass(this.theme);
       }
       return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
-        _this.$wrapper.removeClass();
-        return _this.$wrapper.addClass(new_value);
+        return _this.$body.toggleClass("" + old_value + " " + new_value);
       });
     };
 
@@ -384,7 +379,7 @@
       _ref = this.THEMES;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         theme = _ref[_i];
-        if (this.THEMES.name === input_value) {
+        if (theme.name === input_value) {
           darkFont = Boolean(theme.darkFont);
           grayApps = Boolean(theme.grayApps);
           break;
@@ -432,33 +427,6 @@
     };
 
     return Options;
-
-  })();
-
-  Wrapper = (function() {
-    Wrapper.prototype.$el = $('#wrapper');
-
-    Wrapper.prototype.$apps = $('#apps');
-
-    function Wrapper(options) {
-      var _this = this;
-      this.options = options != null ? options : window.options;
-      this.theme = this.options.get(this.options.THEME);
-      if (this.theme) {
-        this.$el.addClass(this.theme);
-      }
-      if (this.theme) {
-        this.$apps.addClass(this.theme);
-      }
-      this.options.registerOnChange(this.options.THEME, function(new_value, old_value) {
-        _this.$el.removeClass();
-        _this.$el.addClass(new_value);
-        _this.$apps.removeClass();
-        return _this.$apps.addClass(new_value);
-      });
-    }
-
-    return Wrapper;
 
   })();
 

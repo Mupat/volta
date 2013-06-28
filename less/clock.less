@@ -2,8 +2,12 @@
   display: inline-block;
   border-radius: @borderRadius;
   margin: 4rem auto 1rem;
-  background-color: rgba(0,0,0,0.2);
+  background-color: @clockDefaultBackgroundColor;
   position: relative;
+
+  &,
+  .flip-clock-wrapper,
+  div.inn { transition: background-color 0.8s ease; }
 
   h1 {
     position: absolute;
@@ -19,7 +23,7 @@
     width: auto;
     min-height: auto;
     display: inline-block;
-    background-color: rgba(15,15,15,0.5);
+    background-color: @clockWrapperDefaultBackgroundColor;
     padding: 2rem;
     border-radius: @borderRadius;
 

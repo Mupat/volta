@@ -86,7 +86,7 @@ class Options
 
   _set_theme_options: (input_value) ->
     for theme in @THEMES
-      if @THEMES.name is input_value
+      if theme.name is input_value
         darkFont = Boolean(theme.darkFont)
         grayApps = Boolean(theme.grayApps)
         break;

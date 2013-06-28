@@ -105,7 +105,7 @@ function program2(depth0,data) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += " />\n  <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">Use dark font color</label>\n</div>\n\n<div>\n  <input id=\""
+    + "\" class=\"icon-check\">use dark font color</label>\n</div>\n\n<div>\n  <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -116,7 +116,7 @@ function program2(depth0,data) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += " />\n  <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">Use grayscaled app icons</label> \n</div>\n";
+    + "\" class=\"icon-check\">use grayscaled app icons</label> \n</div>\n";
   return buffer;
   });
 

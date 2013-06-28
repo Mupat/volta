@@ -1,241 +1,86 @@
-// Default themes
-
-@theBeach: "../images/beach.jpg";
-@bluePrintG: "../images/blueprint.jpg";
-@bluePrintC: "../images/blueprint.png";
-@bookeh: "../images/bookeh.jpg";
-@linenDark: "../images/dark-linen.png";
-@linenLight: "../images/light-linen.png";
-@filthyTile: "../images/filthy-tile.jpg";
-@navyBlue: "../images/navy_blue.jpg";
-@redWine: "../images/red-blur.jpg";
-@redMesh: "../images/red-mesh.jpg";
-
-@font: normal 11px "Lato", sans-serif;
-@fontWeightLight: 100;
-@fontWeightNormal: 300;
-@fontWeightBold: 400;
-
-@lightFontColor: #ddd;
-@darkFontColor: #333;
-
-@textShadowLight: 0 0.1rem 0.2rem #111;
-@textShadowDark: 0 0 0.4rem #000;
-
-body {
-  &.dark {
-    h1,
-    h1 + p { color: @darkFontColor !important; }
-  }
-
-  &.light {
-    h1,
-    h1 + p { color: @lightFontColor !important; }
+.change_clock_background(@clockInnBackground, @clockBackground: @clockDefaultBackgroundColor, @clockWrapperBackground: @clockWrapperDefaultBackgroundColor) {
+  #clock {
+    background-color: @clockBackground;
+    .flip-clock-wrapper {
+      background-color: @clockWrapperBackground;
+      ul li a div div.inn { background-color: @clockInnBackground; }
+    }
   }
 }
 
-// bof themes with BG
-#wrapper {
-  &.reset {
-    background: url(@standardBackground) top center;
-    transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);  
-    font: @font;
-    font-weight: @fontWeightNormal;
-    text-shadow: @textShadowLight;
-    color: @lightFontColor;
-  }
-  // The Beach Theme
-  &.theBeach { 
-    background: url(@theBeach) top center;
-    .inn {
-      background-color: #54462d;
-      transition: background-color 0.8s ease;
-    }
-  }
-
+body { 
+  // transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: background 0.8s ease;
   background-position: top center;
+  background: url(@standardBackground);
+  font: @font;
+  font-weight: @fontWeightNormal;
+  text-shadow: @textShadowLight;
+  color: @lightFontColor;
 
-  // // The Beach Theme
-  // &.theBeach { 
-  //   background: url(@theBeach);
-  //   #clock h1,
-  //   #mails h1 {
-  //     font-weight: @fontWeightNormal;
-  //     color: @darkFontColor;
-  //     text-shadow: @textShadowLight;
-  //   }
-  // }
+  h1,
+  h1 + p { color: @lightFontColor; }
 
-  // Blueprint Grungy Theme
-  &.blueprintG { 
-    background: url(@bluePrintG) top center;
-    .inn {
-      background-color: #063457;
-      transition: background-color 0.8s ease;
-    }
-    #clock h1,
-    #mails h1 {
-      color: @lightFontColor;
-      text-shadow: @textShadowLight;
-    }
+  &.dark {
+    h1,
+    h1 + p { color: @darkFontColor; }
   }
 
-  // Blueprint Clean Theme
-  &.blueprintC { 
-    background: url(@bluePrintC) top center;
-    .inn {
-      background-color: #063457;
-      transition: background-color 0.8s ease;
-    }
+  // ---------------------- Theme classes ------------------------------
+  // The Beach Theme
+  &.theBeach { 
+    background: url(@theBeach);
+    .change_clock_background(#54462d);
   }
+
+  // Blueprint Themes
+  &.bluePrintGrungy,
+  &.bluePrintClean {
+    .change_clock_background(#063457);
+  }
+
+  &.bluePrintGrungy { background: url(@bluePrintGrungy); }
+  &.bluePrintClean { background: url(@bluePrintClean); }
 
   // Bookeh Theme
   &.bookeh { 
-    background: url(@bookeh) top center;
-    .inn {
-      background-color: #0e2524;
-      transition: background-color 0.8s ease;
-    }
-
-    // background: url(@bookeh);
-    // #clock h1,
-    // #mails h1 {
-    //   font-weight: @fontWeightNormal;
-    //   color: @lightFontColor;
-    //   text-shadow: @textShadowDark;
-    // }
+    background: url(@bookeh);
+    .change_clock_background(#0e2524);
   }
 
   // Dark Linen Theme
   &.linenDark { 
-    background: url(@linenDark) top center;
-    .inn {
-      background-color: #1a1a1a;
-      transition: background-color 0.8s ease;
-    }
-
-    // background: url(@linenDark);
-
-    // font-weight: 100;
-    // #clock h1,
-    // #mails h1 {
-    //   color: @lightFontColor;
-    //   text-shadow: @textShadowDark;
-    // }
+    background: url(@linenDark);
+    .change_clock_background(#1a1a1a);
   }
 
   // Light Linen Theme
   &.linenLight { 
-    background: url(@linenLight) top center;
-    .inn {
-      background-color: #333;
-      transition: background-color 0.8s ease;
-    }
-
-    // background: url(@linenLight);
-    // #clock h1,
-    // #mails h1 {
-    //   color: @darkFontColor;
-    //   text-shadow: @textShadowLight;
-    // }
+    background: url(@linenLight);
+    .change_clock_background(#333);
   }
-
-  // // Light Linen Theme
-  // &.linenLight { 
-  //   background: url(@linenLight);
-
-  //   #clock h1,
-  //   #mails h1 {
-  //     color: @darkFontColor;
-  //     text-shadow: @textShadowLight;
-  //   }
-  // }
 
   // Filthy Tile Theme
   &.filthyTile { 
-
-    background: url(@filthyTile) top center;
-    .inn { 
-      background-color: #0d0e09;
-      transition: background-color 0.8s ease;
-    }
-    #clock { background-color: rgba(0,0,0,0.5);
-      .flip-clock-wrapper { 
-        background-color: rgba(54,53,47,0.2);
-        transition: background-color 0.8s ease;
-      }
-    }
-
-    // background: url(@filthyTile);
-    // #clock h1,
-    // #mails h1 {
-    //   color: @lightFontColor;
-    //   text-shadow: @textShadowDark;
-    // }
+    background: url(@filthyTile);
+    .change_clock_background(#0d0e09, rgba(0,0,0,0.5), rgba(54,53,47,0.2));
   }
-
-  // // Grey Wash Theme
-  // &.greyWash { 
-  //   background: url(@greyWash);
-  //   #clock h1,
-  //   #mails h1 {
-  //     font-weight: @fontWeightNormal;
-  //     color: @lightFontColor;
-  //     text-shadow: @textShadowDark;
-  //   }
-  // }
 
   // Navy Blue Theme
   &.navyBlue { 
-    background: url(@navyBlue) top center;
-    .inn {
-      background-color: #35383d;
-      transition: background-color 0.8s ease;
-    }
-
-    // background: url(@navyBlue);
-    // #clock h1,
-    // #mails h1 {
-    //   color: @lightFontColor;
-    //   text-shadow: @textShadowDark;
-    // }
+    background: url(@navyBlue);
+    .change_clock_background(#35383d);
   }
 
   // Red Wine Theme
   &.redWine { 
-    background: url(@redWine) top center;
-    .inn {
-      background-color: #1f0d06;
-      transition: background-color 0.8s ease;
-    }
-
-    // background: url(@redWine);
-    // #clock h1,
-    // #mails h1 {
-    //   color: @lightFontColor;
-    //   text-shadow: @textShadowDark;
-    // }
+    background: url(@redWine);
+    .change_clock_background(#1f0d06);
   }
 
   // Red Mesh Theme
   &.redMesh { 
-    background: url(@redMesh) top center;
-    .inn {
-      background-color: #191513;
-      transition: background-color 0.8s ease;
-    }
-
-    // background: url(@redMesh);
-    // #clock h1,
-    // #mails h1 {
-    //   font-weight: @fontWeightNormal;
-    //   color: @lightFontColor;
-    //   text-shadow: @textShadowDark;
-    // }
+    background: url(@redMesh);
+    .change_clock_background(#191513);
   }
-
-  // transition: background 0.8s ease;
-  //transition: background 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-// eof themes with BG
 }
