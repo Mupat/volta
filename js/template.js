@@ -114,7 +114,18 @@ function program3(depth0,data,depth1) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += " />\n  <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">Use grayscaled app icons</label> \n</div>\n\n<hr>\n<h3>Themes</h3>\n";
+    + "\" class=\"icon-check\">Use grayscaled app icons</label> \n</div>\n\n<div>\n  <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.clock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"checkbox\" name=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.clock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.clock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.clock),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n  <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.clock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">Use 12 hours format</label> \n</div>\n\n<hr>\n<h3>Themes</h3>\n";
   stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n\n";

@@ -10,6 +10,7 @@ class Options
   DARK_FONT: 'darkFontColor'
   APP_GRAYSCALE: 'appGrayscale'
   THEME_KEY: 'theme'
+  CLOCKFACE_TWELVE: 'clockface'
 
   THEMES: [
     {name: 'theBeach', dark: true}
@@ -53,6 +54,7 @@ class Options
       darkFont: { name: @DARK_FONT, value: Boolean(@get(@DARK_FONT)) }
       grayApps: { name: @APP_GRAYSCALE, value: Boolean(@get(@APP_GRAYSCALE)) }
       theme: @THEME_KEY
+      clock: { name: @CLOCKFACE_TWELVE, value: Boolean(@get(@CLOCKFACE_TWELVE)) }
       themes: {}
 
     for theme in @THEMES

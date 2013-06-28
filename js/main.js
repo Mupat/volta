@@ -136,15 +136,39 @@
 
     Clock.prototype.locale = "en-US";
 
-    function Clock() {
+    Clock.prototype.clockface_twenty_four = 'TwentyFourHourClock';
+
+    Clock.prototype.clockface_twelve = 'TwelveHourClock';
+
+    Clock.prototype.$el = $('#clock');
+
+    function Clock(options) {
+      this.options = options != null ? options : window.options;
+      this._change_clockface = __bind(this._change_clockface, this);
       this.date = new Date().toLocaleDateString(this.locale, this.options);
+      this.clockface = this.clockface_twenty_four;
+      if (this.options.get(this.options.CLOCKFACE_TWELVE)) {
+        this.clockface = this.clockface_twelve;
+      }
+      this.options.registerOnChange(this.options.CLOCKFACE_TWELVE, this._change_clockface);
     }
 
     Clock.prototype.render = function() {
-      $('#clock > div').FlipClock({
-        clockFace: 'TwentyFourHourClock'
+      this.flipclock = this.$el.children('div').FlipClock({
+        clockFace: this.clockface
       });
-      return $('#clock > h1').text(this.date);
+      return this.$el.children('h1').text(this.date);
+    };
+
+    Clock.prototype._change_clockface = function(new_value, old_value) {
+      if (new_value) {
+        this.clockface = this.clockface_twelve;
+      } else {
+        this.clockface = this.clockface_twenty_four;
+      }
+      console.log('set clockface', this.clockface, this.flipclock);
+      this.flipclock.loadClockFace(this.clockface);
+      return this.flipclock = null;
     };
 
     return Clock;
@@ -243,6 +267,8 @@
 
     Options.prototype.THEME_KEY = 'theme';
 
+    Options.prototype.CLOCKFACE_TWELVE = 'clockface';
+
     Options.prototype.THEMES = [
       {
         name: 'theBeach',
@@ -321,6 +347,10 @@
           value: Boolean(this.get(this.APP_GRAYSCALE))
         },
         theme: this.THEME_KEY,
+        clock: {
+          name: this.CLOCKFACE_TWELVE,
+          value: Boolean(this.get(this.CLOCKFACE_TWELVE))
+        },
         themes: {}
       };
       _ref = this.THEMES;

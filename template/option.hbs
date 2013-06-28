@@ -8,6 +8,11 @@
   <label for="{{grayApps.name}}" class="icon-check">Use grayscaled app icons</label> 
 </div>
 
+<div>
+  <input id="{{clock.name}}" type="checkbox" name="{{clock.name}}" value="{{clock.name}}" {{#if clock.value}} checked="checked" {{/if}} />
+  <label for="{{clock.name}}" class="icon-check">Use 12 hours format</label> 
+</div>
+
 <hr>
 <h3>Themes</h3>
 {{#each themes}}
