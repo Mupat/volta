@@ -66,57 +66,63 @@ this["YANTRE"]["templates"]["option"] = Handlebars.template(function (Handlebars
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, stack2, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
-function program1(depth0,data,depth1) {
+function program1(depth0,data) {
+  
+  
+  return " checked=\"checked\" ";
+  }
+
+function program3(depth0,data,depth1) {
   
   var buffer = "", stack1, stack2;
-  buffer += "\n  <div>\n    <input id=\""
+  buffer += "\n      <div class=\"capture\">\n        <input id=\""
     + escapeExpression(((stack1 = ((stack1 = data),stack1 == null || stack1 === false ? stack1 : stack1.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"radio\" name=\""
     + escapeExpression(((stack1 = depth1.theme),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" value=\""
     + escapeExpression(((stack1 = ((stack1 = data),stack1 == null || stack1 === false ? stack1 : stack1.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" ";
-  stack2 = helpers['if'].call(depth0, depth0.value, {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  stack2 = helpers['if'].call(depth0, depth0.value, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += " />\n    <label for=\""
+  buffer += " />\n        <label for=\""
     + escapeExpression(((stack1 = ((stack1 = data),stack1 == null || stack1 === false ? stack1 : stack1.key)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">"
+    + "\" class=\"icon-check\">\n          <div class=\"img "
+    + escapeExpression(((stack1 = depth0['class']),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" alt=\"theme_preview_"
     + escapeExpression(((stack1 = depth0.name),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label> \n  </div>\n";
+    + "\" />\n          <div class=\"info\">\n            <strong>"
+    + escapeExpression(((stack1 = depth0.name),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong>\n            "
+    + "\n          </div>\n        </label> \n      </div>\n    ";
   return buffer;
   }
-function program2(depth0,data) {
-  
-  
-  return " checked=\"checked\" ";
-  }
 
-  buffer += "<h1>Themes</h1>\n";
-  stack1 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(1, program1, data, depth0),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n\n<hr>\n<h2>Theme Options</h2>\n<div>\n  <input id=\""
+  buffer += "<ul>\n  <li><i class=\"icon-tools active\" data-content=\"general_options\" >General</i></li>\n  <li><i class=\"icon-background\" data-content=\"theme_options\" >Theme</i></li>\n  <li><i class=\"icon-info\" data-content=\"credits\" >Credits</i></li>\n</ul>\n<div>\n  <section id=\"general_options\" class=\"show\">\n    <div class=\"checkbox\">\n      <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" value=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" ";
-  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += " />\n  <label for=\""
+  buffer += " />\n      <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use dark font color</label>\n</div>\n\n<div>\n  <input id=\""
+    + "\" class=\"icon-check\">use dark font color</label>\n    </div>\n\n    <div class=\"checkbox\">\n      <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" value=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" ";
-  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += " />\n  <label for=\""
+  buffer += " />\n      <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use grayscaled app icons</label> \n</div>\n";
+    + "\" class=\"icon-check\">use grayscaled app icons</label> \n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
+  stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    Credits\n  </section>\n\n</div>\n";
   return buffer;
   });
 

@@ -106,6 +106,15 @@
 .icon-default:before {
   content: "\e004";
 }
+.icon-background:before {
+  content: "\e009";
+}
+.icon-tools:before {
+  content: "\e00a";
+}
+.icon-info:before {
+  content: "\e00b";
+}
 html {
   overflow: hidden;
 }
@@ -130,7 +139,8 @@ body a {
   font-size: 1rem;
 }
 body,
-body h1 {
+body h1,
+body h1 + p {
   transition: color 0.8s ease;
 }
 #actions {
@@ -198,7 +208,7 @@ body h1 {
   cursor: default;
 }
 #clock .flip-clock-wrapper ul li a div.up:after {
-  top: 4.2225rem;
+  top: 4.46rem;
   height: 0.1rem;
 }
 #clock .flip-clock-wrapper ul li a div div.inn {
@@ -392,25 +402,81 @@ body h1 {
   z-index: 9999;
   text-align: left;
   padding: 1rem 2rem;
-  min-height: 370px;
-  height: calc(100% - 230px);
-  overflow: auto;
+  height: calc(100% - 225px);
+  min-height: 375px;
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
 }
 #options.show {
   transform: translateX(0%);
 }
-#options h1,
-#options h2 {
-  font-size: 1.75rem;
-  color: #999;
-  margin: 0.25rem;
-  text-shadow: none;
+#options > ul {
+  width: calc(100% + 4rem);
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: -2rem;
+  top: -1rem;
+  z-index: 10003;
+  box-shadow: 0px 3px 8px 1px rgba(0, 0, 0, 0.4);
 }
-#options h2 {
+#options > ul li {
+  list-style: none;
+  display: inline-block;
+  width: 33%;
+  text-align: center;
+}
+#options > ul li:first-child i {
+  border-radius: 6px 0 0 0;
+}
+#options > ul li i {
+  padding-top: 1rem;
   font-size: 1.25rem;
+  transition: color 0.5s ease, opacity 0.5s ease, background-color 0.5s ease;
+  cursor: pointer;
+  height: 50px;
+  display: block;
+  padding-bottom: 0.5rem;
+  color: #444444;
+  opacity: 0.5;
 }
-#options label {
+#options > ul li i:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+#options > ul li i:before {
+  display: block;
+}
+#options > ul li i.active {
+  opacity: 1;
+  color: #ffffff;
+  background-color: #2b2b2b;
+}
+#options > div {
+  position: relative;
+  margin: -1rem -2rem;
+  height: calc(100% - 55px);
+}
+#options > div section {
+  position: absolute;
+  width: calc(100% - 2rem);
+  padding: 0.5rem 1rem 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: -webkit-transform 0.5s ease;
+  -webkit-transform: translateX(110%);
+}
+#options > div section.show {
+  -webkit-transform: translateX(0);
+  transition: -webkit-transform 0.5s 0.5s ease;
+}
+#options input {
+  display: none;
+}
+#options input:checked + label:before {
+  opacity: 1;
+}
+#options .checkbox label {
   cursor: pointer;
   font-size: 1.4rem;
   position: relative;
@@ -418,13 +484,13 @@ body h1 {
   padding-left: 2rem;
   color: #444444;
 }
-#options label:after,
-#options label:before {
+#options .checkbox label:after,
+#options .checkbox label:before {
   position: absolute;
   left: 0;
   top: 0.15rem;
 }
-#options label:after {
+#options .checkbox label:after {
   content: '';
   width: 24px;
   height: 24px;
@@ -434,7 +500,7 @@ body h1 {
   display: inline-block;
   z-index: 10;
 }
-#options label:before {
+#options .checkbox label:before {
   opacity: 0;
   color: #cccccc;
   z-index: 20;
@@ -443,11 +509,109 @@ body h1 {
   top: 0.2rem;
   left: 0.15rem;
 }
-#options input {
-  display: none;
+#options #theme_options {
+  text-align: center;
 }
-#options input:checked + label:before {
-  opacity: 1;
+#options .capture {
+  display: inline-block;
+}
+#options .capture:nth-child(odd) {
+  margin: 0 1rem 1rem 0;
+}
+#options .capture label {
+  position: relative;
+  display: inline-block;
+  height: 175px;
+  width: 175px;
+  cursor: pointer;
+}
+#options .capture label:before {
+  opacity: 0;
+  position: absolute;
+  font-size: 3rem;
+  bottom: 0;
+  right: 0;
+  z-index: 10002;
+  transition: opacity 0.5s ease;
+}
+#options .capture label > .info,
+#options .capture label > .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  transition: -webkit-transform 0.5s ease;
+}
+#options .capture label > .img {
+  z-index: 10001;
+}
+#options .capture label > .info {
+  position: absolute;
+  z-index: 10000;
+  background-color: #1e1e1e;
+  color: #cccccc;
+  -webkit-transform: scale(0.65);
+}
+#options .capture label > .info > strong {
+  position: absolute;
+  top: 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+  left: 0;
+  text-align: center;
+  width: 100%;
+}
+#options .capture label > .info > div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+#options .capture label > .info > div > span {
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+}
+#options .capture label > .info > div > span:first-of-type {
+  margin-right: 0.5rem;
+}
+#options .capture label:hover .img {
+  -webkit-transform: scale(0.65);
+}
+#options .capture label:hover .info {
+  -webkit-transform: scale(1);
+}
+.theBeach {
+  background: url("../images/beach.jpg");
+}
+.bluePrintGrungy {
+  background: url("../images/blueprint.jpg");
+}
+.bluePrintClean {
+  background: url("../images/blueprint.png");
+}
+.bookeh {
+  background: url("../images/bookeh.jpg");
+}
+.linenDark {
+  background: url("../images/dark-linen.png");
+}
+.linenLight {
+  background: url("../images/light-linen.png");
+}
+.filthyTile {
+  background: url("../images/filthy-tile.jpg");
+}
+.navyBlue {
+  background: url("../images/navy_blue.jpg");
+}
+.redWine {
+  background: url("../images/red-blur.jpg");
+}
+.redMesh {
+  background: url("../images/red-mesh.jpg");
 }
 body {
   background-position: top center;
@@ -471,9 +635,6 @@ body.dark h1,
 body.dark h1 + p {
   color: #444444;
 }
-body.theBeach {
-  background: url("../images/beach.jpg");
-}
 body.theBeach #clock {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -495,15 +656,6 @@ body.bluePrintGrungy #clock .flip-clock-wrapper ul li a div div.inn,
 body.bluePrintClean #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #063457;
 }
-body.bluePrintGrungy {
-  background: url("../images/blueprint.jpg");
-}
-body.bluePrintClean {
-  background: url("../images/blueprint.png");
-}
-body.bookeh {
-  background: url("../images/bookeh.jpg");
-}
 body.bookeh #clock {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -512,9 +664,6 @@ body.bookeh #clock .flip-clock-wrapper {
 }
 body.bookeh #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #0e2524;
-}
-body.linenDark {
-  background: url("../images/dark-linen.png");
 }
 body.linenDark #clock {
   background-color: rgba(0, 0, 0, 0.2);
@@ -525,9 +674,6 @@ body.linenDark #clock .flip-clock-wrapper {
 body.linenDark #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #1a1a1a;
 }
-body.linenLight {
-  background: url("../images/light-linen.png");
-}
 body.linenLight #clock {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -536,9 +682,6 @@ body.linenLight #clock .flip-clock-wrapper {
 }
 body.linenLight #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #333333;
-}
-body.filthyTile {
-  background: url("../images/filthy-tile.jpg");
 }
 body.filthyTile #clock {
   background-color: rgba(0, 0, 0, 0.5);
@@ -549,9 +692,6 @@ body.filthyTile #clock .flip-clock-wrapper {
 body.filthyTile #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #0d0e09;
 }
-body.navyBlue {
-  background: url("../images/navy_blue.jpg");
-}
 body.navyBlue #clock {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -561,9 +701,6 @@ body.navyBlue #clock .flip-clock-wrapper {
 body.navyBlue #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #35383d;
 }
-body.redWine {
-  background: url("../images/red-blur.jpg");
-}
 body.redWine #clock {
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -572,9 +709,6 @@ body.redWine #clock .flip-clock-wrapper {
 }
 body.redWine #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #1f0d06;
-}
-body.redMesh {
-  background: url("../images/red-mesh.jpg");
 }
 body.redMesh #clock {
   background-color: rgba(0, 0, 0, 0.2);

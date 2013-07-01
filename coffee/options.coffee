@@ -56,9 +56,24 @@ class Options
       themes: {}
 
     for theme in @THEMES
-      data.themes[theme.name] = name: @_prettify(theme.name), value: Boolean(@get(@THEME_KEY) is theme.name)
+      data.themes[theme.name] =
+        class: theme.name
+        name: @_prettify(theme.name)
+        grayApps: Boolean(theme.grayApps)
+        darkFont: Boolean(theme.darkFont)
+        value: Boolean(@get(@THEME_KEY) is theme.name)
 
     @$el.html @template data
+
+    @$el.on 'click', 'i', (e) =>
+      $target = $(e.target)
+      id = $target.attr 'data-content'
+      @$el.find('.show').removeClass 'show'
+      @$el.find('.active').removeClass 'active'
+      $("##{id}").addClass 'show'
+      $target.addClass 'active'
+      @$el.one "webkitTransitionEnd", ->
+        console.log "Transition Ended"
 
   _registerBtnClick: ->
     css_class = 'show'

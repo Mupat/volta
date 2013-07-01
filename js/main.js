@@ -226,7 +226,6 @@
       if (done == null) {
         done = function() {};
       }
-      console.log('toput', html);
       return this.$el.fadeOut(400, function() {
         _this.$el.html(html);
         return _this.$el.fadeIn(400, done);
@@ -325,7 +324,8 @@
     };
 
     Options.prototype.render = function() {
-      var data, theme, _i, _len, _ref;
+      var data, theme, _i, _len, _ref,
+        _this = this;
       data = {
         darkFont: {
           name: this.DARK_FONT,
@@ -342,11 +342,26 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         theme = _ref[_i];
         data.themes[theme.name] = {
+          "class": theme.name,
           name: this._prettify(theme.name),
+          grayApps: Boolean(theme.grayApps),
+          darkFont: Boolean(theme.darkFont),
           value: Boolean(this.get(this.THEME_KEY) === theme.name)
         };
       }
-      return this.$el.html(this.template(data));
+      this.$el.html(this.template(data));
+      return this.$el.on('click', 'i', function(e) {
+        var $target, id;
+        $target = $(e.target);
+        id = $target.attr('data-content');
+        _this.$el.find('.show').removeClass('show');
+        _this.$el.find('.active').removeClass('active');
+        $("#" + id).addClass('show');
+        $target.addClass('active');
+        return _this.$el.one("webkitTransitionEnd", function() {
+          return console.log("Transition Ended");
+        });
+      });
     };
 
     Options.prototype._registerBtnClick = function() {

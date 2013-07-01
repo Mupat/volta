@@ -48,7 +48,6 @@ class Mail
     console.error 'failed', data
 
   _putInDom: (html, done = ->)->
-    console.log 'toput', html
     @$el.fadeOut 400, =>
       @$el.html html
       @$el.fadeIn 400, done

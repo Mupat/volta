@@ -8,6 +8,17 @@
   }
 }
 
+.theBeach { background: url(@theBeach); }
+.bluePrintGrungy { background: url(@bluePrintGrungy); }
+.bluePrintClean { background: url(@bluePrintClean); }
+.bookeh { background: url(@bookeh); }
+.linenDark { background: url(@linenDark); }
+.linenLight { background: url(@linenLight); }
+.filthyTile { background: url(@filthyTile); }
+.navyBlue { background: url(@navyBlue); }
+.redWine { background: url(@redWine); }
+.redMesh { background: url(@redMesh); }
+
 body { 
   // transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   &.transition { 
@@ -30,60 +41,14 @@ body {
   }
 
   // ---------------------- Theme classes ------------------------------
-  // The Beach Theme
-  &.theBeach { 
-    background: url(@theBeach);
-    .change_clock_background(#54462d);
-  }
-
-  // Blueprint Themes
+  &.theBeach { .change_clock_background(#54462d); }
   &.bluePrintGrungy,
-  &.bluePrintClean {
-    .change_clock_background(#063457);
-  }
-
-  &.bluePrintGrungy { background: url(@bluePrintGrungy); }
-  &.bluePrintClean { background: url(@bluePrintClean); }
-
-  // Bookeh Theme
-  &.bookeh { 
-    background: url(@bookeh);
-    .change_clock_background(#0e2524);
-  }
-
-  // Dark Linen Theme
-  &.linenDark { 
-    background: url(@linenDark);
-    .change_clock_background(#1a1a1a);
-  }
-
-  // Light Linen Theme
-  &.linenLight { 
-    background: url(@linenLight);
-    .change_clock_background(#333);
-  }
-
-  // Filthy Tile Theme
-  &.filthyTile { 
-    background: url(@filthyTile);
-    .change_clock_background(#0d0e09, rgba(0,0,0,0.5), rgba(54,53,47,0.2));
-  }
-
-  // Navy Blue Theme
-  &.navyBlue { 
-    background: url(@navyBlue);
-    .change_clock_background(#35383d);
-  }
-
-  // Red Wine Theme
-  &.redWine { 
-    background: url(@redWine);
-    .change_clock_background(#1f0d06);
-  }
-
-  // Red Mesh Theme
-  &.redMesh { 
-    background: url(@redMesh);
-    .change_clock_background(#191513);
-  }
+  &.bluePrintClean { .change_clock_background(#063457); }
+  &.bookeh { .change_clock_background(#0e2524); }
+  &.linenDark { .change_clock_background(#1a1a1a); }
+  &.linenLight { .change_clock_background(#333); }
+  &.filthyTile { .change_clock_background(#0d0e09, rgba(0,0,0,0.5), rgba(54,53,47,0.2)); }
+  &.navyBlue { .change_clock_background(#35383d); }
+  &.redWine { .change_clock_background(#1f0d06); }
+  &.redMesh { .change_clock_background(#191513); }
 }
