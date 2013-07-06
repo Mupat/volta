@@ -1,5 +1,5 @@
 (function() {
-  var App, Basic, Clock, Mail, Options,
+  var App, Basic, Clock, Mail, Options, OptionsView,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
@@ -237,15 +237,11 @@
   })();
 
   Options = (function() {
-    Options.prototype.template = YANTRE.templates.option;
-
     Options.prototype.namespace = 'YANTRE.storage';
 
     Options.prototype.storage = chrome.storage.sync;
 
     Options.prototype.options = {};
-
-    Options.prototype.$el = $('#options');
 
     Options.prototype.listener = {};
 
@@ -294,8 +290,6 @@
             _this.options[key] = value;
           }
         }
-        _this._registerBtnClick();
-        _this._registerInputChange();
         chrome.storage.onChanged.addListener(_this._triggerListener);
         return done();
       });
@@ -323,105 +317,6 @@
       return this.listener[key].push(cb);
     };
 
-    Options.prototype.render = function() {
-      var data, theme, _i, _len, _ref,
-        _this = this;
-      data = {
-        darkFont: {
-          name: this.DARK_FONT,
-          value: Boolean(this.get(this.DARK_FONT))
-        },
-        grayApps: {
-          name: this.APP_GRAYSCALE,
-          value: Boolean(this.get(this.APP_GRAYSCALE))
-        },
-        theme: this.THEME_KEY,
-        themes: {}
-      };
-      _ref = this.THEMES;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        theme = _ref[_i];
-        data.themes[theme.name] = {
-          "class": theme.name,
-          name: this._prettify(theme.name),
-          grayApps: Boolean(theme.grayApps),
-          darkFont: Boolean(theme.darkFont),
-          value: Boolean(this.get(this.THEME_KEY) === theme.name)
-        };
-      }
-      this.$el.html(this.template(data));
-      return this.$el.on('click', 'i', function(e) {
-        var $target, id;
-        $target = $(e.target);
-        id = $target.attr('data-content');
-        _this.$el.find('.show').removeClass('show');
-        _this.$el.find('.active').removeClass('active');
-        $("#" + id).addClass('show');
-        $target.addClass('active');
-        return _this.$el.one("webkitTransitionEnd", function() {
-          return console.log("Transition Ended");
-        });
-      });
-    };
-
-    Options.prototype._registerBtnClick = function() {
-      var css_class,
-        _this = this;
-      css_class = 'show';
-      this.$el.on('mousedown', function(e) {
-        return e.stopPropagation();
-      });
-      return $('#options_btn').on('click', function() {
-        _this.render();
-        $(document).one('mousedown', function(e) {
-          var id;
-          id = $(e.target).attr('id');
-          if (id !== 'options_btn') {
-            return _this.$el.removeClass(css_class);
-          }
-        });
-        return _this.$el.toggleClass(css_class);
-      });
-    };
-
-    Options.prototype._registerInputChange = function() {
-      var _this = this;
-      return this.$el.on('change', 'input', function(e) {
-        var value;
-        if (e.target.name === _this.THEME_KEY) {
-          value = e.target.value;
-        } else {
-          value = e.target.checked;
-        }
-        return _this.set(e.target.name, value, function() {
-          var $target;
-          $target = $(e.target).parent();
-          if (e.target.name === _this.THEME_KEY) {
-            _this._set_theme_options(e.target.value);
-          }
-          $target.addClass('saved');
-          return setTimeout((function() {
-            return $target.removeClass('saved');
-          }), 5000);
-        });
-      });
-    };
-
-    Options.prototype._set_theme_options = function(input_value) {
-      var darkFont, grayApps, theme, _i, _len, _ref;
-      _ref = this.THEMES;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        theme = _ref[_i];
-        if (theme.name === input_value) {
-          darkFont = Boolean(theme.darkFont);
-          grayApps = Boolean(theme.grayApps);
-          break;
-        }
-      }
-      this.set(this.DARK_FONT, darkFont);
-      return this.set(this.APP_GRAYSCALE, grayApps);
-    };
-
     Options.prototype._getFullKey = function(key) {
       return "" + this.namespace + "." + key;
     };
@@ -431,9 +326,6 @@
       _results = [];
       for (key in changes) {
         value = changes[key];
-        if (this.$el.hasClass("show")) {
-          this.$el.find("input#" + (key.split('.')[2])).prop('checked', value.newValue);
-        }
         this.options[key] = value.newValue;
         if (this.listener[key]) {
           _results.push((function() {
@@ -442,7 +334,7 @@
             _results1 = [];
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
               listener = _ref[_i];
-              _results1.push(listener(value.newValue, value.oldValue));
+              _results1.push(listener(value.newValue, value.oldValue, key));
             }
             return _results1;
           }).call(this));
@@ -453,25 +345,149 @@
       return _results;
     };
 
-    Options.prototype._prettify = function(value) {
+    return Options;
+
+  })();
+
+  OptionsView = (function() {
+    OptionsView.prototype.template = YANTRE.templates.option;
+
+    OptionsView.prototype.$el = $('#options');
+
+    function OptionsView(options) {
+      this.options = options != null ? options : YANTRE.options;
+      this._registerBtnClick();
+      this._registerTabChange();
+      this._registerInputChange();
+      this._registerOptionChange();
+    }
+
+    OptionsView.prototype.render = function() {
+      var data, theme, _i, _len, _ref;
+      data = {
+        darkFont: {
+          name: this.options.DARK_FONT,
+          value: Boolean(this.options.get(this.options.DARK_FONT))
+        },
+        grayApps: {
+          name: this.options.APP_GRAYSCALE,
+          value: Boolean(this.options.get(this.options.APP_GRAYSCALE))
+        },
+        theme: this.options.THEME_KEY,
+        themes: {}
+      };
+      _ref = this.options.THEMES;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        theme = _ref[_i];
+        data.themes[theme.name] = {
+          "class": theme.name,
+          name: this._prettify(theme.name),
+          grayApps: Boolean(theme.grayApps),
+          darkFont: Boolean(theme.darkFont),
+          value: Boolean(this.options.get(this.options.THEME_KEY) === theme.name)
+        };
+      }
+      return this.$el.html(this.template(data));
+    };
+
+    OptionsView.prototype._registerTabChange = function() {
+      var _this = this;
+      return this.$el.on('click', 'i', function(e) {
+        var $target, id;
+        $target = $(e.target);
+        id = $target.attr('data-content');
+        _this.$el.find('.show').removeClass('show');
+        _this.$el.find('.active').removeClass('active');
+        $("#" + id).addClass('show');
+        return $target.addClass('active');
+      });
+    };
+
+    OptionsView.prototype._registerBtnClick = function() {
+      var _this = this;
+      this.$el.on('mousedown', function(e) {
+        return e.stopPropagation();
+      });
+      return $('#options_btn').on('click', function() {
+        $(document).one('mousedown', function(e) {
+          var id;
+          id = $(e.target).attr('id');
+          if (id !== 'options_btn') {
+            return _this.$el.removeClass('show');
+          }
+        });
+        return _this.$el.toggleClass('show');
+      });
+    };
+
+    OptionsView.prototype._registerInputChange = function() {
+      var _this = this;
+      return this.$el.on('change', 'input', function(e) {
+        var value;
+        if (e.target.name === _this.options.THEME_KEY) {
+          value = e.target.value;
+        } else {
+          value = e.target.checked;
+        }
+        return _this.options.set(e.target.name, value, function() {
+          var $target;
+          $target = $(e.target).parent();
+          if (e.target.name === _this.options.THEME_KEY) {
+            return _this._set_theme_options(e.target.value);
+          }
+        });
+      });
+    };
+
+    OptionsView.prototype._set_theme_options = function(input_value) {
+      var darkFont, grayApps, theme, _i, _len, _ref;
+      _ref = this.options.THEMES;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        theme = _ref[_i];
+        if (theme.name === input_value) {
+          darkFont = Boolean(theme.darkFont);
+          grayApps = Boolean(theme.grayApps);
+          break;
+        }
+      }
+      this.options.set(this.options.DARK_FONT, darkFont);
+      return this.options.set(this.options.APP_GRAYSCALE, grayApps);
+    };
+
+    OptionsView.prototype._registerOptionChange = function() {
+      var _this = this;
+      this.options.registerOnChange(this.options.APP_GRAYSCALE, function(new_value, old_value) {
+        return _this.$el.find("#" + _this.options.APP_GRAYSCALE).prop('checked', new_value);
+      });
+      this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
+        return _this.$el.find("#" + _this.options.DARK_FONT).prop('checked', new_value);
+      });
+      return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
+        return _this.$el.find("#" + _this.options.THEME_KEY).prop('checked', new_value);
+      });
+    };
+
+    OptionsView.prototype._prettify = function(value) {
       return value.replace(/([a-z])([A-Z])/g, function(match, l1, l2) {
         return "" + l1 + " " + l2;
       }).toLowerCase();
     };
 
-    return Options;
+    return OptionsView;
 
   })();
 
   $(function() {
     var options;
     return options = new Options(function() {
-      var app, basic, clock, mail;
+      var app, basic, clock, mail, optionsView;
       YANTRE.options = options;
       basic = new Basic();
+      optionsView = new OptionsView();
       app = new App();
       mail = new Mail();
       clock = new Clock();
+      optionsView.render();
       app.render();
       setTimeout((function() {
         return mail.render();
