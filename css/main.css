@@ -1,29 +1,29 @@
 @charset "UTF-8";
 @-webkit-keyframes spin {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
   100% {
-    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
   }
 }
 @-webkit-keyframes spinReverse {
   0% {
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-359deg);
+    -webkit-transform: rotate(-359deg);
   }
 }
 @-webkit-keyframes moveThumps {
   0% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
   }
   50% {
-    transform: scale(2);
+    -webkit-transform: scale(2);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
   }
 }
 @-webkit-keyframes hideOnStart {
@@ -79,7 +79,7 @@
   speak: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  transition: color 0.5s ease;
+  -webkit-transition: color 0.5s ease;
   color: #cccccc;
 }
 .icon-thumbs-up:before {
@@ -141,7 +141,7 @@ body a {
 body,
 body h1,
 body h1 + p {
-  transition: color 0.8s ease;
+  -webkit-transition: color 0.8s ease;
 }
 #actions {
   position: absolute;
@@ -170,7 +170,7 @@ body h1 + p {
 #clock,
 #clock .flip-clock-wrapper,
 #clock div.inn {
-  transition: background-color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
 }
 #clock h1 {
   position: absolute;
@@ -241,13 +241,13 @@ body h1 + p {
   top: 3.5rem;
   font-size: 2rem;
   text-indent: 0;
-  transform: scale(1);
-  transition: transform 0.25s ease;
+  -webkit-transform: scale(1);
+  -webkit-transition: -webkit-transform 0.25s ease;
 }
 #apps .bx-wrapper .bx-prev.disabled,
 #apps .bx-wrapper .bx-next.disabled {
   display: block;
-  transform: scale(0) !important;
+  -webkit-transform: scale(0) !important;
   cursor: default !important;
 }
 #apps .bx-wrapper .bx-prev:hover,
@@ -264,7 +264,7 @@ body h1 + p {
   display: inline-block;
   overflow: hidden;
   margin: 0 1rem 0.5rem 1rem;
-  transition: color 1s ease;
+  -webkit-transition: color 1s ease;
   padding: 0 0.25rem 0.25rem 0.25rem;
 }
 #apps ul a:hover {
@@ -274,7 +274,7 @@ body h1 + p {
   width: 64px;
   height: 64px;
   display: inline-block;
-  transition: -webkit-filter 1s ease;
+  -webkit-transition: -webkit-filter 1s ease;
 }
 #apps ul a h4 {
   margin-top: 0.25rem;
@@ -288,7 +288,7 @@ body h1 + p {
   overflow: hidden;
 }
 #apps.grayscale ul a img {
-  transition: -webkit-filter 1s ease;
+  -webkit-transition: -webkit-filter 1s ease;
   -webkit-filter: grayscale(100%);
 }
 #apps.grayscale ul a:hover img {
@@ -343,7 +343,7 @@ body h1 + p {
   list-style: none;
   margin: 0.25rem;
   background: rgba(0, 0, 0, 0.4);
-  transition: background 0.5s ease;
+  -webkit-transition: background 0.5s ease;
   border-radius: 6px;
 }
 #mails .unread + ul > li:hover {
@@ -401,8 +401,8 @@ body h1 + p {
   background: -webkit-gradient(linear, left top, left bottom, from(#d2d2d2), to(#f0f0f0));
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
   border-radius: 6px 0 0 6px;
-  transform: translateX(110%);
-  transition: transform 0.5s ease-out;
+  -webkit-transform: translateX(110%);
+  -webkit-transition: -webkit-transform 0.5s ease-out;
   z-index: 9999;
   text-align: left;
   padding: 1rem 2rem;
@@ -411,7 +411,7 @@ body h1 + p {
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
 }
 #options.show {
-  transform: translateX(0%);
+  -webkit-transform: translateX(0%);
 }
 #options > ul {
   width: calc(100% + 4rem);
@@ -435,7 +435,7 @@ body h1 + p {
 #options > ul li i {
   padding-top: 1rem;
   font-size: 1.25rem;
-  transition: color 0.5s ease, opacity 0.5s ease, background-color 0.5s ease;
+  -webkit-transition: color 0.5s ease, opacity 0.5s ease, background-color 0.5s ease;
   cursor: pointer;
   height: 50px;
   display: block;
@@ -467,12 +467,12 @@ body h1 + p {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: -webkit-transform 0.5s ease;
+  -webkit-transition: -webkit-transform 0.5s ease;
   -webkit-transform: translateX(110%);
 }
 #options > div section.show {
   -webkit-transform: translateX(0);
-  transition: -webkit-transform 0.5s 0.5s ease;
+  -webkit-transition: -webkit-transform 0.5s 0.5s ease;
 }
 #options input {
   display: none;
@@ -509,7 +509,7 @@ body h1 + p {
   color: #cccccc;
   z-index: 20;
   font-size: 1.25rem;
-  transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
   top: 0.2rem;
   left: 0.15rem;
 }
@@ -536,7 +536,7 @@ body h1 + p {
   bottom: 0;
   right: 0;
   z-index: 10002;
-  transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
 }
 #options .capture label > .info,
 #options .capture label > .img {
@@ -546,7 +546,7 @@ body h1 + p {
   width: 100%;
   height: 100%;
   border-radius: 6px;
-  transition: -webkit-transform 0.5s ease;
+  -webkit-transition: -webkit-transform 0.5s ease;
 }
 #options .capture label > .img {
   z-index: 10001;
@@ -626,7 +626,7 @@ body {
   color: #cccccc;
 }
 body.transition {
-  transition: background 0.8s ease;
+  -webkit-transition: background 0.8s ease;
 }
 body.transition i.loader {
   -webkit-animation: spinReverse 2s linear infinite;
