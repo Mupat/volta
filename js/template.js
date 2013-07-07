@@ -122,7 +122,23 @@ function program3(depth0,data,depth1) {
     + "\" class=\"icon-check\">use grayscaled app icons</label> \n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
   stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    Credits\n  </section>\n\n</div>\n";
+  buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    <ul>\n      <li>FlipClock.js<a href=\"http://flipclockjs.com/\">Homepage</a></li>\n      <li>Moment.js<a href=\"http://momentjs.com/\">Homepage</a></li>\n      <li>Google Webfont Lato<a href=\"http://www.google.com/fonts/specimen/Lato\">Font Description</a></li>\n      <li>bxSlider<a href=\"http://bxslider.com/\">Homepage</a></li>\n      <li>jQuery<a href=\"http://jquery.com/\">Homepage</a></li>\n    </ul>\n  </section>\n  <div class=\"contributors\">\n    <a href=\""
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.profile_link)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">\n      <span>Hacker</span>\n      <img src=\""
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.avatar)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" alt=\"avatar for "
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">\n      <strong>"
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong>\n    </a>\n    <a href=\""
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.profile_link)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">\n      <img src=\""
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.avatar)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" alt=\"avatar for "
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">\n      <strong>"
+    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</strong>\n      <span>Designer</span>\n    </a>\n  </div>\n</div>\n";
   return buffer;
   });
 

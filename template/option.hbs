@@ -33,7 +33,24 @@
     {{/each}}
   </section>
   <section id="credits" class="">
-    Credits
+    <ul>
+      <li>FlipClock.js<a href="http://flipclockjs.com/">Homepage</a></li>
+      <li>Moment.js<a href="http://momentjs.com/">Homepage</a></li>
+      <li>Google Webfont Lato<a href="http://www.google.com/fonts/specimen/Lato">Font Description</a></li>
+      <li>bxSlider<a href="http://bxslider.com/">Homepage</a></li>
+      <li>jQuery<a href="http://jquery.com/">Homepage</a></li>
+    </ul>
   </section>
-
+  <div class="contributors">
+    <a href="{{contributors.hacker.profile_link}}">
+      <span>Hacker</span>
+      <img src="{{contributors.hacker.avatar}}" alt="avatar for {{contributors.hacker.name}}">
+      <strong>{{contributors.hacker.name}}</strong>
+    </a>
+    <a href="{{contributors.designer.profile_link}}">
+      <img src="{{contributors.designer.avatar}}" alt="avatar for {{contributors.designer.name}}">
+      <strong>{{contributors.designer.name}}</strong>
+      <span>Designer</span>
+    </a>
+  </div>
 </div>

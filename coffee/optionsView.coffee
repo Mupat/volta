@@ -1,7 +1,10 @@
 class OptionsView
   template: YANTRE.templates.option
   $el: $('#options')
-  # rendered: false
+  contributors: [
+    'https://api.github.com/users/Mupat'
+    'https://api.github.com/users/MacCypher'
+  ]
 
   constructor: (@options = YANTRE.options) ->
     @_registerBtnClick()
@@ -10,7 +13,6 @@ class OptionsView
     @_registerOptionChange()
 
   render: ->
-    # unless @rendered
     data = 
       darkFont: { name: @options.DARK_FONT, value: Boolean(@options.get(@options.DARK_FONT)) }
       grayApps: { name: @options.APP_GRAYSCALE, value: Boolean(@options.get(@options.APP_GRAYSCALE)) }
@@ -25,8 +27,23 @@ class OptionsView
         darkFont: Boolean(theme.darkFont)
         value: Boolean(@options.get(@options.THEME_KEY) is theme.name)
 
-    # @rendered = true
-    @$el.html @template data
+    @_addContributors (users) =>
+      data.contributors = users
+      @$el.html @template data
+
+  _addContributors: (done) ->
+    $.when($.get(@contributors[0]), $.get(@contributors[1])).done (hacker, designer) ->
+      data = 
+        hacker:
+          name: hacker[0].login
+          profile_link: hacker[0].html_url
+          avatar: hacker[0].avatar_url
+        designer:
+          name: designer[0].login
+          profile_link: designer[0].html_url
+          avatar: designer[0].avatar_url
+
+      done data
 
   _registerTabChange: ->
     @$el.on 'click', 'i', (e) =>

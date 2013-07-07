@@ -354,6 +354,8 @@
 
     OptionsView.prototype.$el = $('#options');
 
+    OptionsView.prototype.contributors = ['https://api.github.com/users/Mupat', 'https://api.github.com/users/MacCypher'];
+
     function OptionsView(options) {
       this.options = options != null ? options : YANTRE.options;
       this._registerBtnClick();
@@ -363,7 +365,8 @@
     }
 
     OptionsView.prototype.render = function() {
-      var data, theme, _i, _len, _ref;
+      var data, theme, _i, _len, _ref,
+        _this = this;
       data = {
         darkFont: {
           name: this.options.DARK_FONT,
@@ -387,7 +390,29 @@
           value: Boolean(this.options.get(this.options.THEME_KEY) === theme.name)
         };
       }
-      return this.$el.html(this.template(data));
+      return this._addContributors(function(users) {
+        data.contributors = users;
+        return _this.$el.html(_this.template(data));
+      });
+    };
+
+    OptionsView.prototype._addContributors = function(done) {
+      return $.when($.get(this.contributors[0]), $.get(this.contributors[1])).done(function(hacker, designer) {
+        var data;
+        data = {
+          hacker: {
+            name: hacker[0].login,
+            profile_link: hacker[0].html_url,
+            avatar: hacker[0].avatar_url
+          },
+          designer: {
+            name: designer[0].login,
+            profile_link: designer[0].html_url,
+            avatar: designer[0].avatar_url
+          }
+        };
+        return done(data);
+      });
     };
 
     OptionsView.prototype._registerTabChange = function() {

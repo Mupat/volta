@@ -80,7 +80,7 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -webkit-transition: color 0.5s ease;
-  color: #cccccc;
+  color: #dddddd;
 }
 .icon-thumbs-up:before {
   content: "\e000";
@@ -134,7 +134,7 @@ body #apps > div {
   max-width: 1024px !important;
 }
 body a {
-  color: #cccccc;
+  color: #dddddd;
   text-decoration: none;
   font-size: 1rem;
 }
@@ -193,7 +193,7 @@ body h1 + p {
   top: 1.75rem;
 }
 #clock .flip-clock-wrapper .flip-clock-divider .flip-clock-dot {
-  background-color: #cccccc;
+  background-color: #dddddd;
 }
 #clock .flip-clock-wrapper ul {
   font: normal 11px "Lato", sans-serif;
@@ -202,7 +202,7 @@ body h1 + p {
   height: 9rem;
   font-size: 10rem;
   line-height: 8.7rem;
-  color: #cccccc;
+  color: #dddddd;
 }
 #clock .flip-clock-wrapper ul li a {
   cursor: default;
@@ -421,7 +421,7 @@ body h1 + p {
   left: -2rem;
   top: -1rem;
   z-index: 10003;
-  border-bottom: 1px solid #444444;
+  border-bottom: 1px solid #333333;
 }
 #options > ul li {
   list-style: none;
@@ -440,7 +440,7 @@ body h1 + p {
   height: 50px;
   display: block;
   padding-bottom: 0.5rem;
-  color: #444444;
+  color: #333333;
   opacity: 0.5;
 }
 #options > ul li i:hover {
@@ -453,12 +453,12 @@ body h1 + p {
 #options > ul li i.active {
   opacity: 1;
   color: #ffffff;
-  background-color: #2b2b2b;
+  background-color: #1a1a1a;
 }
 #options > div {
   position: relative;
   margin: -1rem -2rem;
-  height: calc(100% - 55px);
+  height: calc(100% - 130px);
 }
 #options > div section {
   position: absolute;
@@ -474,6 +474,24 @@ body h1 + p {
   -webkit-transform: translateX(0);
   -webkit-transition: -webkit-transform 0.5s 0.5s ease;
 }
+#options #credits > ul {
+  margin: 0;
+  padding: 0;
+}
+#options #credits > ul li {
+  list-style: none;
+  color: #333333;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+#options #credits > ul li a {
+  display: block;
+  margin-left: 0.5rem;
+  color: #063457;
+}
+#options #credits > ul li a:hover {
+  text-decoration: underline;
+}
 #options input {
   display: none;
 }
@@ -486,7 +504,7 @@ body h1 + p {
   position: relative;
   line-height: 2rem;
   padding-left: 2rem;
-  color: #444444;
+  color: #333333;
 }
 #options .checkbox label:after,
 #options .checkbox label:before {
@@ -506,7 +524,7 @@ body h1 + p {
 }
 #options .checkbox label:before {
   opacity: 0;
-  color: #cccccc;
+  color: #dddddd;
   z-index: 20;
   font-size: 1.25rem;
   -webkit-transition: opacity 0.5s ease;
@@ -554,8 +572,8 @@ body h1 + p {
 #options .capture label > .info {
   position: absolute;
   z-index: 10000;
-  background-color: #1e1e1e;
-  color: #cccccc;
+  background-color: #0d0d0d;
+  color: #dddddd;
   -webkit-transform: scale(0.65);
 }
 #options .capture label > .info > strong {
@@ -586,6 +604,60 @@ body h1 + p {
 }
 #options .capture label:hover .info {
   -webkit-transform: scale(1);
+}
+#options .contributors {
+  position: absolute;
+  bottom: -5rem;
+  left: 0;
+  width: 100%;
+  background-color: #1a1a1a;
+}
+#options .contributors > a {
+  padding: 0.25rem 2rem;
+  width: 8.875rem;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: background-color 0.5s ease;
+}
+#options .contributors > a:hover {
+  background-color: #262626;
+}
+#options .contributors > a img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+}
+#options .contributors > a strong {
+  display: block;
+}
+#options .contributors > a strong,
+#options .contributors > a span {
+  color: #ffffff;
+  font-weight: 300;
+}
+#options .contributors > a span {
+  position: absolute;
+  top: 0.5rem;
+  font-size: 2rem;
+  font-weight: 100;
+}
+#options .contributors > a:first-of-type {
+  text-align: right;
+}
+#options .contributors > a:first-of-type span {
+  left: 1rem;
+}
+#options .contributors > a:last-of-type {
+  padding-left: 1rem;
+  width: 9.875rem;
+}
+#options .contributors > a:last-of-type img {
+  margin-left: 0.5rem;
+}
+#options .contributors > a:last-of-type span {
+  right: 0rem;
 }
 .theBeach {
   background: url("../images/beach.jpg");
@@ -623,7 +695,7 @@ body {
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
   text-shadow: 0 0.1rem 0.2rem #333333;
-  color: #cccccc;
+  color: #dddddd;
 }
 body.transition {
   -webkit-transition: background 0.8s ease;
@@ -633,11 +705,11 @@ body.transition i.loader {
 }
 body h1,
 body h1 + p {
-  color: #cccccc;
+  color: #dddddd;
 }
 body.dark h1,
 body.dark h1 + p {
-  color: #444444;
+  color: #333333;
 }
 body.theBeach #clock {
   background-color: rgba(0, 0, 0, 0.2);
