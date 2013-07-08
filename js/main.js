@@ -151,12 +151,6 @@
   })();
 
   Mail = (function() {
-    function Mail() {
-      this._error = __bind(this._error, this);
-      this._success = __bind(this._success, this);
-      this._generate_html = __bind(this._generate_html, this);
-    }
-
     Mail.prototype.mail_template = YANTRE.templates.mail;
 
     Mail.prototype.read_template = YANTRE.templates.read;
@@ -167,8 +161,23 @@
 
     Mail.prototype.$el = $('#mails');
 
+    Mail.prototype.label = '';
+
+    function Mail(options) {
+      var _this = this;
+      this.options = options != null ? options : YANTRE.options;
+      this._error = __bind(this._error, this);
+      this._success = __bind(this._success, this);
+      this._generate_html = __bind(this._generate_html, this);
+      this.label = this.options.get(this.options.MAIL_LABEL);
+      this.options.registerOnChange(this.options.MAIL_LABEL, function(new_value, old_value) {
+        _this.label = new_value;
+        return _this.render();
+      });
+    }
+
     Mail.prototype.render = function() {
-      return $.get(this.url).done(this._success).fail(this._error);
+      return $.get(this.url + this.label).done(this._success).fail(this._error);
     };
 
     Mail.prototype._generate_html = function($res) {
@@ -191,12 +200,15 @@
     };
 
     Mail.prototype._showUnread = function($res) {
-      var mails_html, unread_html,
+      var count, mails_html, unread_html,
         _this = this;
       mails_html = this._generate_html($res);
+      count = Number($res.find('fullcount').text());
       unread_html = this.unread_template({
-        count: Number($res.find('fullcount').text()),
-        account: $res.find('title').first().text().split('for ')[1]
+        count: count,
+        account: $res.find('title').first().text().split('for ')[1],
+        label: this.label,
+        moreThenOne: Boolean(count > 1)
       });
       return this._putInDom(unread_html, function() {
         return _this.$el.find('ul').html(mails_html);
@@ -251,6 +263,8 @@
 
     Options.prototype.THEME_KEY = 'theme';
 
+    Options.prototype.MAIL_LABEL = 'label';
+
     Options.prototype.THEMES = [
       {
         name: 'theBeach',
@@ -293,6 +307,7 @@
           }
         }
         chrome.storage.onChanged.addListener(_this._triggerListener);
+        console.log(_this.options);
         return done();
       });
     }
@@ -364,6 +379,7 @@
       this._registerTabChange();
       this._registerInputChange();
       this._registerOptionChange();
+      this._regisrerLabelChange();
     }
 
     OptionsView.prototype.render = function() {
@@ -377,6 +393,10 @@
         grayApps: {
           name: this.options.APP_GRAYSCALE,
           value: Boolean(this.options.get(this.options.APP_GRAYSCALE))
+        },
+        label: {
+          name: this.options.MAIL_LABEL,
+          value: this.options.get(this.options.MAIL_LABEL)
         },
         theme: this.options.THEME_KEY,
         themes: {}
@@ -447,9 +467,18 @@
       });
     };
 
+    OptionsView.prototype._regisrerLabelChange = function() {
+      var _this = this;
+      return this.$el.on('click', '.save', function(e) {
+        var $input;
+        $input = $(e.target).prev('input');
+        return _this.options.set($input.prop('name'), $input.val());
+      });
+    };
+
     OptionsView.prototype._registerInputChange = function() {
       var _this = this;
-      return this.$el.on('change', 'input', function(e) {
+      return this.$el.on('change', 'input[type="checkbox"]', function(e) {
         var value;
         if (e.target.name === _this.options.THEME_KEY) {
           value = e.target.value;
@@ -489,8 +518,11 @@
       this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
         return _this.$el.find("#" + _this.options.DARK_FONT).prop('checked', new_value);
       });
-      return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
+      this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
         return _this.$el.find("#" + _this.options.THEME_KEY).prop('checked', new_value);
+      });
+      return this.options.registerOnChange(this.options.MAIL_LABEL, function(new_value, old_value) {
+        return _this.$el.find("#" + _this.options.MAIL_LABEL).val(new_value);
       });
     };
 

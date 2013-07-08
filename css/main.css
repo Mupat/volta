@@ -296,9 +296,8 @@ body h1 + p {
 }
 #mails {
   margin: 0 auto;
-  height: calc(100% - 461px);
-  overflow: auto;
   width: 858px;
+  height: calc(100% - 461px);
 }
 #mails > i {
   font-size: 5rem;
@@ -331,12 +330,14 @@ body h1 + p {
   font-weight: 100;
 }
 #mails .unread h1 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 #mails .unread + ul {
   position: relative;
   margin: 0;
   padding: 0;
+  height: calc(100% - 48px);
+  overflow: auto;
 }
 #mails .unread + ul > li {
   -webkit-animation: fadeIn 1s linear;
@@ -477,6 +478,18 @@ body h1 + p {
   -webkit-transform: translateX(0);
   -webkit-transition: -webkit-transform 0.5s 0.5s ease;
 }
+#options > div section#general_options div:last-of-type {
+  margin-bottom: 1rem;
+}
+#options > div section > h1 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  font-weight: 100;
+  color: #333333;
+}
+#options > div section > h1:nth-of-type(n+2) {
+  margin-top: 1.5rem;
+}
 #options #credits > ul {
   margin: 0;
   padding: 0;
@@ -495,11 +508,45 @@ body h1 + p {
 #options #credits > ul li a:hover {
   text-decoration: underline;
 }
-#options input {
+#options input[type="checkbox"],
+#options input[type="radio"] {
   display: none;
 }
-#options input:checked + label:before {
+#options input[type="checkbox"]:checked + label:before,
+#options input[type="radio"]:checked + label:before {
   opacity: 1;
+}
+#options .mail_label label {
+  font-size: 1.4rem;
+  color: #333333;
+  line-height: 2rem;
+}
+#options .mail_label input {
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  border-radius: 6px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font: normal 11px "Lato", sans-serif;
+  font-weight: 100;
+  text-shadow: 0 0.1rem 0.2rem #333333;
+  color: #dddddd;
+  font-size: 1rem;
+  width: 20rem;
+}
+#options .mail_label .save {
+  background-color: #fff;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
+  padding: 0.25rem 0.5rem;
+  color: #333333;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  -webkit-transition: background-color 0.5s ease;
+}
+#options .mail_label .save:hover {
+  background-color: #f2f2f2;
 }
 #options .checkbox label {
   cursor: pointer;

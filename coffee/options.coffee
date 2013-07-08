@@ -8,6 +8,7 @@ class Options
   DARK_FONT: 'darkFontColor'
   APP_GRAYSCALE: 'appGrayscale'
   THEME_KEY: 'theme'
+  MAIL_LABEL: 'label'
 
   # available themes
   THEMES: [
@@ -31,6 +32,7 @@ class Options
           @options[key] = value
 
       chrome.storage.onChanged.addListener @_triggerListener
+      console.log @options
       done()
 
   get: (key) ->

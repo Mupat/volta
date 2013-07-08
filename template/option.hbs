@@ -5,6 +5,7 @@
 --></ul>
 <div>
   <section id="general_options" class="show">
+    <h1>Style</h1>
     <div class="checkbox">
       <input id="{{darkFont.name}}" type="checkbox" name="{{darkFont.name}}" value="{{darkFont.name}}" {{#if darkFont.value}} checked="checked" {{/if}} />
       <label for="{{darkFont.name}}" class="icon-check">use dark font color</label>
@@ -13,6 +14,11 @@
     <div class="checkbox">
       <input id="{{grayApps.name}}" type="checkbox" name="{{grayApps.name}}" value="{{grayApps.name}}" {{#if grayApps.value}} checked="checked" {{/if}} />
       <label for="{{grayApps.name}}" class="icon-check">use grayscaled app icons</label> 
+    </div>
+    <h1>Mail</h1>
+    <div class="mail_label">
+      <label for="{{label.name}}">Add a label name to check for new mails. Clear it, to use the inbox. </label>
+      <input id="{{label.name}}" name="{{label.name}}" value="{{label.value}}" type="text" /> <span class="save">Save</span>
     </div>
   </section>
   <section id="theme_options" class="">

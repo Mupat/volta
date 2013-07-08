@@ -1,8 +1,7 @@
 #mails {
   margin: 0 auto;
-  height: calc(~"100% - 461px");
-  overflow: auto;
   width: 858px;
+  height: calc(~"100% - 461px");
 
   > i { 
     font-size: 5rem;
@@ -37,12 +36,14 @@
     }
   }
 
-  .unread h1 { font-size: 2.5rem; }
+  .unread h1 { font-size: 2.25rem; }
 
   .unread + ul {
     position: relative;
     margin: 0;
     padding: 0;
+    height: calc(~"100% - 48px");
+    overflow: auto;
 
     > li {
       -webkit-animation: fadeIn 1s linear;

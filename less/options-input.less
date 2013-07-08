@@ -1,7 +1,44 @@
 #options {
- input { 
+ input[type="checkbox"],
+ input[type="radio"] { 
     display: none;
     &:checked + label:before { opacity: 1; }
+  }
+
+  .mail_label {
+    label {
+      font-size: 1.4rem;
+      color: @darkFontColor;
+      line-height: 2rem;
+    }
+
+    input {
+      background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+      border-radius: @borderRadius;
+      box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+      border: none;
+      padding: 0.25rem 0.5rem;
+      font: @font;
+      font-weight: @fontWeightLight;
+      text-shadow: @textShadowLight;
+      color: @lightFontColor;
+      font-size: 1rem;
+      width: 20rem;
+    }
+
+    .save {
+      background-color: #fff;
+      box-shadow: 0px 0px 3px 0px rgba(0,0,0,.4);
+      padding: 0.25rem 0.5rem;
+      color: @darkFontColor;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      border-radius: @borderRadius;
+      -webkit-transition: background-color 0.5s ease;
+
+      &:hover { background-color: darken(#fff, 5%); }
+    }
   }
 
   .checkbox label {

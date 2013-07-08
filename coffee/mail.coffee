@@ -4,9 +4,17 @@ class Mail
   unread_template: YANTRE.templates.unread
   url: 'https://mail.google.com/mail/feed/atom/'
   $el: $('#mails')
+  label: ''
+
+  constructor: (@options = YANTRE.options) ->
+    @label = @options.get @options.MAIL_LABEL
+
+    @options.registerOnChange @options.MAIL_LABEL, (new_value, old_value) =>
+      @label = new_value
+      @render()
 
   render: ->
-    $.get(@url)
+    $.get(@url + @label)
       .done(@_success)
       .fail(@_error)
 
@@ -27,9 +35,12 @@ class Mail
 
   _showUnread: ($res) ->
     mails_html = @_generate_html $res
+    count = Number($res.find('fullcount').text())
     unread_html = @unread_template 
-      count: Number($res.find('fullcount').text())
+      count: count
       account: $res.find('title').first().text().split('for ')[1]
+      label: @label
+      moreThenOne: Boolean(count > 1)
 
     @_putInDom unread_html, =>
       @$el.find('ul').html mails_html

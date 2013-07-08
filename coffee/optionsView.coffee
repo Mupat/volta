@@ -11,11 +11,13 @@ class OptionsView
     @_registerTabChange()
     @_registerInputChange()
     @_registerOptionChange()
+    @_regisrerLabelChange()
 
   render: ->
     data = 
       darkFont: { name: @options.DARK_FONT, value: Boolean(@options.get(@options.DARK_FONT)) }
       grayApps: { name: @options.APP_GRAYSCALE, value: Boolean(@options.get(@options.APP_GRAYSCALE)) }
+      label: { name: @options.MAIL_LABEL, value: @options.get(@options.MAIL_LABEL) }
       theme: @options.THEME_KEY
       themes: {}
 
@@ -63,8 +65,13 @@ class OptionsView
     
       @$el.toggleClass 'show'
 
+  _regisrerLabelChange: ->
+    @$el.on 'click', '.save', (e) =>
+      $input = $(e.target).prev('input')
+      @options.set $input.prop('name'), $input.val()
+
   _registerInputChange: ->
-    @$el.on 'change', 'input', (e) =>
+    @$el.on 'change', 'input[type="checkbox"]', (e) =>
       if e.target.name is @options.THEME_KEY then value = e.target.value else value = e.target.checked
       @options.set e.target.name, value, =>
         $target = $(e.target).parent()
@@ -91,6 +98,9 @@ class OptionsView
 
     @options.registerOnChange @options.THEME_KEY, (new_value, old_value) =>
       @$el.find("##{@options.THEME_KEY}").prop 'checked', new_value
+
+    @options.registerOnChange @options.MAIL_LABEL, (new_value, old_value) =>
+      @$el.find("##{@options.MAIL_LABEL}").val new_value
 
   _prettify: (value) ->
     value.replace(
