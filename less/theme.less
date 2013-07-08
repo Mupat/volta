@@ -18,14 +18,13 @@
 .navyBlue { background: url(@navyBlue); }
 .redWine { background: url(@redWine); }
 .redMesh { background: url(@redMesh); }
-// .default { background-color: @darkFontColor; }
 .default { background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(34,34,34,1)), color-stop(100%,rgba(14,14,14,1))); }
 
 body { 
   // transition: background 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   &.transition { 
     -webkit-transition: background 0.8s ease; 
-    i.loader { -webkit-animation: spinReverse 2s linear infinite; }
+    .loader { -webkit-animation: spinReverse 2s linear infinite; }
   } 
   background-position: top center;
   font: @font;

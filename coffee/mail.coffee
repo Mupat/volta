@@ -10,8 +10,10 @@ class Mail
     @label = @options.get @options.MAIL_LABEL
 
     @options.registerOnChange @options.MAIL_LABEL, (new_value, old_value) =>
-      @label = new_value
-      @render()
+      @$el.children().fadeOut 400, =>
+        @$el.prev().show 400, =>
+          @label = new_value
+          setTimeout ( => @render()), 500
 
   render: ->
     $.get(@url + @label)
@@ -49,6 +51,7 @@ class Mail
     @_putInDom @read_template()
 
   _success: (data) =>
+    @$el.prev().fadeOut()
     $res = $(data)
     if Number($(data).find('fullcount').text()) > 0 
       @_showUnread $res

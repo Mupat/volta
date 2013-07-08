@@ -121,7 +121,7 @@ function program3(depth0,data,depth1) {
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" class=\"icon-check\">use grayscaled app icons</label> \n    </div>\n    <h1>Mail</h1>\n    <div class=\"mail_label\">\n      <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">Add a label name to check for new mails. Clear it, to use the inbox. </label>\n      <input id=\""
+    + "\">Add a google label to check for new mails. Clear it, to use the inbox. </label>\n      <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

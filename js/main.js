@@ -171,8 +171,14 @@
       this._generate_html = __bind(this._generate_html, this);
       this.label = this.options.get(this.options.MAIL_LABEL);
       this.options.registerOnChange(this.options.MAIL_LABEL, function(new_value, old_value) {
-        _this.label = new_value;
-        return _this.render();
+        return _this.$el.children().fadeOut(400, function() {
+          return _this.$el.prev().show(400, function() {
+            _this.label = new_value;
+            return setTimeout((function() {
+              return _this.render();
+            }), 500);
+          });
+        });
       });
     }
 
@@ -221,6 +227,7 @@
 
     Mail.prototype._success = function(data) {
       var $res;
+      this.$el.prev().fadeOut();
       $res = $(data);
       if (Number($(data).find('fullcount').text()) > 0) {
         return this._showUnread($res);
