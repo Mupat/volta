@@ -21,7 +21,7 @@ class Basic
 
   _handle_theme: ->
     @theme = @options.get @options.THEME_KEY
-    if @theme then @$el.addClass @theme
+    if @theme then @$el.toggleClass "#{@theme} default"
 
     @options.registerOnChange @options.THEME_KEY, (new_value, old_value) =>
       @$el.toggleClass "#{old_value} #{new_value}"

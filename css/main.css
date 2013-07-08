@@ -421,12 +421,11 @@ body h1 + p {
   left: -2rem;
   top: -1rem;
   z-index: 10003;
-  border-bottom: 1px solid #333333;
 }
 #options > ul li {
   list-style: none;
   display: inline-block;
-  width: 33%;
+  width: 33.3%;
   text-align: center;
 }
 #options > ul li:first-child i {
@@ -435,25 +434,29 @@ body h1 + p {
 #options > ul li i {
   padding-top: 1rem;
   font-size: 1.25rem;
-  -webkit-transition: color 0.5s ease, opacity 0.5s ease, background-color 0.5s ease;
+  -webkit-transition: color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
   height: 50px;
   display: block;
   padding-bottom: 0.5rem;
-  color: #333333;
-  opacity: 0.5;
+  color: #ffffff;
+  background-color: #1a1a1a;
+  box-shadow: inset -5px -15px 10px -10px rgba(0, 0, 0, 0.75);
 }
 #options > ul li i:hover {
-  color: #ffffff;
-  opacity: 1;
+  background-color: #262626;
 }
 #options > ul li i:before {
   display: block;
+  color: #ffffff;
 }
 #options > ul li i.active {
-  opacity: 1;
-  color: #ffffff;
-  background-color: #1a1a1a;
+  color: #333333;
+  background-color: transparent;
+  box-shadow: none;
+}
+#options > ul li i.active:before {
+  color: #333333;
 }
 #options > div {
   position: relative;
@@ -482,7 +485,7 @@ body h1 + p {
   list-style: none;
   color: #333333;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 #options #credits > ul li a {
   display: block;
@@ -531,14 +534,11 @@ body h1 + p {
   top: 0.2rem;
   left: 0.15rem;
 }
-#options #theme_options {
-  text-align: center;
-}
 #options .capture {
   display: inline-block;
 }
 #options .capture:nth-child(odd) {
-  margin: 0 1rem 1rem 0;
+  margin: 0 1rem 1rem 0.5rem;
 }
 #options .capture label {
   position: relative;
@@ -572,7 +572,7 @@ body h1 + p {
 #options .capture label > .info {
   position: absolute;
   z-index: 10000;
-  background-color: #0d0d0d;
+  background-color: #333333;
   color: #dddddd;
   -webkit-transform: scale(0.65);
 }
@@ -611,6 +611,7 @@ body h1 + p {
   left: 0;
   width: 100%;
   background-color: #1a1a1a;
+  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.75), inset -5px 10px 10px -10px rgba(0, 0, 0, 0.75);
 }
 #options .contributors > a {
   padding: 0.25rem 2rem;
@@ -620,6 +621,7 @@ body h1 + p {
   -webkit-transition: background-color 0.5s ease;
 }
 #options .contributors > a:hover {
+  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.75), inset -5px 10px 10px -10px rgba(0, 0, 0, 0.75);
   background-color: #262626;
 }
 #options .contributors > a img {
@@ -689,9 +691,11 @@ body h1 + p {
 .redMesh {
   background: url("../images/red-mesh.jpg");
 }
+.default {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222222), color-stop(100%, #0e0e0e));
+}
 body {
   background-position: top center;
-  background-color: #333;
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
   text-shadow: 0 0.1rem 0.2rem #333333;

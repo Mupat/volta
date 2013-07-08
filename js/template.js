@@ -97,7 +97,7 @@ function program3(depth0,data,depth1) {
   return buffer;
   }
 
-  buffer += "<ul>\n  <li><i class=\"icon-tools active\" data-content=\"general_options\" >General</i></li>\n  <li><i class=\"icon-background\" data-content=\"theme_options\" >Theme</i></li>\n  <li><i class=\"icon-info\" data-content=\"credits\" >Credits</i></li>\n</ul>\n<div>\n  <section id=\"general_options\" class=\"show\">\n    <div class=\"checkbox\">\n      <input id=\""
+  buffer += "<ul>\n  <li><i class=\"icon-tools active\" data-content=\"general_options\" >General</i></li><!--\n  --><li><i class=\"icon-background\" data-content=\"theme_options\" >Theme</i></li><!--\n  --><li><i class=\"icon-info\" data-content=\"credits\" >Credits</i></li><!--\n--></ul>\n<div>\n  <section id=\"general_options\" class=\"show\">\n    <div class=\"checkbox\">\n      <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

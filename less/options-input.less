@@ -40,10 +40,9 @@
     }
   }
 
-  #theme_options { text-align: center; }
   .capture {
     display: inline-block; 
-    &:nth-child(odd) { margin: 0 1rem 1rem 0; }
+    &:nth-child(odd) { margin: 0 1rem 1rem 0.5rem; }
     label {
       position: relative;
       display: inline-block;
@@ -79,7 +78,7 @@
       > .info {
         position: absolute;
         z-index: 10000;
-        background-color: darken(@darkFontColor, 15%);
+        background-color: @darkFontColor;
         color: @lightFontColor;
         -webkit-transform: scale(0.65);
         > strong {

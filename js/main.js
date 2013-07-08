@@ -114,7 +114,7 @@
       var _this = this;
       this.theme = this.options.get(this.options.THEME_KEY);
       if (this.theme) {
-        this.$el.addClass(this.theme);
+        this.$el.toggleClass("" + this.theme + " default");
       }
       return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
         return _this.$el.toggleClass("" + old_value + " " + new_value);
@@ -276,6 +276,8 @@
         name: 'redWine'
       }, {
         name: 'redMesh'
+      }, {
+        name: 'default'
       }
     ];
 

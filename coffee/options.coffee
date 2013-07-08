@@ -21,6 +21,7 @@ class Options
     {name: 'navyBlue', grayApps: true}
     {name: 'redWine'}
     {name: 'redMesh'}
+    {name: 'default'}
   ]
 
   constructor: (done) ->
