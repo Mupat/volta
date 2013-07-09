@@ -6,7 +6,8 @@
   "permissions": [
     "management",
     "storage",
-    "https://mail.google.com/mail/feed/atom/"
+    "https://mail.google.com/mail/feed/atom/",
+    "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/"
   ],
   "chrome_url_overrides": {
     "newtab": "index.html"

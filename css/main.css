@@ -723,6 +723,9 @@ body .loader {
 #options .contributors > a:last-of-type span {
   right: 0rem;
 }
+.default {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222222), color-stop(100%, #0e0e0e));
+}
 .theBeach {
   background: url("../images/beach.jpg");
 }
@@ -752,9 +755,6 @@ body .loader {
 }
 .redMesh {
   background: url("../images/red-mesh.jpg");
-}
-.default {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222222), color-stop(100%, #0e0e0e));
 }
 body {
   background-position: top center;

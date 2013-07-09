@@ -2,7 +2,9 @@ class Mail
   mail_template: YANTRE.templates.mail
   read_template: YANTRE.templates.read
   unread_template: YANTRE.templates.unread
+  notLoggedIn_template: YANTRE.templates.notin
   url: 'https://mail.google.com/mail/feed/atom/'
+  loggedInUrl: 'https://accounts.google.com/ServiceLogin?continue=https://mail.google.com/mail/'
   $el: $('#mails')
   label: ''
 
@@ -16,12 +18,15 @@ class Mail
           setTimeout ( => @render()), 500
 
   render: ->
-    # $.ajax('https://mail.google.com/mail/u/0/#inbox', timeout: 500)
-    #   .always (data) ->
-    #     console.log 'mail check finished', data
-    $.get(@url + @label)
-      .done(@_success)
-      .fail(@_error)
+    $.ajax(@loggedInUrl)
+      .done (data) =>
+        if data.indexOf('reauthEmail') != -1
+          $.get(@url + @label)
+            .done(@_success)
+            .fail(@_error)
+        else
+          @$el.prev().fadeOut()
+          @_showNotLoggedIn()
 
   _generate_html: ($res) =>
     append_html = ''
@@ -54,6 +59,9 @@ class Mail
 
   _showRead: ->
     @_putInDom @read_template()
+
+  _showNotLoggedIn: ->
+    @_putInDom @notLoggedIn_template()
 
   _success: (data) =>
     @$el.prev().fadeOut()

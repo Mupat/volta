@@ -73,7 +73,7 @@ class OptionsView
       @options.set $input.prop('name'), $input.val()
 
   _registerInputChange: ->
-    @$el.on 'change', 'input[type="checkbox"]', (e) =>
+    @$el.on 'change', 'input[type="checkbox"], input[type="radio"]', (e) =>
       if e.target.name is @options.THEME_KEY then value = e.target.value else value = e.target.checked
       @options.set e.target.name, value, =>
         $target = $(e.target).parent()

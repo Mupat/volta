@@ -117,7 +117,13 @@
         this.$el.toggleClass("" + this.theme + " default");
       }
       return this.options.registerOnChange(this.options.THEME_KEY, function(new_value, old_value) {
-        return _this.$el.toggleClass("" + old_value + " " + new_value);
+        var old;
+        if (old_value) {
+          old = old_value;
+        } else {
+          old = 'default';
+        }
+        return _this.$el.toggleClass("" + old + " " + new_value);
       });
     };
 
@@ -150,7 +156,11 @@
 
     Mail.prototype.unread_template = YANTRE.templates.unread;
 
+    Mail.prototype.notLoggedIn_template = YANTRE.templates.notin;
+
     Mail.prototype.url = 'https://mail.google.com/mail/feed/atom/';
+
+    Mail.prototype.loggedInUrl = 'https://accounts.google.com/ServiceLogin?continue=https://mail.google.com/mail/';
 
     Mail.prototype.$el = $('#mails');
 
@@ -176,7 +186,15 @@
     }
 
     Mail.prototype.render = function() {
-      return $.get(this.url + this.label).done(this._success).fail(this._error);
+      var _this = this;
+      return $.ajax(this.loggedInUrl).done(function(data) {
+        if (data.indexOf('reauthEmail') !== -1) {
+          return $.get(_this.url + _this.label).done(_this._success).fail(_this._error);
+        } else {
+          _this.$el.prev().fadeOut();
+          return _this._showNotLoggedIn();
+        }
+      });
     };
 
     Mail.prototype._generate_html = function($res) {
@@ -217,6 +235,10 @@
 
     Mail.prototype._showRead = function() {
       return this._putInDom(this.read_template());
+    };
+
+    Mail.prototype._showNotLoggedIn = function() {
+      return this._putInDom(this.notLoggedIn_template());
     };
 
     Mail.prototype._success = function(data) {
@@ -480,7 +502,7 @@
 
     OptionsView.prototype._registerInputChange = function() {
       var _this = this;
-      return this.$el.on('change', 'input[type="checkbox"]', function(e) {
+      return this.$el.on('change', 'input[type="checkbox"], input[type="radio"]', function(e) {
         var value;
         if (e.target.name === _this.options.THEME_KEY) {
           value = e.target.value;

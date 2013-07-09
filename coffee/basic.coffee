@@ -24,4 +24,5 @@ class Basic
     if @theme then @$el.toggleClass "#{@theme} default"
 
     @options.registerOnChange @options.THEME_KEY, (new_value, old_value) =>
-      @$el.toggleClass "#{old_value} #{new_value}"
+      if old_value then old = old_value else old = 'default'
+      @$el.toggleClass "#{old} #{new_value}"
