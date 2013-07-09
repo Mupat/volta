@@ -333,7 +333,18 @@ body .loader {
   font-weight: 100;
 }
 #mails .unread h1 {
-  font-size: 2.25rem;
+  font-size: 2rem;
+}
+#mails .unread h1 strong,
+#mails .unread h1 span {
+  font-size: 2.5rem;
+}
+#mails .unread h1 span {
+  max-width: 35rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  white-space: nowrap;
 }
 #mails .unread + ul {
   position: relative;
@@ -524,7 +535,7 @@ body .loader {
   color: #333333;
   line-height: 2rem;
 }
-#options .mail_label input {
+#options .mail_label input[type="text"] {
   background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
   border-radius: 6px;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
@@ -537,18 +548,19 @@ body .loader {
   font-size: 1rem;
   width: 20rem;
 }
-#options .mail_label .save {
+#options .mail_label input[type="submit"] {
   background-color: #fff;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
   padding: 0.25rem 0.5rem;
   color: #333333;
   font-size: 1rem;
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
   cursor: pointer;
+  border: none;
   border-radius: 6px;
   -webkit-transition: background-color 0.5s ease;
 }
-#options .mail_label .save:hover {
+#options .mail_label input[type="submit"]:hover {
   background-color: #f2f2f2;
 }
 #options .checkbox label {

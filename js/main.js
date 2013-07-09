@@ -126,24 +126,17 @@
   })();
 
   Clock = (function() {
-    Clock.prototype.options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    };
-
-    Clock.prototype.locale = "en-US";
+    Clock.prototype.format = "dddd, MMMM Do YYYY";
 
     function Clock() {
-      this.date = new Date().toLocaleDateString(this.locale, this.options);
+      this.date = moment();
     }
 
     Clock.prototype.render = function() {
       $('#clock > div').FlipClock({
         clockFace: 'TwentyFourHourClock'
       });
-      return $('#clock > h1').text(this.date);
+      return $('#clock > h1').text(this.date.format(this.format));
     };
 
     return Clock;
@@ -191,13 +184,14 @@
       append_html = '';
       self = this;
       $res.find('entry').each(function(index) {
-        var $author, $entry;
+        var $author, $entry, time;
         $entry = $(this);
         $author = $entry.find('author');
+        time = moment.utc($entry.find('issued').text()).local();
         return append_html += self.mail_template({
           title: $entry.find('title').text(),
           author: "" + ($author.children('name').text()) + " (" + ($author.children('email').text()) + ")",
-          time: $entry.find('issued').text(),
+          time: time.calendar(),
           link: $entry.find('link').attr('href'),
           summary: $entry.find('summary').text()
         });
@@ -314,7 +308,6 @@
           }
         }
         chrome.storage.onChanged.addListener(_this._triggerListener);
-        console.log(_this.options);
         return done();
       });
     }
@@ -476,9 +469,11 @@
 
     OptionsView.prototype._regisrerLabelChange = function() {
       var _this = this;
-      return this.$el.on('click', '.save', function(e) {
+      return this.$el.on('submit', '.mail_label > form', function(e) {
         var $input;
-        $input = $(e.target).prev('input');
+        e.preventDefault();
+        console.log($(e.target));
+        $input = $(e.target).children('input');
         return _this.options.set($input.prop('name'), $input.val());
       });
     };
@@ -545,6 +540,16 @@
 
   $(function() {
     var options;
+    moment.lang('en', {
+      calendar: {
+        lastDay: '[Yesterday at] HH:mm:ss',
+        sameDay: '[Today at] HH:mm:ss',
+        nextDay: '[Tomorrow at] HH:mm:ss',
+        lastWeek: '[last] dddd [at] HH:mm:ss',
+        nextWeek: 'dddd [at] HH:mm:ss',
+        sameElse: 'YYYY-MM-DD HH:mm:ss'
+      }
+    });
     return options = new Options(function() {
       var app, basic, clock, mail, optionsView;
       YANTRE.options = options;

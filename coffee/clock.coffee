@@ -1,12 +1,11 @@
 class Clock
-  options: {weekday: "long", year: "numeric", month: "long", day: "numeric"}
-  locale: "en-US"
+  format: "dddd, MMMM Do YYYY"
 
   constructor: ->
-    @date = new Date().toLocaleDateString @locale, @options
+    @date = moment()
 
   render: ->
     $('#clock > div').FlipClock
       clockFace: 'TwentyFourHourClock'
   
-    $('#clock > h1').text @date
+    $('#clock > h1').text @date.format(@format)

@@ -32,7 +32,6 @@ class Options
           @options[key] = value
 
       chrome.storage.onChanged.addListener @_triggerListener
-      console.log @options
       done()
 
   get: (key) ->

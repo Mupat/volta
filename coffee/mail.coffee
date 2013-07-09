@@ -16,6 +16,9 @@ class Mail
           setTimeout ( => @render()), 500
 
   render: ->
+    # $.ajax('https://mail.google.com/mail/u/0/#inbox', timeout: 500)
+    #   .always (data) ->
+    #     console.log 'mail check finished', data
     $.get(@url + @label)
       .done(@_success)
       .fail(@_error)
@@ -26,10 +29,12 @@ class Mail
     $res.find('entry').each (index) ->
       $entry = $(this)
       $author = $entry.find('author')
+
+      time = moment.utc($entry.find('issued').text()).local()
       append_html += self.mail_template
         title: $entry.find('title').text()
         author: "#{$author.children('name').text()} (#{$author.children('email').text()})"
-        time: $entry.find('issued').text()
+        time: time.calendar()
         link: $entry.find('link').attr('href')
         summary: $entry.find('summary').text()
 

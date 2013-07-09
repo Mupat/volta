@@ -119,15 +119,15 @@ function program3(depth0,data,depth1) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += " />\n      <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use grayscaled app icons</label> \n    </div>\n    <h1>Mail</h1>\n    <div class=\"mail_label\">\n      <label for=\""
+    + "\" class=\"icon-check\">use grayscaled app icons</label> \n    </div>\n    <h1>Mail</h1>\n    <div class=\"mail_label\">\n      <form>\n        <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">Add a google label to check for new mails. Clear it, to use the inbox. </label>\n      <input id=\""
+    + "\">Add a google label to check for new mails. Clear it, to use the inbox. </label>\n        <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" value=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" /> <span class=\"save\">Save</span>\n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
+    + "\" type=\"text\" />\n        <input type=\"submit\" value=\"Save\" />\n      </form>\n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
   stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    <ul>\n      <li>FlipClock.js<a href=\"http://flipclockjs.com/\">Homepage</a></li>\n      <li>Moment.js<a href=\"http://momentjs.com/\">Homepage</a></li>\n      <li>Google Webfont Lato<a href=\"http://www.google.com/fonts/specimen/Lato\">Font Description</a></li>\n      <li>bxSlider<a href=\"http://bxslider.com/\">Homepage</a></li>\n      <li>jQuery<a href=\"http://jquery.com/\">Homepage</a></li>\n    </ul>\n  </section>\n  <div class=\"contributors\">\n    <a href=\""
@@ -173,11 +173,10 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "@ <strong>";
+  buffer += "#";
   if (stack1 = helpers.label) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.label; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1)
-    + "</strong>";
+  buffer += escapeExpression(stack1);
   return buffer;
   }
 
@@ -188,13 +187,12 @@ function program3(depth0,data) {
     + "</strong> unread mail";
   stack1 = helpers['if'].call(depth0, depth0.moreThenOne, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " in ";
+  buffer += " in <span>";
   if (stack1 = helpers.account) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.account; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
-  buffer += escapeExpression(stack1)
-    + " ";
+  buffer += escapeExpression(stack1);
   stack1 = helpers['if'].call(depth0, depth0.label, {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</h1>\n</div>\n<ul></ul>";
+  buffer += "</span></h1>\n</div>\n<ul></ul>";
   return buffer;
   });

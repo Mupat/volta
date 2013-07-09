@@ -12,10 +12,10 @@
       line-height: 2rem;
     }
 
-    input {
-      background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+    input[type="text"] {
+      background: @inputBackground;
       border-radius: @borderRadius;
-      box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+      box-shadow: @inputBoxShadow;
       border: none;
       padding: 0.25rem 0.5rem;
       font: @font;
@@ -26,14 +26,15 @@
       width: 20rem;
     }
 
-    .save {
+    input[type="submit"] {
       background-color: #fff;
       box-shadow: 0px 0px 3px 0px rgba(0,0,0,.4);
       padding: 0.25rem 0.5rem;
       color: @darkFontColor;
       font-size: 1rem;
-      margin-left: 0.5rem;
+      margin-left: 0.25rem;
       cursor: pointer;
+      border: none;
       border-radius: @borderRadius;
       -webkit-transition: background-color 0.5s ease;
 
@@ -60,9 +61,9 @@
       content: '';
       width: 24px;
       height: 24px;
-      background: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
+      background: @inputBackground;
       border-radius: @borderRadius;
-      box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
+      box-shadow: @inputBoxShadow;
       display: inline-block;
       z-index: 10;
     }

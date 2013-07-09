@@ -66,8 +66,10 @@ class OptionsView
       @$el.toggleClass 'show'
 
   _regisrerLabelChange: ->
-    @$el.on 'click', '.save', (e) =>
-      $input = $(e.target).prev('input')
+    @$el.on 'submit', '.mail_label > form', (e) =>
+      e.preventDefault()
+      console.log $(e.target)
+      $input = $(e.target).children('input')
       @options.set $input.prop('name'), $input.val()
 
   _registerInputChange: ->

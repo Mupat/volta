@@ -17,8 +17,11 @@
     </div>
     <h1>Mail</h1>
     <div class="mail_label">
-      <label for="{{label.name}}">Add a google label to check for new mails. Clear it, to use the inbox. </label>
-      <input id="{{label.name}}" name="{{label.name}}" value="{{label.value}}" type="text" /> <span class="save">Save</span>
+      <form>
+        <label for="{{label.name}}">Add a google label to check for new mails. Clear it, to use the inbox. </label>
+        <input id="{{label.name}}" name="{{label.name}}" value="{{label.value}}" type="text" />
+        <input type="submit" value="Save" />
+      </form>
     </div>
   </section>
   <section id="theme_options" class="">

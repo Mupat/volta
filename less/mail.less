@@ -30,7 +30,17 @@
     }
   }
 
-  .unread h1 { font-size: 2.25rem; }
+  .unread h1 { 
+    font-size: 2rem; 
+    strong,span { font-size: 2.5rem; }
+    span {
+      max-width: 35rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      white-space: nowrap;
+    }
+  }
 
   .unread + ul {
     position: relative;
