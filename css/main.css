@@ -191,7 +191,7 @@ body .loader {
 #clock .flip-clock-wrapper {
   clear: both;
   width: auto;
-  min-height: auto;
+  min-height: 1%;
   display: inline-block;
   background-color: rgba(15, 15, 15, 0.5);
   padding: 2rem;

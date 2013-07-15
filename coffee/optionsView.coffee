@@ -2,8 +2,8 @@ class OptionsView
   template: YANTRE.templates.option
   $el: $('#options')
   contributors: [
-    'https://api.github.com/users/Mupat'
-    'https://api.github.com/users/MacCypher'
+    'https://api.github.com/users/mupat'
+    'https://api.github.com/users/mac-cypher'
   ]
 
   constructor: (@options = YANTRE.options) ->

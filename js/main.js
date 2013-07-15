@@ -393,7 +393,7 @@
 
     OptionsView.prototype.$el = $('#options');
 
-    OptionsView.prototype.contributors = ['https://api.github.com/users/Mupat', 'https://api.github.com/users/MacCypher'];
+    OptionsView.prototype.contributors = ['https://api.github.com/users/mupat', 'https://api.github.com/users/mac-cypher'];
 
     function OptionsView(options) {
       this.options = options != null ? options : YANTRE.options;
