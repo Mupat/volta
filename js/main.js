@@ -393,8 +393,6 @@
 
     OptionsView.prototype.$el = $('#options');
 
-    OptionsView.prototype.contributors = ['https://api.github.com/users/mupat', 'https://api.github.com/users/mac-cypher'];
-
     function OptionsView(options) {
       this.options = options != null ? options : YANTRE.options;
       this._registerBtnClick();
@@ -441,22 +439,20 @@
     };
 
     OptionsView.prototype._addContributors = function(done) {
-      return $.when($.get(this.contributors[0]), $.get(this.contributors[1])).done(function(hacker, designer) {
-        var data;
-        data = {
-          hacker: {
-            name: hacker[0].login,
-            profile_link: hacker[0].html_url,
-            avatar: hacker[0].avatar_url
-          },
-          designer: {
-            name: designer[0].login,
-            profile_link: designer[0].html_url,
-            avatar: designer[0].avatar_url
-          }
-        };
-        return done(data);
-      });
+      var data;
+      data = {
+        hacker: {
+          name: 'Mupat',
+          profile_link: 'https://github.com/mupat',
+          avatar: 'https://secure.gravatar.com/avatar/71f4bc8f66d8e0f71a42d4d36059de8d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
+        },
+        designer: {
+          name: 'mac-cypher',
+          profile_link: 'https://github.com/mac-cypher',
+          avatar: 'https://secure.gravatar.com/avatar/f75332e05bb1198b9d0da05768897bb7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
+        }
+      };
+      return done(data);
     };
 
     OptionsView.prototype._registerTabChange = function() {
