@@ -422,7 +422,7 @@ body h1 {
 body {
   transition: background 0.8s ease;
   background-position: top center;
-  background: url("../images/light-linen.png");
+  background: #222;
   font: normal 11px "Lato", sans-serif;
   font-weight: 300;
   text-shadow: 0 0.1rem 0.2rem #333333;
@@ -468,6 +468,7 @@ body.bluePrintClean {
 }
 body.bookeh {
   background: url("../images/bookeh.jpg");
+  font-weight: 300;
 }
 body.bookeh #clock {
   background-color: rgba(0, 0, 0, 0.2);
@@ -477,6 +478,9 @@ body.bookeh #clock .flip-clock-wrapper {
 }
 body.bookeh #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #0e2524;
+}
+body.bookeh h1 {
+  font-weight: 300 !important;
 }
 body.linenDark {
   background: url("../images/dark-linen.png");
@@ -540,6 +544,7 @@ body.redWine #clock .flip-clock-wrapper ul li a div div.inn {
 }
 body.redMesh {
   background: url("../images/red-mesh.jpg");
+  font-weight: 300;
 }
 body.redMesh #clock {
   background-color: rgba(0, 0, 0, 0.2);
@@ -549,4 +554,7 @@ body.redMesh #clock .flip-clock-wrapper {
 }
 body.redMesh #clock .flip-clock-wrapper ul li a div div.inn {
   background-color: #191513;
+}
+body.redMesh h1 {
+  font-weight: 300 !important;
 }
