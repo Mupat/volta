@@ -3,30 +3,35 @@
 @fontWeightNormal: 300;
 @fontWeightBold: 400;
 
-@lightFontColor: #ddd;
-@lightFontColorLighten: lighten(@lightFontColor, 25%);
-@darkFontColor: #333;
-
 @textShadowLight: 0 0.1rem 0.2rem #111;
 @textShadowDark: 0 0 0.4rem #000;
 
-@standardBackground: @linenLight;
-@shadowColor: rgba(0, 0, 0, 0.4);
 @borderRadius: 6px;
 
 @textShadowLight: 0 0.1rem 0.2rem #333;
 @textShadowDark: 0 0 0.5rem #333;
 
-@clockDefaultBackgroundColor: rgba(0,0,0,0.2);
-@clockWrapperDefaultBackgroundColor: rgba(15,15,15,0.5);
-
-@backgroundOptionsHighlight: darken(@darkFontColor, 10%);
-@backgroundOptionsHighlightHover: darken(@darkFontColor, 5%);
-
-@inputBackground: -webkit-linear-gradient(top, #222 0%, #45484d 100%);
 @inputBoxShadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4);
 
 @minHeight: 600px;
+
+// ------------------------------------------ colors
+@shadowColor: rgba(0, 0, 0, 0.4);
+
+@lightFontColor: #ddd;
+@lightFontColorLighten: lighten(@lightFontColor, 25%);
+@darkFontColor: #333;
+
+@clockDefaultBackgroundColor: rgba(0,0,0,0.2);
+@clockWrapperDefaultBackgroundColor: rgba(15,15,15,0.5);
+
+@backgroundOptionsHighlight: @logoColorLight;
+@backgroundOptionsHighlightHover: darken(@logoColorLight, 5%);
+
+@inputBackground: -webkit-linear-gradient(top, lighten(@lightFontColor, 20%) 0%, lighten(@lightFontColor, 10%) 100%);
+
+@logoColorLight: #30B9BC;
+@logoColorDark: #BE1522;
 
 // ------------------------------------------ theme backgrounds
 @theme_path: '../images/';
