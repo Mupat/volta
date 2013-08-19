@@ -3,6 +3,7 @@ class Mail
   read_template: YANTRE.templates.read
   unread_template: YANTRE.templates.unread
   notLoggedIn_template: YANTRE.templates.notin
+  warning_template: YANTRE.templates.warning
   url: 'https://mail.google.com/mail/feed/atom/'
   loggedInUrl: 'https://accounts.google.com/ServiceLogin?continue=https://mail.google.com/mail/'
   $el: $('#mails')
@@ -27,6 +28,9 @@ class Mail
         else
           @$el.prev().fadeOut()
           @_showNotLoggedIn()
+      .error (err) =>
+        @$el.prev().fadeOut()
+        @_showWarning()
 
   _generate_html: ($res) =>
     append_html = ''
@@ -62,6 +66,9 @@ class Mail
 
   _showNotLoggedIn: ->
     @_putInDom @notLoggedIn_template()
+
+  _showWarning: ->
+    @_putInDom @warning_template()
 
   _success: (data) =>
     @$el.prev().fadeOut()
