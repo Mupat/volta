@@ -23,6 +23,8 @@ class Options
     {name: 'redWine'}
     {name: 'redMesh'}
     {name: 'default'}
+    {name: 'lightLogoColor', darkFont: true}
+    {name: 'darkLogoColor'}
   ]
 
   constructor: (done) ->
