@@ -1,10 +1,6 @@
 class OptionsView
   template: YANTRE.templates.option
   $el: $('#options')
-  # contributors: [
-  #   'https://api.github.com/users/mupat'
-  #   'https://api.github.com/users/mac-cypher'
-  # ]
 
   constructor: (@options = YANTRE.options) ->
     @_registerBtnClick()
@@ -45,18 +41,6 @@ class OptionsView
         avatar: 'https://secure.gravatar.com/avatar/f75332e05bb1198b9d0da05768897bb7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
     
     done data
-    # $.when($.get(@contributors[0]), $.get(@contributors[1])).done (hacker, designer) ->
-    #   data = 
-    #     hacker:
-    #       name: hacker[0].login
-    #       profile_link: hacker[0].html_url
-    #       avatar: hacker[0].avatar_url
-    #     designer:
-    #       name: designer[0].login
-    #       profile_link: designer[0].html_url
-    #       avatar: designer[0].avatar_url
-
-    #   done data
 
   _registerTabChange: ->
     @$el.on 'click', 'i', (e) =>
