@@ -4,7 +4,9 @@
     bottom: -6rem;
     left: 0;
     width: 100%;
-    background: @shadowColor;
+    -webkit-transition: background-color 0.5s ease;
+    background: @shadowColorDark;
+    @media (min-width: 1700px) { background: @shadowColor; }
     border-radius: @borderRadius 0 0 @borderRadius;
     box-shadow: inset -5px -10px 10px -10px rgba(0,0,0,0.5), inset -5px 10px 10px -10px rgba(0,0,0,0.5);
 

@@ -158,6 +158,8 @@
 
     Mail.prototype.notLoggedIn_template = YANTRE.templates.notin;
 
+    Mail.prototype.warning_template = YANTRE.templates.warning;
+
     Mail.prototype.url = 'https://mail.google.com/mail/feed/atom/';
 
     Mail.prototype.loggedInUrl = 'https://accounts.google.com/ServiceLogin?continue=https://mail.google.com/mail/';
@@ -194,6 +196,9 @@
           _this.$el.prev().fadeOut();
           return _this._showNotLoggedIn();
         }
+      }).error(function(err) {
+        _this.$el.prev().fadeOut();
+        return _this._showWarning();
       });
     };
 
@@ -239,6 +244,10 @@
 
     Mail.prototype._showNotLoggedIn = function() {
       return this._putInDom(this.notLoggedIn_template());
+    };
+
+    Mail.prototype._showWarning = function() {
+      return this._putInDom(this.warning_template());
     };
 
     Mail.prototype._success = function(data) {
@@ -315,6 +324,11 @@
         name: 'redMesh'
       }, {
         name: 'default'
+      }, {
+        name: 'lightLogoColor',
+        darkFont: true
+      }, {
+        name: 'darkLogoColor'
       }
     ];
 

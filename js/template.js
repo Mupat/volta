@@ -139,7 +139,7 @@ function program3(depth0,data,depth1) {
     + "\" type=\"text\" />\n        <input type=\"submit\" value=\"Save\" />\n      </form>\n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
   stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    <ul>\n      <li>FlipClock.js<a href=\"http://flipclockjs.com/\">Homepage</a></li>\n      <li>Moment.js<a href=\"http://momentjs.com/\">Homepage</a></li>\n      <li>Google Webfont Lato<a href=\"http://www.google.com/fonts/specimen/Lato\">Font Description</a></li>\n      <li>bxSlider<a href=\"http://bxslider.com/\">Homepage</a></li>\n      <li>jQuery<a href=\"http://jquery.com/\">Homepage</a></li>\n    </ul>\n  </section>\n  <div class=\"contributors\">\n    <a href=\""
+  buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    <ul>\n      <li>FlipClock.js<a href=\"http://flipclockjs.com/\">Homepage</a></li>\n      <li>Moment.js<a href=\"http://momentjs.com/\">Homepage</a></li>\n      <li>Google Webfont Lato<a href=\"http://www.google.com/fonts/specimen/Lato\">Font Description</a></li>\n      <li>bxSlider<a href=\"http://bxslider.com/\">Homepage</a></li>\n      <li>jQuery<a href=\"http://jquery.com/\">Homepage</a></li>\n    </ul>\n    <img src=\"/icon/icon128.png\" alt=\"extension icon\" />\n  </section>\n  <div class=\"contributors\">\n    <a href=\""
     + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.profile_link)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\">\n      <span>Hacker</span>\n      <img src=\""
     + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.avatar)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -204,4 +204,13 @@ function program3(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</span></h1>\n</div>\n<ul></ul>";
   return buffer;
+  });
+
+this["YANTRE"]["templates"]["warning"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"read\">\n  <h1>User?! ... We have a problem!</h1>\n  <p>You're probably offline, please check your internet connection</p>\n</div>";
   });

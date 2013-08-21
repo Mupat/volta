@@ -413,15 +413,13 @@ body .loader {
   position: absolute;
   top: 3rem;
   right: -110%;
-  background: -webkit-gradient(linear, left top, left bottom, from(#d2d2d2), to(#f0f0f0));
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
-  border-radius: 6px 0 0 6px;
+  background: transparent;
   -webkit-transform: translateX(110%);
   -webkit-transition: -webkit-transform 0.5s ease-out;
   z-index: 9999;
   text-align: left;
   padding: 1rem 2rem;
-  height: calc(100% - 225px);
+  height: calc(100% - 245px);
   min-height: 375px;
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
 }
@@ -436,15 +434,17 @@ body .loader {
   left: -2rem;
   top: -1rem;
   z-index: 10003;
+  background: transparent;
 }
 #options > ul li {
   list-style: none;
   display: inline-block;
   width: 33.3%;
   text-align: center;
+  background: transparent;
 }
 #options > ul li:first-child i {
-  border-radius: 6px 0 0 0;
+  border-radius: 6px 0 0 6px;
 }
 #options > ul li i {
   padding-top: 1rem;
@@ -455,34 +455,45 @@ body .loader {
   display: block;
   padding-bottom: 0.5rem;
   color: #ffffff;
-  background-color: #1a1a1a;
-  box-shadow: inset -5px -15px 10px -10px rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 1700px) {
+  #options > ul li i {
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 #options > ul li i:hover {
-  background-color: #262626;
+  color: #be1522;
+}
+#options > ul li i:hover:before {
+  color: #be1522;
 }
 #options > ul li i:before {
   display: block;
   color: #ffffff;
 }
 #options > ul li i.active {
-  color: #333333;
-  background-color: transparent;
+  color: #be1522;
   box-shadow: none;
 }
 #options > ul li i.active:before {
-  color: #333333;
+  color: #be1522;
 }
 #options > div {
   position: relative;
   margin: -1rem -2rem;
   height: calc(100% - 130px);
+  border-radius: 6px 0 0 6px;
+  background: #fff;
+  top: 1.25rem;
 }
 #options > div section {
   position: absolute;
   width: calc(100% - 2rem);
   padding: 0.5rem 1rem 0;
-  height: 100%;
+  height: 96%;
+  top: 0.5rem;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-transition: -webkit-transform 0.5s ease;
@@ -504,6 +515,9 @@ body .loader {
 #options > div section > h1:nth-of-type(n+2) {
   margin-top: 1.5rem;
 }
+#options #credits {
+  position: relative;
+}
 #options #credits > ul {
   margin: 0;
   padding: 0;
@@ -522,6 +536,12 @@ body .loader {
 #options #credits > ul li a:hover {
   text-decoration: underline;
 }
+#options #credits > img {
+  margin: auto;
+  position: absolute;
+  right: 0rem;
+  bottom: 1rem;
+}
 #options input[type="checkbox"],
 #options input[type="radio"] {
   display: none;
@@ -536,32 +556,34 @@ body .loader {
   line-height: 2rem;
 }
 #options .mail_label input[type="text"] {
-  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
-  border-radius: 6px;
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f7f7f7 100%);
+  border-radius: 3px 0 0 3px;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
   border: none;
   padding: 0.25rem 0.5rem;
   font: normal 11px "Lato", sans-serif;
-  font-weight: 100;
-  text-shadow: 0 0.1rem 0.2rem #333333;
-  color: #dddddd;
-  font-size: 1rem;
+  font-weight: 300;
+  color: #333333;
+  font-size: 1.25rem;
   width: 20rem;
 }
 #options .mail_label input[type="submit"] {
-  background-color: #fff;
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.4);
-  padding: 0.25rem 0.5rem;
-  color: #333333;
-  font-size: 1rem;
-  margin-left: 0.25rem;
+  background-color: #333333;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
+  padding: 0.3rem 0.5rem;
+  position: relative;
+  top: -0.05rem;
+  color: #dddddd;
+  font-size: 1.25rem;
+  margin-left: -0.25rem;
+  font-weight: 100;
   cursor: pointer;
   border: none;
-  border-radius: 6px;
+  border-radius: 0 3px 3px 0;
   -webkit-transition: background-color 0.5s ease;
 }
 #options .mail_label input[type="submit"]:hover {
-  background-color: #f2f2f2;
+  background-color: #2ba5a8;
 }
 #options .checkbox label {
   cursor: pointer;
@@ -581,15 +603,15 @@ body .loader {
   content: '';
   width: 24px;
   height: 24px;
-  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
-  border-radius: 6px;
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f7f7f7 100%);
+  border-radius: 3px;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
   display: inline-block;
   z-index: 10;
 }
 #options .checkbox label:before {
   opacity: 0;
-  color: #dddddd;
+  color: #be1522;
   z-index: 20;
   font-size: 1.25rem;
   -webkit-transition: opacity 0.5s ease;
@@ -608,6 +630,7 @@ body .loader {
   height: 175px;
   width: 175px;
   cursor: pointer;
+  overflow: hidden;
 }
 #options .capture label:before {
   opacity: 0;
@@ -618,87 +641,74 @@ body .loader {
   z-index: 10002;
   -webkit-transition: opacity 0.5s ease;
 }
-#options .capture label > .info,
 #options .capture label > .img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 6px;
-  -webkit-transition: -webkit-transform 0.5s ease;
-}
-#options .capture label > .img {
-  z-index: 10001;
 }
 #options .capture label > .info {
   position: absolute;
-  z-index: 10000;
-  background-color: #333333;
+  bottom: -4rem;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  -webkit-transition: bottom 0.5s ease;
+  z-index: 10005;
+  background-color: rgba(0, 0, 0, 0.5);
   color: #dddddd;
-  -webkit-transform: scale(0.65);
+  font-weight: 100;
 }
 #options .capture label > .info > strong {
   position: absolute;
   top: 0;
-  font-size: 1.25rem;
-  font-weight: 300;
   left: 0;
-  text-align: center;
-  width: 100%;
-}
-#options .capture label > .info > div {
-  position: absolute;
+  right: 0;
   bottom: 0;
-  left: 0;
-  width: 100%;
-}
-#options .capture label > .info > div > span {
-  display: inline-block;
-  width: 45%;
+  height: 1rem;
+  font-size: 1.25rem;
+  margin: auto;
   text-align: center;
-}
-#options .capture label > .info > div > span:first-of-type {
-  margin-right: 0.5rem;
-}
-#options .capture label:hover .img {
-  -webkit-transform: scale(0.65);
 }
 #options .capture label:hover .info {
-  -webkit-transform: scale(1);
+  bottom: 0;
 }
 #options .contributors {
   position: absolute;
-  bottom: -5rem;
+  bottom: -6rem;
   left: 0;
   width: 100%;
-  background-color: #1a1a1a;
-  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.75), inset -5px 10px 10px -10px rgba(0, 0, 0, 0.75);
+  -webkit-transition: background-color 0.5s ease;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.5), inset -5px 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 1700px) {
+  #options .contributors {
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 #options .contributors > a {
   padding: 0.25rem 2rem;
   width: 8.875rem;
   display: inline-block;
   position: relative;
-  -webkit-transition: background-color 0.5s ease;
-}
-#options .contributors > a:hover {
-  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.75), inset -5px 10px 10px -10px rgba(0, 0, 0, 0.75);
-  background-color: #262626;
 }
 #options .contributors > a img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   background-color: #fff;
+  margin: 5px;
 }
 #options .contributors > a strong {
   display: block;
+  -webkit-transition: color 0.5s ease;
+}
+#options .contributors > a:hover strong {
+  color: #30b9bc;
 }
 #options .contributors > a strong,
 #options .contributors > a span {
-  color: #ffffff;
   font-weight: 300;
 }
 #options .contributors > a span {
@@ -725,6 +735,12 @@ body .loader {
 }
 .default {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222222), color-stop(100%, #0e0e0e));
+}
+.lightLogoColor {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #30b9bc), color-stop(100%, #207d7f));
+}
+.darkLogoColor {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a7121e), color-stop(100%, #790d16));
 }
 .theBeach {
   background: url("../images/beach.jpg");
