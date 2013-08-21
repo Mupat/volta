@@ -644,6 +644,7 @@ body .loader {
 #options .capture label > .img {
   width: 100%;
   height: 100%;
+  border-radius: 6px;
 }
 #options .capture label > .info {
   position: absolute;
@@ -656,6 +657,7 @@ body .loader {
   background-color: rgba(0, 0, 0, 0.5);
   color: #dddddd;
   font-weight: 100;
+  border-radius: 0 0 6px 6px;
 }
 #options .capture label > .info > strong {
   position: absolute;
