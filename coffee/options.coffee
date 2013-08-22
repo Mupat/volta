@@ -9,6 +9,7 @@ class Options
   APP_GRAYSCALE: 'appGrayscale'
   THEME_KEY: 'theme'
   MAIL_LABEL: 'label'
+  CLOCK_TWELVE: 'twelveHourClock'
 
   # available themes
   THEMES: [

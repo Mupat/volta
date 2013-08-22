@@ -134,15 +134,44 @@
   Clock = (function() {
     Clock.prototype.format = "dddd, MMMM Do YYYY";
 
-    function Clock() {
+    Clock.prototype.$el = $('#clock > div');
+
+    Clock.prototype.twelveHour = 'TwelveHourClock';
+
+    Clock.prototype.twentyFourHour = 'TwentyFourHourClock';
+
+    Clock.prototype.face = false;
+
+    function Clock(options) {
+      var _this = this;
+      this.options = options != null ? options : YANTRE.options;
+      this.face = this.options.get(this.options.CLOCK_TWELVE);
+      this.options.registerOnChange(this.options.CLOCK_TWELVE, function(new_value, old_value) {
+        _this.face = new_value;
+        console.log('register change');
+        _this._removeClock();
+        return _this._newClock();
+      });
       this.date = moment();
     }
 
     Clock.prototype.render = function() {
-      $('#clock > div').FlipClock({
-        clockFace: 'TwentyFourHourClock'
-      });
+      this._newClock();
       return $('#clock > h1').text(this.date.format(this.format));
+    };
+
+    Clock.prototype._newClock = function() {
+      var face;
+      face = this.face ? this.twelveHour : this.twentyFourHour;
+      return this.clock = new FlipClock(this.$el, 0, {
+        clockFace: face
+      });
+    };
+
+    Clock.prototype._removeClock = function() {
+      this.clock.stop();
+      this.clock.timer._destroyTimer();
+      return this.$el.children().remove();
     };
 
     return Clock;
@@ -297,6 +326,8 @@
 
     Options.prototype.MAIL_LABEL = 'label';
 
+    Options.prototype.CLOCK_TWELVE = 'twelveHourClock';
+
     Options.prototype.THEMES = [
       {
         name: 'theBeach',
@@ -427,6 +458,10 @@
         grayApps: {
           name: this.options.APP_GRAYSCALE,
           value: Boolean(this.options.get(this.options.APP_GRAYSCALE))
+        },
+        twelveHourClock: {
+          name: this.options.CLOCK_TWELVE,
+          value: Boolean(this.options.get(this.options.CLOCK_TWELVE))
         },
         label: {
           name: this.options.MAIL_LABEL,

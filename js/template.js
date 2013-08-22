@@ -99,10 +99,9 @@ function program3(depth0,data,depth1) {
     + escapeExpression(((stack1 = depth0['class']),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" alt=\"theme_preview_"
     + escapeExpression(((stack1 = depth0.name),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" />\n          <div class=\"info\">\n            <strong>"
+    + "\" />\n          <div class=\"info\"><strong>"
     + escapeExpression(((stack1 = depth0.name),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</strong>\n            "
-    + "\n          </div>\n        </label> \n      </div>\n    ";
+    + "</strong></div>\n        </label> \n      </div>\n    ";
   return buffer;
   }
 
@@ -136,7 +135,18 @@ function program3(depth0,data,depth1) {
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" value=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" />\n        <input type=\"submit\" value=\"Save\" />\n      </form>\n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
+    + "\" type=\"text\" />\n        <input type=\"submit\" value=\"Save\" />\n      </form>\n    </div>\n    <h1>Clock format</h1>\n    <div class=\"checkbox\">\n      <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"checkbox\" name=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" ";
+  stack2 = helpers['if'].call(depth0, ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += " />\n      <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" class=\"icon-check\">use twelve hour clock format</label> \n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
   stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    <ul>\n      <li>FlipClock.js<a href=\"http://flipclockjs.com/\">Homepage</a></li>\n      <li>Moment.js<a href=\"http://momentjs.com/\">Homepage</a></li>\n      <li>Google Webfont Lato<a href=\"http://www.google.com/fonts/specimen/Lato\">Font Description</a></li>\n      <li>bxSlider<a href=\"http://bxslider.com/\">Homepage</a></li>\n      <li>jQuery<a href=\"http://jquery.com/\">Homepage</a></li>\n    </ul>\n    <img src=\"/icon/icon128.png\" alt=\"extension icon\" />\n  </section>\n  <div class=\"contributors\">\n    <a href=\""

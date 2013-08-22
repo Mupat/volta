@@ -23,6 +23,11 @@
         <input type="submit" value="Save" />
       </form>
     </div>
+    <h1>Clock format</h1>
+    <div class="checkbox">
+      <input id="{{twelveHourClock.name}}" type="checkbox" name="{{twelveHourClock.name}}" value="{{twelveHourClock.name}}" {{#if twelveHourClock.value}} checked="checked" {{/if}} />
+      <label for="{{twelveHourClock.name}}" class="icon-check">use twelve hour clock format</label> 
+    </div>
   </section>
   <section id="theme_options" class="">
     {{#each themes}}
@@ -30,13 +35,7 @@
         <input id="{{@key}}" type="radio" name="{{../theme}}" value="{{@key}}" {{#if this.value}} checked="checked" {{/if}} />
         <label for="{{@key}}" class="icon-check">
           <div class="img {{this.class}}" alt="theme_preview_{{this.name}}" />
-          <div class="info">
-            <strong>{{this.name}}</strong>
-            {{!-- <div>
-              <span>{{#if this.grayApps}}Uses grayed apps{{/if}}</span>
-              <span>{{#if this.darkFont}}Uses dark font{{/if}}</span>
-            </div> --}}
-          </div>
+          <div class="info"><strong>{{this.name}}</strong></div>
         </label> 
       </div>
     {{/each}}

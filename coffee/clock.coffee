@@ -1,11 +1,30 @@
 class Clock
   format: "dddd, MMMM Do YYYY"
+  $el: $('#clock > div')
+  twelveHour: 'TwelveHourClock'
+  twentyFourHour: 'TwentyFourHourClock'
+  face: false
 
-  constructor: ->
+  constructor: (@options = YANTRE.options) ->
+    @face = @options.get @options.CLOCK_TWELVE
+
+    @options.registerOnChange @options.CLOCK_TWELVE, (new_value, old_value) =>
+      @face = new_value
+      console.log 'register change'
+      @_removeClock()
+      @_newClock()
+
     @date = moment()
 
   render: ->
-    $('#clock > div').FlipClock
-      clockFace: 'TwentyFourHourClock'
-  
+    @_newClock()
     $('#clock > h1').text @date.format(@format)
+
+  _newClock: ->
+    face = if @face then @twelveHour else @twentyFourHour
+    @clock = new FlipClock @$el, 0, {clockFace: face}
+
+  _removeClock: ->
+    @clock.stop()
+    @clock.timer._destroyTimer()
+    @$el.children().remove()

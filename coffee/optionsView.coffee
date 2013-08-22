@@ -13,6 +13,7 @@ class OptionsView
     data = 
       darkFont: { name: @options.DARK_FONT, value: Boolean(@options.get(@options.DARK_FONT)) }
       grayApps: { name: @options.APP_GRAYSCALE, value: Boolean(@options.get(@options.APP_GRAYSCALE)) }
+      twelveHourClock: { name: @options.CLOCK_TWELVE, value: Boolean(@options.get(@options.CLOCK_TWELVE)) }
       label: { name: @options.MAIL_LABEL, value: @options.get(@options.MAIL_LABEL) }
       theme: @options.THEME_KEY
       themes: {}

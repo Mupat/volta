@@ -1,10 +1,13 @@
 #options {
-  width: 350px;
+  min-width: 350px;
+  width: 50%;
   position: absolute;
-  top: 3rem;
-  right: -110%;
+  top: -110%;
+  right: 0;
+  margin: auto;
+  left: 0;
   background: transparent;
-  -webkit-transform: translateX(110%);
+  -webkit-transform: translateY(-110%);
   -webkit-transition: -webkit-transform .5s ease-out;
   z-index: 9999;
   text-align: left;
@@ -12,7 +15,7 @@
   height: calc(~"100% - 245px");
   min-height: 375px;
   -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
-  &.show { -webkit-transform: translateX(0%); }
+  &.show { -webkit-transform: translateY(0%); }
 
   //options header
   > ul {
@@ -71,6 +74,7 @@
     border-radius: @borderRadius 0 0 @borderRadius;
     background: #fff;
     top: 1.25rem;
+    overflow: hidden;
 
     section {
       position: absolute;
