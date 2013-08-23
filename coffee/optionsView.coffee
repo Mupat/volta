@@ -1,6 +1,7 @@
 class OptionsView
   template: YANTRE.templates.option
   $el: $('#options')
+  $elWrapper: $('#clock-options')
 
   constructor: (@options = YANTRE.options) ->
     @_registerBtnClick()
@@ -25,6 +26,11 @@ class OptionsView
         grayApps: Boolean(theme.grayApps)
         darkFont: Boolean(theme.darkFont)
         value: Boolean(@options.get(@options.THEME_KEY) is theme.name)
+
+    #if no theme option
+    unless @options.get(@options.THEME_KEY)?
+      data.themes['default'].value = true
+      @options.set @options.DARK_FONT, true
 
     @_addContributors (users) =>
       data.contributors = users
@@ -57,9 +63,9 @@ class OptionsView
     $('#options_btn').on 'click', =>
       $(document).one 'mousedown', (e) =>
         id = $(e.target).attr 'id'
-        if id != 'options_btn' then @$el.removeClass 'show'
+        if id != 'options_btn' then @$elWrapper.removeClass 'show'
     
-      @$el.toggleClass 'show'
+      @$elWrapper.toggleClass 'show'
 
   _regisrerLabelChange: ->
     @$el.on 'submit', '.mail_label > form', (e) =>

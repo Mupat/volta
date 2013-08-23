@@ -17,7 +17,8 @@ class Basic
     if @dark then @$el.toggleClass @dark_class
 
     @options.registerOnChange @options.DARK_FONT, (new_value, old_value) =>
-      @$el.toggleClass @dark_class
+      if new_value then @$el.addClass @dark_class
+      else @$el.removeClass @dark_class
 
   _handle_theme: ->
     @theme = @options.get @options.THEME_KEY

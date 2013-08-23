@@ -23,9 +23,8 @@ class Options
     {name: 'navyBlue', grayApps: true}
     {name: 'redWine'}
     {name: 'redMesh'}
-    {name: 'default'}
-    {name: 'lightLogoColor', darkFont: true}
-    {name: 'darkLogoColor'}
+    {name: 'black'}
+    {name: 'default', darkFont: true}
   ]
 
   constructor: (done) ->
