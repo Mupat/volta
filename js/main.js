@@ -94,6 +94,9 @@
         });
         return false;
       });
+      $('.icon-info').click(function() {
+        return $(this).toggleClass('show');
+      });
       setTimeout((function() {
         return _this.$el.addClass('transition');
       }), 25);
@@ -452,8 +455,7 @@
     }
 
     OptionsView.prototype.render = function() {
-      var data, theme, _i, _len, _ref,
-        _this = this;
+      var data, theme, _i, _len, _ref;
       data = {
         darkFont: {
           name: this.options.DARK_FONT,
@@ -489,27 +491,7 @@
         data.themes['default'].value = true;
         this.options.set(this.options.DARK_FONT, true);
       }
-      return this._addContributors(function(users) {
-        data.contributors = users;
-        return _this.$el.html(_this.template(data));
-      });
-    };
-
-    OptionsView.prototype._addContributors = function(done) {
-      var data;
-      data = {
-        hacker: {
-          name: 'Mupat',
-          profile_link: 'https://github.com/mupat',
-          avatar: 'https://secure.gravatar.com/avatar/71f4bc8f66d8e0f71a42d4d36059de8d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
-        },
-        designer: {
-          name: 'mac-cypher',
-          profile_link: 'https://github.com/mac-cypher',
-          avatar: 'https://secure.gravatar.com/avatar/f75332e05bb1198b9d0da05768897bb7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
-        }
-      };
-      return done(data);
+      return this.$el.html(this.template(data));
     };
 
     OptionsView.prototype._registerTabChange = function() {

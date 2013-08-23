@@ -32,23 +32,8 @@ class OptionsView
       data.themes['default'].value = true
       @options.set @options.DARK_FONT, true
 
-    @_addContributors (users) =>
-      data.contributors = users
-      @$el.html @template data
-
-  _addContributors: (done) ->
-    data = 
-      hacker:
-        name: 'Mupat'
-        profile_link: 'https://github.com/mupat'
-        avatar: 'https://secure.gravatar.com/avatar/71f4bc8f66d8e0f71a42d4d36059de8d?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
-      designer:
-        name: 'mac-cypher'
-        profile_link: 'https://github.com/mac-cypher'
-        avatar: 'https://secure.gravatar.com/avatar/f75332e05bb1198b9d0da05768897bb7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png'
+    @$el.html @template data
     
-    done data
-
   _registerTabChange: ->
     @$el.on 'click', 'i', (e) =>
       $target = $(e.target)

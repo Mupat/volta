@@ -3,11 +3,114 @@
   right: 0rem;
   top: 0.5rem;
   z-index: 5;
-  > i, a { 
+  > i, a, div { 
     font-size: 1.5rem;
     cursor: pointer; 
     display: inline-block;
     margin-right: 0.5rem;
+  }
+
+  > div {
+    font-size: 1.25rem;
+    position: relative;
+    top: -0.2rem;
+    &.show > section { 
+      visibility: visible; 
+      opacity: 1;
+    }
+    
+    > section {
+      cursor: default;
+      /*display: none;*/
+      visibility: hidden;
+      opacity: 0;
+      -webkit-transition: visibility 0.5s ease, opacity 0.5s ease;
+      position: absolute;
+      width: 250px;
+      height: 400px;
+      background-color: @lightFontColor;
+      top: 2rem;
+      right: 0;
+      border-radius: @borderRadius;
+      padding: 0.5rem;
+
+      &:before {
+        content: '';
+        border-bottom: 0.75rem solid @lightFontColor;
+        border-left: 1rem solid transparent;
+        border-right: 0.5rem solid transparent;
+        position: absolute; 
+        top: -0.5rem;
+        right: 0rem;
+      }
+
+      > ul {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+
+        > li {
+          list-style: none;
+          margin-bottom: 0.5rem;
+          color: @darkFontColor;
+
+          > a { 
+            color: lighten(@darkFontColor, 25%);
+            &:hover { color: @logoColorDark; }
+
+            display: block;
+            font-size: 1rem;
+            margin-left: 1rem;
+          }
+        }
+      }
+
+      > .contributors {
+        display: block;
+        margin-top: 1rem;
+        background-color: @darkFontColor;
+        height: 8.5rem;
+        width: 100%;
+        border-radius: 0 0 6px 6px;
+        padding-top: 0.15rem;
+
+        > a {
+          display: block;
+          position: relative;
+          text-align: left;
+          margin: 0.5rem 0 2rem 0;
+          -webkit-transition: color 0.5s ease;
+          &:hover > span { color: @logoColorLight; }
+          &:hover > strong { opacity: 1; }
+
+          span {
+            font-size: 2rem;
+            font-weight: @fontWeightLight;
+            position: relative;
+            left: 1rem;
+          }
+
+          img {
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 0.25rem;
+            height: 35px;
+            width: 35px;
+            position: absolute;
+            right: 1rem;
+          }
+
+          strong {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            font-size: 0.75rem;
+            position: absolute;
+            right: 1rem;
+            bottom: -1.25rem;
+          }
+        }
+      }
+    }
   }
 }
 

@@ -10,6 +10,9 @@ class Basic
       chrome.tabs.update url: "chrome-internal://newtab/"
       false
 
+    $('.icon-info').click ->
+      $(@).toggleClass('show')
+
     setTimeout ( => @$el.addClass 'transition'), 25
 
   _handle_dark_font: ->

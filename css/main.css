@@ -150,11 +150,110 @@ body .loader {
   z-index: 5;
 }
 #actions > i,
-#actions a {
+#actions a,
+#actions div {
   font-size: 1.5rem;
   cursor: pointer;
   display: inline-block;
   margin-right: 0.5rem;
+}
+#actions > div {
+  font-size: 1.25rem;
+  position: relative;
+  top: -0.2rem;
+}
+#actions > div.show > section {
+  visibility: visible;
+  opacity: 1;
+}
+#actions > div > section {
+  cursor: default;
+  /*display: none;*/
+
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: visibility 0.5s ease, opacity 0.5s ease;
+  position: absolute;
+  width: 250px;
+  height: 400px;
+  background-color: #dddddd;
+  top: 2rem;
+  right: 0;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+#actions > div > section:before {
+  content: '';
+  border-bottom: 0.75rem solid #dddddd;
+  border-left: 1rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  position: absolute;
+  top: -0.5rem;
+  right: 0rem;
+}
+#actions > div > section > ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+#actions > div > section > ul > li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+#actions > div > section > ul > li > a {
+  color: #737373;
+  display: block;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+#actions > div > section > ul > li > a:hover {
+  color: #be1522;
+}
+#actions > div > section > .contributors {
+  display: block;
+  margin-top: 1rem;
+  background-color: #333333;
+  height: 8.5rem;
+  width: 100%;
+  border-radius: 0 0 6px 6px;
+  padding-top: 0.15rem;
+}
+#actions > div > section > .contributors > a {
+  display: block;
+  position: relative;
+  text-align: left;
+  margin: 0.5rem 0 2rem 0;
+  -webkit-transition: color 0.5s ease;
+}
+#actions > div > section > .contributors > a:hover > span {
+  color: #30b9bc;
+}
+#actions > div > section > .contributors > a:hover > strong {
+  opacity: 1;
+}
+#actions > div > section > .contributors > a span {
+  font-size: 2rem;
+  font-weight: 100;
+  position: relative;
+  left: 1rem;
+}
+#actions > div > section > .contributors > a img {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 0.25rem;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  right: 1rem;
+}
+#actions > div > section > .contributors > a strong {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-size: 0.75rem;
+  position: absolute;
+  right: 1rem;
+  bottom: -1.25rem;
 }
 #options_btn:hover {
   -webkit-animation: spin 3s linear infinite;
