@@ -1,5 +1,6 @@
 class Basic
   $el: $('body')
+  $infoEl: $('.icon-info')
   dark_class: 'dark'
 
   constructor: (@options = YANTRE.options) ->
@@ -10,8 +11,11 @@ class Basic
       chrome.tabs.update url: "chrome-internal://newtab/"
       false
 
-    $('.icon-info').click ->
-      $(@).toggleClass('show')
+    @$infoEl.click (e) =>
+      $(document).one 'mousedown', (event) =>
+        @$infoEl.removeClass 'show' unless $(event.target).hasClass('.icon-info')
+
+      $(e.target).toggleClass('show')
 
     setTimeout ( => @$el.addClass 'transition'), 25
 

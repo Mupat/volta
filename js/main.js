@@ -81,6 +81,8 @@
   Basic = (function() {
     Basic.prototype.$el = $('body');
 
+    Basic.prototype.$infoEl = $('.icon-info');
+
     Basic.prototype.dark_class = 'dark';
 
     function Basic(options) {
@@ -94,8 +96,13 @@
         });
         return false;
       });
-      $('.icon-info').click(function() {
-        return $(this).toggleClass('show');
+      this.$infoEl.click(function(e) {
+        $(document).one('mousedown', function(event) {
+          if (!$(event.target).hasClass('.icon-info')) {
+            return _this.$infoEl.removeClass('show');
+          }
+        });
+        return $(e.target).toggleClass('show');
       });
       setTimeout((function() {
         return _this.$el.addClass('transition');
