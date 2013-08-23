@@ -105,7 +105,9 @@ function program3(depth0,data,depth1) {
   return buffer;
   }
 
-  buffer += "<ul>\n  <li><i class=\"icon-tools active\" data-content=\"general_options\" >General</i></li><!--\n  --><li><i class=\"icon-background\" data-content=\"theme_options\" >Theme</i></li><!--\n  --><li><i class=\"icon-info\" data-content=\"credits\" >Credits</i></li><!--\n--></ul>\n<div>\n  <section id=\"general_options\" class=\"show\">\n    <h1>Style</h1>\n    <div class=\"checkbox\">\n      <input id=\""
+  buffer += "<i class=\"icon-tools active\" data-content=\"general_options\" >"
+    + "</i>\n<i class=\"icon-background\" data-content=\"theme_options\" >"
+    + "</i>\n<div>\n  <section id=\"general_options\" class=\"show\">\n    <div>\n      <h1>Style</h1>\n      <div class=\"checkbox\">\n        <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -114,9 +116,9 @@ function program3(depth0,data,depth1) {
     + "\" ";
   stack2 = helpers['if'].call(depth0, ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += " />\n      <label for=\""
+  buffer += " />\n        <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.darkFont),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use dark font color</label>\n    </div>\n\n    <div class=\"checkbox\">\n      <input id=\""
+    + "\" class=\"icon-check\">use dark font color</label>\n      </div>\n\n      <div class=\"checkbox\">\n        <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -125,17 +127,9 @@ function program3(depth0,data,depth1) {
     + "\" ";
   stack2 = helpers['if'].call(depth0, ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += " />\n      <label for=\""
+  buffer += " />\n        <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.grayApps),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use grayscaled app icons</label> \n    </div>\n    <h1>Mail</h1>\n    <div class=\"mail_label\">\n      <form>\n        <label for=\""
-    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">Add a google label to check for new mails. Clear it, to use the inbox. </label>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" name=\""
-    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" value=\""
-    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" />\n        <input type=\"submit\" value=\"Save\" />\n      </form>\n    </div>\n    <h1>Clock format</h1>\n    <div class=\"checkbox\">\n      <input id=\""
+    + "\" class=\"icon-check\">use grayscaled app icons</label> \n      </div>\n      <h1>Clock format</h1>\n      <div class=\"checkbox\">\n        <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"checkbox\" name=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
@@ -144,28 +138,20 @@ function program3(depth0,data,depth1) {
     + "\" ";
   stack2 = helpers['if'].call(depth0, ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.value), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += " />\n      <label for=\""
+  buffer += " />\n        <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use twelve hour clock format</label> \n    </div>\n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
+    + "\" class=\"icon-check\">use twelve hour clock format</label> \n      </div>\n    </div>\n    <div>\n      <h1>Mail</h1>\n      <div class=\"mail_label\">\n        <form>\n          <label for=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\">Add a google label to check for new mails. </label>\n          <input id=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" name=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" value=\""
+    + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.value)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\" type=\"text\" />\n          <input type=\"submit\" value=\"Save\" />\n          <small>Clear it, to use the inbox.</small>\n        </form>\n      </div>\n    </div>    \n  </section>\n  <section id=\"theme_options\" class=\"\">\n    ";
   stack2 = helpers.each.call(depth0, depth0.themes, {hash:{},inverse:self.noop,fn:self.programWithDepth(3, program3, data, depth0),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += "\n  </section>\n  <section id=\"credits\" class=\"\">\n    <ul>\n      <li>FlipClock.js<a href=\"http://flipclockjs.com/\">Homepage</a></li>\n      <li>Moment.js<a href=\"http://momentjs.com/\">Homepage</a></li>\n      <li>Google Webfont Lato<a href=\"http://www.google.com/fonts/specimen/Lato\">Font Description</a></li>\n      <li>bxSlider<a href=\"http://bxslider.com/\">Homepage</a></li>\n      <li>jQuery<a href=\"http://jquery.com/\">Homepage</a></li>\n    </ul>\n    <img src=\"/icon/icon128.png\" alt=\"extension icon\" />\n  </section>\n  <div class=\"contributors\">\n    <a href=\""
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.profile_link)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n      <span>Hacker</span>\n      <img src=\""
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.avatar)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" alt=\"avatar for "
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n      <strong>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.hacker)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</strong>\n    </a>\n    <a href=\""
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.profile_link)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n      <img src=\""
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.avatar)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" alt=\"avatar for "
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n      <strong>"
-    + escapeExpression(((stack1 = ((stack1 = ((stack1 = depth0.contributors),stack1 == null || stack1 === false ? stack1 : stack1.designer)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</strong>\n      <span>Designer</span>\n    </a>\n  </div>\n</div>\n";
+  buffer += "\n  </section>\n</div>\n";
   return buffer;
   });
 

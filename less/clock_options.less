@@ -1,0 +1,38 @@
+#clock-options {
+  display: inline-block;
+  border-radius: @borderRadius;
+  margin: 4rem auto 1rem;
+  background-color: @clockDefaultBackgroundColor;
+  position: relative;
+  height: 240px;
+  -webkit-perspective: 500;
+
+  .flip-clock-wrapper { -webkit-transform: rotateX(0deg); }
+  #options { 
+    -webkit-transform: rotateX(180deg); 
+    visibility: hidden;
+  }
+
+  &,
+  .flip-clock-wrapper,
+  div.inn { -webkit-transition: background-color 0.8s ease; }
+
+  &.show .flip-clock-wrapper { 
+    -webkit-transform: rotateX(-180deg);
+    z-index: -1;
+    visibility: hidden;
+  }
+
+  &.show #options {
+    -webkit-transform: rotateX(0);
+    visibility: visible;
+  }
+
+  .flip-clock-wrapper,
+  #options {
+    -webkit-transition: -webkit-transform 1s ease, visibility 0s ease 0.3s;
+    background-color: @clockWrapperDefaultBackgroundColor;
+    border-radius: @borderRadius;
+    margin: 1em;
+  }
+}

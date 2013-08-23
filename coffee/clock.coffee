@@ -1,6 +1,6 @@
 class Clock
   format: "dddd, MMMM Do YYYY"
-  $el: $('#clock > div')
+  $el: $('#clock-options > div')
   twelveHour: 'TwelveHourClock'
   twentyFourHour: 'TwentyFourHourClock'
   face: false
@@ -18,7 +18,7 @@ class Clock
 
   render: ->
     @_newClock()
-    $('#clock > h1').text @date.format(@format)
+    $('#clock-options > h1').text @date.format(@format)
 
   _newClock: ->
     face = if @face then @twelveHour else @twentyFourHour

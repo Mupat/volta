@@ -10,6 +10,12 @@
       font-size: 1.4rem;
       color: @darkFontColor;
       line-height: 2rem;
+      display: block;
+    }
+
+    small {
+      color: lighten(@darkFontColor, 10%);
+      font-size: 1rem;
     }
 
     input[type="text"] {
@@ -22,7 +28,7 @@
       font-weight: @fontWeightNormal;
       color: @darkFontColor;
       font-size: 1.25rem;
-      width: 20rem;
+      width: 17rem;
     }
 
     input[type="submit"] {
@@ -86,15 +92,15 @@
     label {
       position: relative;
       display: inline-block;
-      height: 175px;
-      width: 175px;
+      height: 86px;
+      width: 86px;
       cursor: pointer;
       overflow: hidden;
 
       &:before {
         opacity: 0;
         position: absolute;
-        font-size: 3rem;
+        font-size: 2rem;
         bottom: 0;
         right: 0;
         z-index: 10002;
@@ -105,20 +111,21 @@
         width: 100%;
         height: 100%;
         border-radius: @borderRadius;
+        background-position: 200%;
       }
 
       > .info {
         position: absolute;
-        bottom: -4rem;
+        bottom: -110%;
         left: 0;
         width: 100%;
-        height: 4rem;
+        height: 100%;
         -webkit-transition: bottom 0.5s ease;
         z-index: 10005;
         background-color: rgba(0,0,0,0.5);
         color: @lightFontColor;
         font-weight: 100;
-        border-radius: 0 0 @borderRadius @borderRadius;
+        border-radius: @borderRadius;
 
         > strong {
           position: absolute;
@@ -126,8 +133,8 @@
           left: 0;
           right: 0;
           bottom: 0;
-          height: 1rem;
-          font-size: 1.25rem;
+          height: 1.5rem;
+          font-size: 1rem;
           margin: auto;
           text-align: center;
         }

@@ -1,22 +1,12 @@
-#clock {
-  display: inline-block;
-  border-radius: @borderRadius;
-  margin: 4rem auto 1rem;
-  background-color: @clockDefaultBackgroundColor;
-  position: relative;
-  height: 240px;
-
-  &,
-  .flip-clock-wrapper,
-  div.inn { -webkit-transition: background-color 0.8s ease; }
-
-  h1 {
+#clock-options{
+  > h1 {
     position: absolute;
     top: -4.8rem;
     bottom: 2rem;
     width: 100%;
     font-size: 2rem;
     font-weight: @fontWeightLight;
+    z-index: -1;
   }
 
   .flip-clock-wrapper {
@@ -24,9 +14,9 @@
     width: auto;
     min-height: 1%;
     display: inline-block;
-    background-color: @clockWrapperDefaultBackgroundColor;
+    position: relative;
+    z-index: 5;
     padding: 2rem;
-    border-radius: @borderRadius;
 
     .flip-clock-divider {
       top: 1.75rem;

@@ -26,14 +26,6 @@
     -webkit-transform: scale(1);
   }
 }
-@-webkit-keyframes hideOnStart {
-  0% {
-    right: -110%;
-  }
-  100% {
-    right: 0;
-  }
-}
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -167,43 +159,81 @@ body .loader {
 #options_btn:hover {
   -webkit-animation: spin 3s linear infinite;
 }
-#clock {
+#clock-options {
   display: inline-block;
   border-radius: 6px;
   margin: 4rem auto 1rem;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
   height: 240px;
+  -webkit-perspective: 500;
 }
-#clock,
-#clock .flip-clock-wrapper,
-#clock div.inn {
+#clock-options .flip-clock-wrapper {
+  -webkit-transform: rotateX(0deg);
+}
+#clock-options #options {
+  -webkit-transform: rotateX(180deg);
+  visibility: hidden;
+}
+#clock-options,
+#clock-options .flip-clock-wrapper,
+#clock-options div.inn {
   -webkit-transition: background-color 0.8s ease;
 }
-#clock h1 {
+#clock-options.show .flip-clock-wrapper {
+  -webkit-transform: rotateX(-180deg);
+  z-index: -1;
+  visibility: hidden;
+}
+#clock-options.show #options {
+  -webkit-transform: rotateX(0);
+  visibility: visible;
+}
+#clock-options .flip-clock-wrapper,
+#clock-options #options {
+  -webkit-transition: -webkit-transform 1s ease, visibility 0s ease 0.3s;
+  background-color: rgba(15, 15, 15, 0.5);
+  border-radius: 6px;
+  margin: 1em;
+}
+#clock-options > h1 {
   position: absolute;
   top: -4.8rem;
   bottom: 2rem;
   width: 100%;
   font-size: 2rem;
   font-weight: 100;
+  z-index: -1;
 }
-#clock .flip-clock-wrapper {
+#clock-options .flip-clock-wrapper {
   clear: both;
   width: auto;
   min-height: 1%;
   display: inline-block;
-  background-color: rgba(15, 15, 15, 0.5);
+  position: relative;
+  z-index: 5;
   padding: 2rem;
-  border-radius: 6px;
 }
-#clock .flip-clock-wrapper .flip-clock-divider {
+#clock-options .flip-clock-wrapper .flip-clock-divider {
   top: 1.75rem;
 }
-#clock .flip-clock-wrapper .flip-clock-divider .flip-clock-dot {
+#clock-options .flip-clock-wrapper .flip-clock-divider .flip-clock-dot {
   background-color: #dddddd;
 }
-#clock .flip-clock-wrapper ul {
+#clock-options .flip-clock-wrapper .flip-clock-meridium {
+  position: absolute;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  height: 2rem;
+  width: 5rem;
+}
+#clock-options .flip-clock-wrapper .flip-clock-meridium a {
+  line-height: 2rem;
+  font-weight: 300;
+}
+#clock-options .flip-clock-wrapper ul {
   font: normal 11px "Lato", sans-serif;
   font-weight: 100;
   width: 7rem;
@@ -212,14 +242,14 @@ body .loader {
   line-height: 8.7rem;
   color: #dddddd;
 }
-#clock .flip-clock-wrapper ul li a {
+#clock-options .flip-clock-wrapper ul li a {
   cursor: default;
 }
-#clock .flip-clock-wrapper ul li a div.up:after {
+#clock-options .flip-clock-wrapper ul li a div.up:after {
   top: 4.46rem;
   height: 0.1rem;
 }
-#clock .flip-clock-wrapper ul li a div div.inn {
+#clock-options .flip-clock-wrapper ul li a div div.inn {
   font-size: 9rem;
 }
 #apps {
@@ -409,138 +439,120 @@ body .loader {
   margin-bottom: 0;
 }
 #options {
-  width: 350px;
+  width: 97.25%;
   position: absolute;
-  top: 3rem;
-  right: -110%;
-  background: transparent;
-  -webkit-transform: translateX(110%);
-  -webkit-transition: -webkit-transform 0.5s ease-out;
-  z-index: 9999;
+  top: 0;
+  height: 91.25%;
+  left: 0;
   text-align: left;
-  padding: 1rem 2rem;
-  height: calc(100% - 245px);
-  min-height: 375px;
-  -webkit-animation: hideOnStart 0 linear 1s infinite alternate;
+  overflow: hidden;
 }
-#options.show {
-  -webkit-transform: translateX(0%);
-}
-#options > ul {
-  width: calc(100% + 4rem);
-  margin: 0;
-  padding: 0;
-  position: relative;
-  left: -2rem;
-  top: -1rem;
-  z-index: 10003;
-  background: transparent;
-}
-#options > ul li {
-  list-style: none;
-  display: inline-block;
-  width: 33.3%;
-  text-align: center;
-  background: transparent;
-}
-#options > ul li:first-child i {
-  border-radius: 6px 0 0 6px;
-}
-#options > ul li i {
-  padding-top: 1rem;
+#options i {
+  height: 100%;
+  width: 50px;
+  position: absolute;
+  top: 0;
   font-size: 1.25rem;
-  -webkit-transition: color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+  -webkit-transition: color 0.5s ease, background-color 0.5s ease;
   cursor: pointer;
-  height: 50px;
-  display: block;
-  padding-bottom: 0.5rem;
+  display: inline-block;
   color: #ffffff;
-  background: rgba(0, 0, 0, 0.8);
-  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.25);
+  background: #333333;
+  z-index: 1000;
+  text-align: center;
 }
-@media (min-width: 1700px) {
-  #options > ul li i {
-    background: rgba(0, 0, 0, 0.4);
-  }
-}
-#options > ul li i:hover {
-  color: #be1522;
-}
-#options > ul li i:hover:before {
-  color: #be1522;
-}
-#options > ul li i:before {
+#options i > span {
   display: block;
+  font-size: 2rem;
+  line-height: 5rem;
+  -webkit-transform: rotate(-90deg);
+}
+#options i:before {
+  font-size: 2rem;
+  display: block;
+  line-height: 13rem;
   color: #ffffff;
 }
-#options > ul li i.active {
+#options i.icon-tools {
+  left: 0;
+  border-radius: 5px 0 0 5px;
+}
+#options i.icon-background {
+  right: 0;
+  border-radius: 0 5px 5px 0;
+}
+#options i:hover {
   color: #be1522;
+}
+#options i:hover:before {
+  color: #be1522;
+}
+#options i.active {
+  cursor: default;
+  color: #be1522;
+  background: transparent;
   box-shadow: none;
 }
-#options > ul li i.active:before {
+#options i.active:before {
   color: #be1522;
 }
 #options > div {
-  position: relative;
-  margin: -1rem -2rem;
-  height: calc(100% - 130px);
-  border-radius: 6px 0 0 6px;
-  background: #fff;
-  top: 1.25rem;
+  height: 100%;
+  width: 100%;
+  background-color: #dddddd;
+  border-radius: 6px;
 }
 #options > div section {
   position: absolute;
-  width: calc(100% - 2rem);
-  padding: 0.5rem 1rem 0;
-  height: 96%;
-  top: 0.5rem;
+  width: calc(100% - 125px);
+  height: calc(100% - 2rem);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-transition: -webkit-transform 0.5s ease;
+  overflow: hidden;
+}
+#options > div section#theme_options {
+  -webkit-transform: translateX(110%);
+  padding: 1rem 65px 1rem 10px;
+  right: 0;
+  border-radius: 0 6px 6px 0;
+  text-align: justify;
+}
+#options > div section#theme_options.show {
+  -webkit-transform: translateX(0);
+}
+#options > div section#theme_options.show + #general_options {
+  -webkit-transform: translateX(-110%);
+}
+#options > div section#theme_options:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+#options > div section#general_options {
+  -webkit-transform: translateX(-110%);
+  padding: 1rem 10px 1rem 65px;
+  border-radius: 6px 0 0 6px;
+  left: 0;
+}
+#options > div section#general_options.show {
+  -webkit-transform: translateX(0);
+}
+#options > div section#general_options.show + #theme_options {
   -webkit-transform: translateX(110%);
 }
-#options > div section.show {
-  -webkit-transform: translateX(0);
-  -webkit-transition: -webkit-transform 0.5s 0.5s ease;
+#options > div section#general_options > div {
+  display: inline-block;
+  width: 49%;
 }
-#options > div section#general_options div:last-of-type {
-  margin-bottom: 1rem;
+#options > div section#general_options > div:last-child {
+  float: right;
 }
-#options > div section > h1 {
-  font-size: 2rem;
-  margin: 0.5rem 0;
+#options > div section#general_options > div > h1 {
+  color: #333333;
   font-weight: 100;
-  color: #333333;
-}
-#options > div section > h1:nth-of-type(n+2) {
-  margin-top: 1.5rem;
-}
-#options #credits {
-  position: relative;
-}
-#options #credits > ul {
-  margin: 0;
-  padding: 0;
-}
-#options #credits > ul li {
-  list-style: none;
-  color: #333333;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-#options #credits > ul li a {
-  display: block;
-  margin-left: 0.5rem;
-  color: #063457;
-}
-#options #credits > ul li a:hover {
-  text-decoration: underline;
-}
-#options #credits > img {
-  margin: auto;
-  position: absolute;
-  right: 0rem;
-  bottom: 1rem;
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
 }
 #options input[type="checkbox"],
 #options input[type="radio"] {
@@ -554,6 +566,11 @@ body .loader {
   font-size: 1.4rem;
   color: #333333;
   line-height: 2rem;
+  display: block;
+}
+#options .mail_label small {
+  color: #4d4d4d;
+  font-size: 1rem;
 }
 #options .mail_label input[type="text"] {
   background: -webkit-linear-gradient(top, #ffffff 0%, #f7f7f7 100%);
@@ -565,7 +582,7 @@ body .loader {
   font-weight: 300;
   color: #333333;
   font-size: 1.25rem;
-  width: 20rem;
+  width: 17rem;
 }
 #options .mail_label input[type="submit"] {
   background-color: #333333;
@@ -627,15 +644,15 @@ body .loader {
 #options .capture label {
   position: relative;
   display: inline-block;
-  height: 175px;
-  width: 175px;
+  height: 86px;
+  width: 86px;
   cursor: pointer;
   overflow: hidden;
 }
 #options .capture label:before {
   opacity: 0;
   position: absolute;
-  font-size: 3rem;
+  font-size: 2rem;
   bottom: 0;
   right: 0;
   z-index: 10002;
@@ -645,19 +662,20 @@ body .loader {
   width: 100%;
   height: 100%;
   border-radius: 6px;
+  background-position: 200%;
 }
 #options .capture label > .info {
   position: absolute;
-  bottom: -4rem;
+  bottom: -110%;
   left: 0;
   width: 100%;
-  height: 4rem;
+  height: 100%;
   -webkit-transition: bottom 0.5s ease;
   z-index: 10005;
   background-color: rgba(0, 0, 0, 0.5);
   color: #dddddd;
   font-weight: 100;
-  border-radius: 0 0 6px 6px;
+  border-radius: 6px;
 }
 #options .capture label > .info > strong {
   position: absolute;
@@ -665,84 +683,68 @@ body .loader {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1rem;
-  font-size: 1.25rem;
+  height: 1.5rem;
+  font-size: 1rem;
   margin: auto;
   text-align: center;
 }
 #options .capture label:hover .info {
   bottom: 0;
 }
-#options .contributors {
+#credits {
   position: absolute;
-  bottom: -6rem;
-  left: 0;
   width: 100%;
-  -webkit-transition: background-color 0.5s ease;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 6px 0 0 6px;
-  box-shadow: inset -5px -10px 10px -10px rgba(0, 0, 0, 0.5), inset -5px 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
-@media (min-width: 1700px) {
-  #options .contributors {
-    background: rgba(0, 0, 0, 0.4);
-  }
+#credits > div {
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f7f7f7 100%);
 }
-#options .contributors > a {
-  padding: 0.25rem 2rem;
-  width: 8.875rem;
+#credits > div > a {
+  padding: 0.25rem;
   display: inline-block;
-  position: relative;
 }
-#options .contributors > a img {
-  width: 40px;
-  height: 40px;
+#credits > div > a img {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   background-color: #fff;
   margin: 5px;
 }
-#options .contributors > a strong {
+#credits > div > a:first-child {
+  float: left;
+}
+#credits > div > a:last-child {
+  float: right;
+}
+#credits > ul {
+  margin: 0;
+  padding: 0;
+}
+#credits > ul li {
+  list-style: none;
+  color: #333333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+#credits > ul li a {
   display: block;
-  -webkit-transition: color 0.5s ease;
-}
-#options .contributors > a:hover strong {
-  color: #30b9bc;
-}
-#options .contributors > a strong,
-#options .contributors > a span {
-  font-weight: 300;
-}
-#options .contributors > a span {
-  position: absolute;
-  top: 0.5rem;
-  font-size: 2rem;
-  font-weight: 100;
-}
-#options .contributors > a:first-of-type {
-  text-align: right;
-}
-#options .contributors > a:first-of-type span {
-  left: 1rem;
-}
-#options .contributors > a:last-of-type {
-  padding-left: 1rem;
-  width: 9.875rem;
-}
-#options .contributors > a:last-of-type img {
   margin-left: 0.5rem;
+  color: #063457;
 }
-#options .contributors > a:last-of-type span {
+#credits > ul li a:hover {
+  text-decoration: underline;
+}
+#credits > img {
+  margin: auto;
+  position: absolute;
   right: 0rem;
+  bottom: 1rem;
 }
-.default {
+.black {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222222), color-stop(100%, #0e0e0e));
 }
-.lightLogoColor {
+.default {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #30b9bc), color-stop(100%, #207d7f));
-}
-.darkLogoColor {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a7121e), color-stop(100%, #790d16));
 }
 .theBeach {
   background: url("../images/beach.jpg");

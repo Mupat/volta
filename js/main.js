@@ -106,7 +106,11 @@
         this.$el.toggleClass(this.dark_class);
       }
       return this.options.registerOnChange(this.options.DARK_FONT, function(new_value, old_value) {
-        return _this.$el.toggleClass(_this.dark_class);
+        if (new_value) {
+          return _this.$el.addClass(_this.dark_class);
+        } else {
+          return _this.$el.removeClass(_this.dark_class);
+        }
       });
     };
 
@@ -134,7 +138,7 @@
   Clock = (function() {
     Clock.prototype.format = "dddd, MMMM Do YYYY";
 
-    Clock.prototype.$el = $('#clock > div');
+    Clock.prototype.$el = $('#clock-options > div');
 
     Clock.prototype.twelveHour = 'TwelveHourClock';
 
@@ -157,7 +161,7 @@
 
     Clock.prototype.render = function() {
       this._newClock();
-      return $('#clock > h1').text(this.date.format(this.format));
+      return $('#clock-options > h1').text(this.date.format(this.format));
     };
 
     Clock.prototype._newClock = function() {
@@ -354,12 +358,10 @@
       }, {
         name: 'redMesh'
       }, {
-        name: 'default'
+        name: 'black'
       }, {
-        name: 'lightLogoColor',
+        name: 'default',
         darkFont: true
-      }, {
-        name: 'darkLogoColor'
       }
     ];
 
@@ -438,6 +440,8 @@
 
     OptionsView.prototype.$el = $('#options');
 
+    OptionsView.prototype.$elWrapper = $('#clock-options');
+
     function OptionsView(options) {
       this.options = options != null ? options : YANTRE.options;
       this._registerBtnClick();
@@ -480,6 +484,10 @@
           darkFont: Boolean(theme.darkFont),
           value: Boolean(this.options.get(this.options.THEME_KEY) === theme.name)
         };
+      }
+      if (this.options.get(this.options.THEME_KEY) == null) {
+        data.themes['default'].value = true;
+        this.options.set(this.options.DARK_FONT, true);
       }
       return this._addContributors(function(users) {
         data.contributors = users;
@@ -527,10 +535,10 @@
           var id;
           id = $(e.target).attr('id');
           if (id !== 'options_btn') {
-            return _this.$el.removeClass('show');
+            return _this.$elWrapper.removeClass('show');
           }
         });
-        return _this.$el.toggleClass('show');
+        return _this.$elWrapper.toggleClass('show');
       });
     };
 
