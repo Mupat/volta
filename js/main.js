@@ -223,7 +223,7 @@
     Mail.prototype.render = function() {
       var _this = this;
       return $.ajax(this.loggedInUrl).done(function(data) {
-        if (data.indexOf('reauthEmail') !== -1) {
+        if (data.indexOf('"https://accounts.google.com/SignUp') === -1) {
           return $.get(_this.url + _this.label).done(_this._success).fail(_this._error);
         } else {
           _this.$el.prev().fadeOut();

@@ -21,7 +21,7 @@ class Mail
   render: ->
     $.ajax(@loggedInUrl)
       .done (data) =>
-        if data.indexOf('reauthEmail') != -1
+        if data.indexOf('"https://accounts.google.com/SignUp') is -1
           $.get(@url + @label)
             .done(@_success)
             .fail(@_error)
