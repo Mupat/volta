@@ -21,13 +21,6 @@
     z-index: 1000;
     text-align: center;
 
-    > span { 
-      display: block; 
-      font-size: 2rem;
-      line-height: 5rem;
-      -webkit-transform: rotate(-90deg);
-    }
-
     &:before { 
       font-size: 2rem;
       display: block;
@@ -68,10 +61,7 @@
       position: absolute;
       width: calc(~"100% - 125px");
       height: calc(~"100% - 2rem");
-      overflow-y: auto;
-      overflow-x: hidden;
       -webkit-transition: -webkit-transform 0.5s ease;
-      overflow: hidden;
 
       &#theme_options {
         -webkit-transform: translateX(110%);
