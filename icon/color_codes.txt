@@ -1,2 +1,0 @@
-cyan: #30B9BC
-red: #BE1522
