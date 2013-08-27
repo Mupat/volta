@@ -13,3 +13,10 @@ results
 
 npm-debug.log
 node_modules
+
+index.html
+/css/main.css
+/css/main.min.css
+/js/main.js
+/js/main.min.js
+yantre.zip

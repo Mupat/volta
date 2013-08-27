@@ -2,8 +2,13 @@
 **Y**et **a**nother **n**ew **t**ab **r**eplacement **e**xtension for chrome browser
 
 ## Usage
+1. Download in chrome webstore :)
+
+or
+
 1. download
 2. enable development mode in chrome extension
+3. run grunt ```build:dev```
 3. load unpacked extension and choose the complete folder
 
 ## Development
@@ -19,7 +24,7 @@ Had some dependencies:
 So the easiest way to compile them is to use ```grunt```. Just run 
 
 ```
-grunt build
+grunt build:dev
 ```
 
 to compile coffeescript files, less files and handlebar files. How to use ```grunt```, is explained on there [site](http://gruntjs.com/getting-started).
