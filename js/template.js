@@ -140,7 +140,7 @@ function program3(depth0,data,depth1) {
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += " />\n        <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.twelveHourClock),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" class=\"icon-check\">use twelve hour clock format</label> \n      </div>\n    </div>\n    <div>\n      <h1>Mail</h1>\n      <div class=\"mail_label\">\n        <form>\n          <label for=\""
+    + "\" class=\"icon-check\">use 12h clock format</label> \n      </div>\n    </div>\n    <div>\n      <h1>Mail</h1>\n      <div class=\"mail_label\">\n        <form>\n          <label for=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\">Add a google label to check for new mails. </label>\n          <input id=\""
     + escapeExpression(((stack1 = ((stack1 = depth0.label),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))

@@ -633,16 +633,20 @@ body .loader {
 }
 #options > div section#general_options > div {
   display: inline-block;
-  width: 49%;
+  width: 40%;
+}
+#options > div section#general_options > div:first-child h1:last-of-type {
+  margin-top: 0.5rem;
 }
 #options > div section#general_options > div:last-child {
   float: right;
+  width: 55%;
 }
 #options > div section#general_options > div > h1 {
   color: #333333;
   font-weight: 100;
   font-size: 2rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
 }
 #options input[type="checkbox"],
 #options input[type="radio"] {
@@ -672,7 +676,7 @@ body .loader {
   font-weight: 300;
   color: #333333;
   font-size: 1.25rem;
-  width: 17rem;
+  width: 20rem;
 }
 #options .mail_label input[type="submit"] {
   background-color: #333333;
