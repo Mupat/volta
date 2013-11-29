@@ -10,7 +10,6 @@ class Clock
 
     @options.registerOnChange @options.CLOCK_TWELVE, (new_value, old_value) =>
       @face = new_value
-      console.log 'register change'
       @_removeClock()
       @_newClock()
 

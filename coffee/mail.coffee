@@ -5,12 +5,13 @@ class Mail
   notLoggedIn_template: YANTRE.templates.notin
   warning_template: YANTRE.templates.warning
   url: 'https://mail.google.com/mail/feed/atom/'
-  loggedInUrl: 'https://accounts.google.com/ServiceLogin?continue=https://mail.google.com/mail/'
+  loggedInUrl: 'https://mail.google.com/mail'
   $el: $('#mails')
   label: ''
 
   constructor: (@options = YANTRE.options) ->
-    @label = @options.get @options.MAIL_LABEL
+    label = @options.get @options.MAIL_LABEL
+    @label = label if label isnt undefined
 
     @options.registerOnChange @options.MAIL_LABEL, (new_value, old_value) =>
       @$el.children().fadeOut 400, =>
@@ -21,7 +22,7 @@ class Mail
   render: ->
     $.ajax(@loggedInUrl)
       .done (data) =>
-        if data.indexOf('"https://accounts.google.com/SignUp') is -1
+        if data.indexOf('id="gaia_loginform"') is -1
           $.get(@url + @label)
             .done(@_success)
             .fail(@_error)

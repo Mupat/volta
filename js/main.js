@@ -38,6 +38,7 @@
           if (counter === 0) {
             $append.append('<li></li>');
           }
+          console.log('app', app);
           $append.find('li:last-of-type').append(_this.template({
             app_link: app.appLaunchUrl,
             id: app.id,
@@ -52,12 +53,17 @@
         }
       });
       this.$el.append($append);
-      return this.$el.children('ul').bxSlider({
+      this.$el.children('ul').bxSlider({
         pager: false,
         infiniteLoop: false,
         hideControlOnEnd: true,
         nextText: '<i class="icon-right"></>',
         prevText: '<i class="icon-left"></>'
+      });
+      return this.$el.on('click', 'a', function(event) {
+        event.preventDefault();
+        chrome.management.launchApp($(this).attr('id'));
+        return false;
       });
     };
 
@@ -162,7 +168,6 @@
       this.face = this.options.get(this.options.CLOCK_TWELVE);
       this.options.registerOnChange(this.options.CLOCK_TWELVE, function(new_value, old_value) {
         _this.face = new_value;
-        console.log('register change');
         _this._removeClock();
         return _this._newClock();
       });
@@ -205,19 +210,23 @@
 
     Mail.prototype.url = 'https://mail.google.com/mail/feed/atom/';
 
-    Mail.prototype.loggedInUrl = 'https://accounts.google.com/ServiceLogin?continue=https://mail.google.com/mail/';
+    Mail.prototype.loggedInUrl = 'https://mail.google.com/mail';
 
     Mail.prototype.$el = $('#mails');
 
     Mail.prototype.label = '';
 
     function Mail(options) {
-      var _this = this;
+      var label,
+        _this = this;
       this.options = options != null ? options : YANTRE.options;
       this._error = __bind(this._error, this);
       this._success = __bind(this._success, this);
       this._generate_html = __bind(this._generate_html, this);
-      this.label = this.options.get(this.options.MAIL_LABEL);
+      label = this.options.get(this.options.MAIL_LABEL);
+      if (label !== void 0) {
+        this.label = label;
+      }
       this.options.registerOnChange(this.options.MAIL_LABEL, function(new_value, old_value) {
         return _this.$el.children().fadeOut(400, function() {
           return _this.$el.prev().show(400, function() {
@@ -233,7 +242,7 @@
     Mail.prototype.render = function() {
       var _this = this;
       return $.ajax(this.loggedInUrl).done(function(data) {
-        if (data.indexOf('"https://accounts.google.com/SignUp') === -1) {
+        if (data.indexOf('id="gaia_loginform"') === -1) {
           return $.get(_this.url + _this.label).done(_this._success).fail(_this._error);
         } else {
           _this.$el.prev().fadeOut();
