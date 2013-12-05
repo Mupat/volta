@@ -21,7 +21,6 @@ class App
       if app.isApp
         if counter is 0 then $append.append '<li></li>'
 
-        console.log 'app', app
         $append.find('li:last-of-type').append @template
           app_link: app.appLaunchUrl
           id: app.id

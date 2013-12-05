@@ -38,7 +38,6 @@
           if (counter === 0) {
             $append.append('<li></li>');
           }
-          console.log('app', app);
           $append.find('li:last-of-type').append(_this.template({
             app_link: app.appLaunchUrl,
             id: app.id,
